@@ -1,0 +1,73 @@
+//
+// Created by neo on 2018/3/29.
+// Copyright (c) 2018 neo. All rights reserved.
+//
+
+#include "AtomPainter_iOSCoreGraphic.h"
+
+void Painter_iOSCoreGraphic::drawLine(GraphicsContext *context, const Vec2 &origin, const Vec2 &destination, const Color4F &color) {
+    CGContextRef platformContext = context->platformContext();
+    CGContextSaveGState(platformContext);
+    CGContextBeginPath(platformContext);
+    CGContextMoveToPoint(platformContext, origin.x, origin.y);
+    CGContextAddLineToPoint(platformContext, destination.x, destination.y);
+    CGContextStrokePath(platformContext);
+    /*
+     * antialias
+     *  CGContextSetShouldAntialias(platformContext, true);
+     */
+    CGContextRestoreGState(platformContext);
+}
+
+void Painter_iOSCoreGraphic::strokeRect(GraphicsContext *context, float x, float y, float w, float h, Color4F color, float lineWidth) {
+    CGContextRef platformContext = context->platformContext();
+    CGContextSaveGState(platformContext);
+    CGContextStrokeRectWithWidth(platformContext, CGRectMake(x, y, w, h), lineWidth);
+    const CGFloat colorComponent[4] = {color.r, color.g, color.b, color.a};
+    CGContextSetFillColor(platformContext, colorComponent);
+
+    CGContextStrokePath(platformContext);
+}
+
+void Painter_iOSCoreGraphic::fillRect(GraphicsContext *context, float x, float y, float w, float h, Color4F color) {
+    CGContextRef platformContext = context->platformContext();
+    CGContextSaveGState(platformContext);
+    CGContextFillRect(platformContext, CGRectMake(x, y, w, h));
+    const CGFloat colorComponent[4] = {color.r, color.g, color.b, color.a};
+    CGContextSetFillColor(platformContext, colorComponent);
+
+    CGContextStrokePath(platformContext);
+}
+
+
+void Painter_iOSCoreGraphic::drawPoly(GraphicsContext *context, const Vec2 *poli, unsigned int numberOfPoints, bool closePolygon, const Color4F &color) {
+    CGContextRef platformContext = context->platformContext();
+    CGContextSaveGState(platformContext);
+
+
+    CGContextStrokePath(platformContext);
+}
+
+void Painter_iOSCoreGraphic::drawArc(GraphicsContext *context, const Vec2 &center, float radius, float startAngle, float endAngle, const Color4F &color) {
+    CGContextRef platformContext = context->platformContext();
+    CGContextSaveGState(platformContext);
+    CGContextAddArc(platformContext, center.x, center.y, radius, startAngle, endAngle, 0);
+
+    CGContextStrokePath(platformContext);
+}
+
+void Painter_iOSCoreGraphic::drawText(GraphicsContext *context, const char *text, float x, float y, float maxWidth, bool isStroke) {
+    CGContextRef platformContext = context->platformContext();
+    CGContextSaveGState(platformContext);
+
+
+    CGContextStrokePath(platformContext);
+}
+
+void Painter_iOSCoreGraphic::drawImage(GraphicsContext *context, ImageProvider *imageProvider, float sx, float sy, float sw, float sh, float dx, float dy, float dw, float dh) {
+    CGContextRef platformContext = context->platformContext();
+    CGContextSaveGState(platformContext);
+
+
+    CGContextStrokePath(platformContext);
+}
