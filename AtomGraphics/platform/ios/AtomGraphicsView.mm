@@ -4,20 +4,38 @@
 //
 
 #include "AtomGraphicsView.h"
+#import "AtomNode.h"
 
+using namespace atomgraphics;
 
-@implementation AtomGraphicsView
-
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
+@implementation AtomGraphicsView {
+    Node *_node;
 }
 
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self initNode];
+    }
+
+    return self;
 }
 
-- (void)renderScene {
+
+- (void)initNode {
+    _node = new Node();
+}
+
+- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
+    [super drawLayer:layer inContext:ctx];
+    GraphicsContext *graphicsContext = new GraphicsContext(ctx);
+    if (_node->dirty()) {
+        Renderer::render(_node, graphicsContext);
+    }
+}
+
+
+- (void)renderNode {
 
 }
 

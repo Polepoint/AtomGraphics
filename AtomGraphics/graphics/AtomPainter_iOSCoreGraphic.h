@@ -9,23 +9,29 @@
 
 #include "AtomPainter.h"
 
-class Painter_iOSCoreGraphic: public Painter {
+namespace atomgraphics {
 
-    void drawLine(GraphicsContext *context, const Vec2 &origin, const Vec2 &destination, const Color4F &color) override;
+    class Painter_iOSCoreGraphic : public Painter {
 
-    void strokeRect(GraphicsContext *context, float x, float y, float w, float h, Color4F color, float lineWidth) override;
+    public:
 
-    void fillRect(GraphicsContext *context, float x, float y, float w, float h, Color4F color) override;
+        void drawLine(const Vec2 &origin, const Vec2 &destination, const Color4F &color) override;
 
-    void drawPoly(GraphicsContext *context, const Vec2 *poli, unsigned int numberOfPoints, bool closePolygon, const Color4F &color) override;
+        void strokeRect(float x, float y, float w, float h, Color4F color, float lineWidth) override;
 
-    void drawArc(GraphicsContext *context, const Vec2 &center, float radius, float startAngle, float endAngle, const Color4F &color) override;
+        void fillRect(float x, float y, float w, float h, Color4F color) override;
 
-    void drawText(GraphicsContext *context, const char *text, float x, float y, float maxWidth, bool isStroke) override;
+        void drawPoly(const Vec2 *poli, unsigned int numberOfPoints, bool closePolygon, const Color4F &color) override;
 
-    void drawImage(GraphicsContext *context, ImageProvider *imageProvider, float sx, float sy, float sw, float sh, float dx, float dy, float dw, float dh) override;
+        void drawArc(const Vec2 &center, float radius, float startAngle, float endAngle, const Color4F &color) override;
 
-};
+        void drawText(const char *text, float x, float y, float maxWidth, bool isStroke) override;
 
+        void drawImage(ImageProvider *imageProvider, float sx, float sy, float sw, float sh, float dx, float dy, float dw, float dh) override;
+
+        Painter_iOSCoreGraphic(GraphicsContext *context);
+    };
+
+}
 
 #endif //ATOMPAINTERIOSCOREGRAPHIC_H

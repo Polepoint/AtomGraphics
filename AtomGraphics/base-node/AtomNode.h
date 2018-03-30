@@ -13,111 +13,117 @@
 #include "AtomRenderer.h"
 #include "AtomTypes.h"
 
-using namespace atomgraphics;
 
-class Renderer;
+namespace atomgraphics {
 
-class Node {
+    class Renderer;
 
-public:
-    static const int INVALID_TAG = -1;
+    class Node {
 
-    virtual void addChild(Node *child);
+    public:
+        static const int INVALID_TAG = -1;
 
-    virtual void addChild(Node *child, int tag);
+        virtual void addChild(Node *child);
 
-    virtual void addChild(Node *child, const std::string &name);
+        virtual void addChild(Node *child, int tag);
 
-    virtual Node *getChildByTag(int tag) const;
+        virtual void addChild(Node *child, const std::string &name);
 
-    virtual Node *getChildByName(const std::string &name) const;
+        virtual Node *getChildByTag(int tag) const;
+
+        virtual Node *getChildByName(const std::string &name) const;
 
 //    template <typename T>
 //    T getChildByTag(int tag) const { return static_cast<T>(getChildByTag(tag)); }
 
-    virtual std::vector<Node *> &getChildren() {
-        return _children;
-    }
+        virtual std::vector<Node *> &getChildren() {
+            return _children;
+        }
 
-    virtual const std::vector<Node *> &getChildren() const {
-        return _children;
-    }
+        virtual const std::vector<Node *> &getChildren() const {
+            return _children;
+        }
 
-    virtual void setParent(Node *parent);
+        virtual void setParent(Node *parent);
 
-    virtual Node *getParent() {
-        return _parent;
-    }
+        virtual Node *getParent() {
+            return _parent;
+        }
 
-    virtual const Node *getParent() const {
-        return _parent;
-    }
+        virtual const Node *getParent() const {
+            return _parent;
+        }
 
-    virtual void removeFromParent();
+        virtual void removeFromParent();
 
-    virtual void removeFromParentAndCleanup(bool cleanup);
+        virtual void removeFromParentAndCleanup(bool cleanup);
 
-    virtual void removeChild(Node *child, bool cleanup = true);
+        virtual void removeChild(Node *child, bool cleanup = true);
 
-    virtual void cleanup();
+        virtual void cleanup();
 
-    virtual void removeAllChildren();
+        virtual void removeAllChildren();
 
-    virtual void removeAllChildrenWithCleanup(bool cleanup);
+        virtual void removeAllChildrenWithCleanup(bool cleanup);
 
-    virtual int getTag() const;
+        virtual int getTag() const;
 
-    virtual void setTag(int tag);
+        virtual void setTag(int tag);
 
-    virtual const std::string &getName() const;
+        virtual const std::string &getName() const;
 
-    virtual void setName(const std::string &name);
+        virtual void setName(const std::string &name);
 
-    virtual const Color4B &getBackgroundColor() const;
+        virtual const Color4B &getBackgroundColor() const;
 
-    virtual void setBackgroundColor(const Color4B &color);
+        virtual void setBackgroundColor(const Color4B &color);
 
-    virtual void draw(Renderer *renderer, const atomgraphics::Mat4 &transform, uint32_t flags);
+//        virtual void draw(Renderer *renderer, const atomgraphics::Mat4 &transform, uint32_t flags);
 
-    virtual void draw() final;
+//        virtual void draw() final;
 
-    void scheduleUpdate(void);
+        void scheduleUpdate(void);
 
-    static Node *create();
+        virtual bool dirty();
 
-    Node();
+        static Node *create();
 
-    virtual ~Node();
+        Node();
 
-    virtual bool init();
+        virtual ~Node();
 
-protected:
+        virtual bool init();
+
+    protected:
 
 
-private:
-    void addChildHelper(Node *child, int tag, const std::string &name, bool setTag);
+    private:
+        void addChildHelper(Node *child, int tag, const std::string &name, bool setTag);
 
-protected:
+    protected:
 
-    Size _contentSize;
-    bool _contentSizeDirty;         ///< whether or not the contentSize is dirty
+        Size _contentSize;
+        bool _contentSizeDirty;         ///< whether or not the contentSize is dirty
 
-    Vec2 _position;                 ///< position of the node
+        bool _dirty;
 
-    mutable Mat4 _transform;        ///< transform
+        Vec2 _position;                 ///< position of the node
 
-    Node *_parent;                  ///< weak reference to parent node
-    std::vector<Node *> _children;   ///< array of children nodes
+        mutable Mat4 _transform;        ///< transform
 
-    float _globalZOrder;            ///< Global order used to sort the node
+        Node *_parent;                  ///< weak reference to parent node
+        std::vector<Node *> _children;   ///< array of children nodes
 
-    std::string _name;              ///<a string label, an user defined string to identify this node
-    size_t _hashOfName;             ///<hash value of _name, used for speed in getChildByName
+        float _globalZOrder;            ///< Global order used to sort the node
 
-    int _tag;                       ///< a tag. Can be any number you assigned just to identify this node
+        std::string _name;              ///<a string label, an user defined string to identify this node
+        size_t _hashOfName;             ///<hash value of _name, used for speed in getChildByName
 
-    Color4B _backgroundColor;
-};
+        int _tag;                       ///< a tag. Can be any number you assigned just to identify this node
 
+        Color4B _backgroundColor;
+    };
+
+}
 
 #endif //ATOMGRAPHICS_ATOMNODE_H

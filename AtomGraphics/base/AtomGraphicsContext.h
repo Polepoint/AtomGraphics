@@ -7,6 +7,7 @@
 #define ATOMGRAPHICSCONTEXT_H
 
 #include "AtomPlatformConfig.h"
+#include "AtomPainter.h"
 
 
 #if ATOM_TARGET_PLATFORM == ATOM_PLATFORM_IOS
@@ -17,17 +18,25 @@ typedef CGContextRef PlatformContext;
 
 #endif
 
-class GraphicsContext {
+namespace atomgraphics {
 
-public:
-    PlatformContext platformContext() const;
+    class Painter;
 
-private:
-    /**
-     *     Canvas/CoreGraphic/OpenGl/Metal
-     */
-    PlatformContext _platformContext;
-};
+    class GraphicsContext {
 
+    public:
+        PlatformContext platformContext() const;
+
+        GraphicsContext(PlatformContext platformContext);
+
+    private:
+        /**
+         *     Canvas/CoreGraphic/OpenGl/Metal
+         */
+        PlatformContext _platformContext;
+        Painter *_painter;
+    };
+
+}
 
 #endif //ATOMGRAPHICSCONTEXT_H

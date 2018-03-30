@@ -5,32 +5,48 @@
 
 #include "AtomPainter.h"
 
-void Painter::drawLine(GraphicsContext *context, const Vec2 &origin, const Vec2 &destination, const Color4F &color) {
+namespace atomgraphics {
 
-}
+    GraphicsContext *Painter::getContext() {
+        return _context;
+    }
 
-void Painter::strokeRect(GraphicsContext *context, float x, float y, float w, float h, Color4F color, float lineWidth) {
+    void Painter::drawLine(const Vec2 &origin, const Vec2 &destination, const Color4F &color) {
 
-}
+    }
 
-void Painter::fillRect(GraphicsContext *context, float x, float y, float w, float h, Color4F color) {
+    void Painter::strokeRect(float x, float y, float w, float h, Color4F color, float lineWidth) {
 
-}
+    }
 
-void Painter::drawPoly(GraphicsContext *context, const Vec2 *poli, unsigned int numberOfPoints, bool closePolygon, const Color4F &color) {
+    void Painter::fillRect(float x, float y, float w, float h, Color4F color) {
 
-}
+    }
+
+    void Painter::drawPoly(const Vec2 *poli, unsigned int numberOfPoints, bool closePolygon, const Color4F &color) {
+
+    }
 
 
-void Painter::drawArc(GraphicsContext *context, const Vec2 &center, float radius, float startAngle, float endAngle, const Color4F &color) {
+    void Painter::drawArc(const Vec2 &center, float radius, float startAngle, float endAngle, const Color4F &color) {
 
-}
+    }
 
-void Painter::drawText(GraphicsContext *context, const char *text, float x, float y, float maxWidth, bool isStroke) {
+    void Painter::drawText(const char *text, float x, float y, float maxWidth, bool isStroke) {
 
-}
+    }
 
-void Painter::drawImage(GraphicsContext *context, ImageProvider *imageProvider, float sx, float sy, float sw, float sh, float dx, float dy, float dw, float dh) {
+    void Painter::drawImage(ImageProvider *imageProvider, float sx, float sy, float sw, float sh, float dx, float dy, float dw, float dh) {
+
+    }
+
+    Painter::Painter(GraphicsContext *context) {
+        _context = context;
+    }
+
+    Painter::~Painter() {
+
+    }
 
 }
 

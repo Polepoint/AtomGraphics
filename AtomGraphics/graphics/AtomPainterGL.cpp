@@ -4,3 +4,9 @@
 //
 
 #include "AtomPainterGL.h"
+
+namespace atomgraphics {
+    PainterGL::PainterGL(atomgraphics::GraphicsContext *context) : Painter(context) {
+    }
+
+}

@@ -4,3 +4,10 @@
 //
 
 #include "AtomPainter_iOSMetal.h"
+
+namespace atomgraphics {
+
+    Painter_iOSMetal::Painter_iOSMetal(atomgraphics::GraphicsContext *context) : Painter(context) {
+    }
+
+}

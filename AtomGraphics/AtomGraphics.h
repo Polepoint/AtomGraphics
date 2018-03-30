@@ -3,13 +3,16 @@
 // Copyright (c) 2018 neo. All rights reserved.
 //
 
-#ifndef ATOMGRAPHICS_ATOMGRAPHICS_H
-#define ATOMGRAPHICS_ATOMGRAPHICS_H
+#ifndef ATOMGRAPHICS_H
+#define ATOMGRAPHICS_H
 
 #include "base/AtomRef.h"
 
+namespace atomgraphics {
 
-class Node;
-class Render;
+    class Node;
 
-#endif //ATOMGRAPHICS_ATOMGRAPHICS_H
+    class Render;
+}
+
+#endif //ATOMGRAPHICS_H

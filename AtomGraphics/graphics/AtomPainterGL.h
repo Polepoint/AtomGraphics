@@ -8,9 +8,15 @@
 
 #include "AtomPainter.h"
 
-class PainterGL : public Painter {
+namespace atomgraphics {
 
-};
+    class PainterGL : public Painter {
+    public:
+        PainterGL(GraphicsContext *context);
+
+    };
+
+}
 
 
 #endif //ATOMPAINTERGL_H

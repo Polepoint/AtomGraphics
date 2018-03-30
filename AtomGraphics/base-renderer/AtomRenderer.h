@@ -8,12 +8,15 @@
 
 
 #include "AtomNode.h"
+#include "AtomGraphicsContext.h"
 
-class Node;
+namespace atomgraphics {
 
-class Renderer {
-public:
-    void render(Node *node);
-};
+    class Node;
 
+    class Renderer {
+    public:
+        static void render(Node *node, GraphicsContext *context);
+    };
+}
 #endif //ATOMRENDERER_H

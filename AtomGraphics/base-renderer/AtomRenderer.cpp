@@ -5,6 +5,15 @@
 
 #include "AtomRenderer.h"
 
-void Renderer::render(Node *node) {
+namespace atomgraphics {
+
+    void Renderer::render(Node *node, GraphicsContext *context) {
+
+
+        auto &children = node->getChildren();
+        for (const auto &child : children) {
+            render(child, context);
+        }
+    }
 
 }

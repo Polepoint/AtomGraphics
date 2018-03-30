@@ -16,6 +16,7 @@
 		1A998451F9BECBC387235BD6 /* AtomRef.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998A81A6F8C05EEA2ED88A /* AtomRef.cpp */; };
 		1A9984812A5E6FA80B99C024 /* AtomGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998EAFBA5B3ABFDD61C5AD /* AtomGraphics.cpp */; };
 		1A9985504F135437A6D4AC64 /* AtomPainter_AndroidCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9988095ED789A6643B3FE6 /* AtomPainter_AndroidCanvas.cpp */; };
+		1A99856BDD4B6731687A78E5 /* AtomPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998E065434A8FBA1D90BF9 /* AtomPath.cpp */; };
 		1A9986BFF11CFBA0DEEC6B3C /* AtomPainter_iOSMetal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998247703E926E6A527BCF /* AtomPainter_iOSMetal.cpp */; };
 		1A9987303BE2E183CDCA080C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9985A69E08E9FD1D30C74B /* AppDelegate.m */; };
 		1A9987A1995008A6754E7FCC /* AtomPainterGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9987D90FD08DE72DC96D9D /* AtomPainterGL.cpp */; };
@@ -75,6 +76,7 @@
 		1A9988E2E453EB7EB4E05351 /* RefCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefCount.h; sourceTree = "<group>"; };
 		1A9988FCAF8188A7DF16D7E3 /* Vec2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vec2.cpp; sourceTree = "<group>"; };
 		1A9989149E478D5E29D07B1B /* MathUtilNeon.inl */ = {isa = PBXFileReference; lastKnownFileType = file.inl; path = MathUtilNeon.inl; sourceTree = "<group>"; };
+		1A998929B0FEC683C28A3B21 /* AtomPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomPath.h; sourceTree = "<group>"; };
 		1A99893FBF3AE387E9C78E37 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1A998960AFEC261525C95624 /* AtomPainter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomPainter.cpp; sourceTree = "<group>"; };
 		1A99898E53D10B80F4602D7D /* Vec3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vec3.cpp; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		1A998D85598D47D49C341900 /* AtomNodeTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomNodeTree.h; sourceTree = "<group>"; };
 		1A998DE7313C6645746C297B /* AtomPainter_AndroidCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomPainter_AndroidCanvas.h; sourceTree = "<group>"; };
 		1A998DF3E124384E0C27267E /* Vec4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vec4.cpp; sourceTree = "<group>"; };
+		1A998E065434A8FBA1D90BF9 /* AtomPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomPath.cpp; sourceTree = "<group>"; };
 		1A998E18B7FFA6728827A484 /* Vec4.inl */ = {isa = PBXFileReference; lastKnownFileType = file.inl; path = Vec4.inl; sourceTree = "<group>"; };
 		1A998E34C023B05175D34A47 /* AtomTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomTypes.h; sourceTree = "<group>"; };
 		1A998E4E53564B5B56C24ED1 /* Mat4.inl */ = {isa = PBXFileReference; lastKnownFileType = file.inl; path = Mat4.inl; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 				1A998DE7313C6645746C297B /* AtomPainter_AndroidCanvas.h */,
 				1A998247703E926E6A527BCF /* AtomPainter_iOSMetal.cpp */,
 				1A998470583D4BE5C88ECE86 /* AtomPainter_iOSMetal.h */,
+				1A998E065434A8FBA1D90BF9 /* AtomPath.cpp */,
+				1A998929B0FEC683C28A3B21 /* AtomPath.h */,
 			);
 			path = graphics;
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 				1A99818F42A4FE2E3860B407 /* AtomPainter_iOSCoreGraphic.cpp in Sources */,
 				1A9985504F135437A6D4AC64 /* AtomPainter_AndroidCanvas.cpp in Sources */,
 				1A9986BFF11CFBA0DEEC6B3C /* AtomPainter_iOSMetal.cpp in Sources */,
+				1A99856BDD4B6731687A78E5 /* AtomPath.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,7 +4,17 @@
 //
 
 #include "AtomGraphicsContext.h"
+#include "AtomPainter_iOSCoreGraphic.h"
 
-PlatformContext GraphicsContext::platformContext() const {
-    return _platformContext;
+namespace atomgraphics {
+
+    PlatformContext GraphicsContext::platformContext() const {
+        return _platformContext;
+    }
+
+    GraphicsContext::GraphicsContext(PlatformContext platformContext) {
+        _platformContext = platformContext;
+        _painter = new Painter_iOSCoreGraphic(this);
+    }
+
 }
