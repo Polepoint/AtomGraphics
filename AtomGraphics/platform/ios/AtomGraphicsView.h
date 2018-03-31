@@ -7,7 +7,6 @@
 #define ATOMGRAPHICSVIEW_H
 
 #import <UIKit/UIKit.h>
-#import "AtomGraphics.h"
 
 @interface AtomGraphicsView: UIView  {
 

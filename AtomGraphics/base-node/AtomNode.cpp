@@ -186,17 +186,42 @@ namespace atomgraphics {
         _hashOfName = h(name);
     }
 
-    const Color4B &Node::getBackgroundColor() const {
+    const Color4F &Node::getBackgroundColor() const {
         return _backgroundColor;
     }
 
-    void Node::setBackgroundColor(const Color4B &color) {
+    void Node::setBackgroundColor(const Color4F &color) {
         _backgroundColor = color;
     }
 
-//    void Node::draw(Renderer * /*renderer*/, const Mat4 & /*transform*/, uint32_t /*flags*/) {
-//
-//    }
+    const Vec2 &Node::getPosition() const {
+        return _position;
+    }
+
+    void Node::setPosition(const Vec2 &position) {
+        _position = position;
+    }
+
+    const Size &Node::getContentSize() const {
+        return _contentSize;
+    }
+
+    void Node::setContentSize(const Size &contentSize) {
+        _contentSize = contentSize;
+    }
+
+    void Node::draw(GraphicsContext *context, Painter *painter) {
+        if (this->_dirty) {
+            painter->fillRect(this->_position.x, this->_position.y, this->_contentSize.width, this->_contentSize.height, this->_backgroundColor);
+
+            auto &children = this->_children;
+            for (const auto &child : children) {
+                child->draw(context, painter);
+            }
+
+            this->_dirty = false;
+        }
+    }
 //
 //    void Node::draw() {
 //    auto renderer = _director->getRenderer();
@@ -209,6 +234,16 @@ namespace atomgraphics {
 
     bool Node::dirty() {
         return _dirty;
+    }
+
+    void Node::setDirty(bool dirty) {
+        _dirty = dirty;
+        if (dirty) {
+            auto &children = this->_children;
+            for (const auto &child : children) {
+                child->setDirty(dirty);
+            }
+        }
     }
 
 }

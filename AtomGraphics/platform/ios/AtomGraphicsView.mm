@@ -5,6 +5,8 @@
 
 #include "AtomGraphicsView.h"
 #import "AtomNode.h"
+#import "AtomPainter_iOSCoreGraphic.h"
+#import "AtomGraphics.h"
 
 using namespace atomgraphics;
 
@@ -15,6 +17,7 @@ using namespace atomgraphics;
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.contentMode = UIViewContentModeRedraw;
         [self initNode];
     }
 
@@ -24,13 +27,24 @@ using namespace atomgraphics;
 
 - (void)initNode {
     _node = new Node();
+    _node->setBackgroundColor(Color4F::RED);
+    _node->setPosition(Vec2(10, 100));
+    _node->setContentSize(atomgraphics::Size(100, 300));
 }
 
-- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
-    [super drawLayer:layer inContext:ctx];
-    GraphicsContext *graphicsContext = new GraphicsContext(ctx);
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    _node->setDirty(true);
+}
+
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    GraphicsContext *graphicsContext = new GraphicsContext(context);
+    Painter *painter = new Painter_iOSCoreGraphic(graphicsContext);
     if (_node->dirty()) {
-        Renderer::render(_node, graphicsContext);
+        _node->draw(graphicsContext, painter);
     }
 }
 

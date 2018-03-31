@@ -8,7 +8,7 @@
 namespace atomgraphics {
 
     void Renderer::render(Node *node, GraphicsContext *context) {
-
+//        node->draw(context);
 
         auto &children = node->getChildren();
         for (const auto &child : children) {

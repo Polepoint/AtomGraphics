@@ -28,17 +28,17 @@ namespace atomgraphics {
         const CGFloat colorComponent[4] = {color.r, color.g, color.b, color.a};
         CGContextSetFillColor(platformContext, colorComponent);
 
-        CGContextStrokePath(platformContext);
+        CGContextRestoreGState(platformContext);
     }
 
     void Painter_iOSCoreGraphic::fillRect(float x, float y, float w, float h, Color4F color) {
         CGContextRef platformContext = this->getContext()->platformContext();
         CGContextSaveGState(platformContext);
-        CGContextFillRect(platformContext, CGRectMake(x, y, w, h));
         const CGFloat colorComponent[4] = {color.r, color.g, color.b, color.a};
         CGContextSetFillColor(platformContext, colorComponent);
+        CGContextFillRect(platformContext, CGRectMake(x, y, w, h));
 
-        CGContextStrokePath(platformContext);
+        CGContextRestoreGState(platformContext);
     }
 
 
@@ -47,7 +47,7 @@ namespace atomgraphics {
         CGContextSaveGState(platformContext);
 
 
-        CGContextStrokePath(platformContext);
+        CGContextRestoreGState(platformContext);
     }
 
     void Painter_iOSCoreGraphic::drawArc(const Vec2 &center, float radius, float startAngle, float endAngle, const Color4F &color) {
@@ -55,7 +55,7 @@ namespace atomgraphics {
         CGContextSaveGState(platformContext);
         CGContextAddArc(platformContext, center.x, center.y, radius, startAngle, endAngle, 0);
 
-        CGContextStrokePath(platformContext);
+        CGContextRestoreGState(platformContext);
     }
 
     void Painter_iOSCoreGraphic::drawText(const char *text, float x, float y, float maxWidth, bool isStroke) {
@@ -63,7 +63,7 @@ namespace atomgraphics {
         CGContextSaveGState(platformContext);
 
 
-        CGContextStrokePath(platformContext);
+        CGContextRestoreGState(platformContext);
     }
 
     void Painter_iOSCoreGraphic::drawImage(ImageProvider *imageProvider, float sx, float sy, float sw, float sh, float dx, float dy, float dw, float dh) {
@@ -71,7 +71,7 @@ namespace atomgraphics {
         CGContextSaveGState(platformContext);
 
 
-        CGContextStrokePath(platformContext);
+        CGContextRestoreGState(platformContext);
     }
 
     Painter_iOSCoreGraphic::Painter_iOSCoreGraphic(GraphicsContext *context) : Painter(context) {

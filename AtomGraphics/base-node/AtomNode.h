@@ -16,7 +16,9 @@
 
 namespace atomgraphics {
 
-    class Renderer;
+    class GraphicsContext;
+
+    class Painter;
 
     class Node {
 
@@ -74,17 +76,27 @@ namespace atomgraphics {
 
         virtual void setName(const std::string &name);
 
-        virtual const Color4B &getBackgroundColor() const;
+        virtual const Color4F &getBackgroundColor() const;
 
-        virtual void setBackgroundColor(const Color4B &color);
+        virtual void setPosition(const Vec2 &position);
 
-//        virtual void draw(Renderer *renderer, const atomgraphics::Mat4 &transform, uint32_t flags);
+        virtual const Vec2 &getPosition() const;
+
+        virtual void setBackgroundColor(const Color4F &color);
+
+        const Size &getContentSize() const;
+
+        void setContentSize(const Size &contentSize);
+
+        virtual void draw(GraphicsContext *context, Painter *painter);
 
 //        virtual void draw() final;
 
         void scheduleUpdate(void);
 
         virtual bool dirty();
+
+        virtual void setDirty(bool dirty);
 
         static Node *create();
 
@@ -121,7 +133,7 @@ namespace atomgraphics {
 
         int _tag;                       ///< a tag. Can be any number you assigned just to identify this node
 
-        Color4B _backgroundColor;
+        Color4F _backgroundColor;
     };
 
 }

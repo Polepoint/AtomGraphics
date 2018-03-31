@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AtomGraphicsView.h"
 
 @interface ViewController ()
 
@@ -16,7 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor orangeColor];
+    UIView *contentView = [[AtomGraphicsView alloc] initWithFrame:self.view.bounds];
+    contentView.backgroundColor = [UIColor orangeColor];
+    contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    [self.view addSubview:contentView];
     // Do any additional setup after loading the view, typically from a nib.
 }
 

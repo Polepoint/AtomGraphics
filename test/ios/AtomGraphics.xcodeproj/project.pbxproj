@@ -11,6 +11,7 @@
 		1A99818F42A4FE2E3860B407 /* AtomPainter_iOSCoreGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998ACC2E14B78D55B3DC70 /* AtomPainter_iOSCoreGraphic.cpp */; };
 		1A9981C1D6BEBCC4B1F42800 /* Vec2.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A998EAB42079481E9734A9A /* Vec2.inl */; };
 		1A99828F4F9AA5D81862BFF3 /* Vec3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A99898E53D10B80F4602D7D /* Vec3.cpp */; };
+		1A99838C31BC731D992B62B3 /* MathUtilNeon64.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A9980D81A0C9C376D3C2078 /* MathUtilNeon64.inl */; };
 		1A998392D0E04EFF43E058F0 /* Mat4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998CF27B229634588AB455 /* Mat4.cpp */; };
 		1A99844C312C635824CDD92E /* MathUtilSSE.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A998D4EAD821431E9005D51 /* MathUtilSSE.inl */; };
 		1A998451F9BECBC387235BD6 /* AtomRef.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998A81A6F8C05EEA2ED88A /* AtomRef.cpp */; };
@@ -48,6 +49,7 @@
 		1A99806A46AE94BF7B094252 /* AtomImageProvider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomImageProvider.cpp; sourceTree = "<group>"; };
 		1A9980B768A53722DF64E582 /* AtomNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomNode.cpp; sourceTree = "<group>"; };
 		1A9980B8AE8B3CE5BA5F4C0B /* MathUtil.inl */ = {isa = PBXFileReference; lastKnownFileType = file.inl; path = MathUtil.inl; sourceTree = "<group>"; };
+		1A9980D81A0C9C376D3C2078 /* MathUtilNeon64.inl */ = {isa = PBXFileReference; lastKnownFileType = file.inl; path = MathUtilNeon64.inl; sourceTree = "<group>"; };
 		1A99817FE3A8D2EF5C952760 /* Quaternion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Quaternion.cpp; sourceTree = "<group>"; };
 		1A9981F2FA75E281E8C76D35 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1A9981F3C592369BDC942475 /* AtomImageProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomImageProvider.h; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				1A9981F3E363D720195B5984 /* Quaternion.inl */,
 				1A998D4EAD821431E9005D51 /* MathUtilSSE.inl */,
 				1A9980B8AE8B3CE5BA5F4C0B /* MathUtil.inl */,
+				1A9980D81A0C9C376D3C2078 /* MathUtilNeon64.inl */,
 			);
 			path = math;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				1A998EF4F4336C7F3818B4DA /* Quaternion.inl in Resources */,
 				1A99844C312C635824CDD92E /* MathUtilSSE.inl in Resources */,
 				1A998EACA986A9826A904292 /* MathUtil.inl in Resources */,
+				1A99838C31BC731D992B62B3 /* MathUtilNeon64.inl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
