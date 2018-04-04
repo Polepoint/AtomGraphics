@@ -1,5 +1,5 @@
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
 #ifdef __SSE__
 

@@ -41,7 +41,7 @@
 
 #include "math/MathUtil.inl"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     void MathUtil::smooth(float *x, float target, float elapsedTime, float responseTime) {
         GP_ASSERT(x);

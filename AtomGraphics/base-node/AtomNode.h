@@ -14,7 +14,7 @@
 #include "AtomTypes.h"
 
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     class GraphicsContext;
 

@@ -3,7 +3,7 @@
 
 #include "math/AtomMath.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
 /**
  * @addtogroup base

@@ -5,9 +5,9 @@
 
 #include "AtomPainter_iOSMetal.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
-    Painter_iOSMetal::Painter_iOSMetal(atomgraphics::GraphicsContext *context) : Painter(context) {
+    Painter_iOSMetal::Painter_iOSMetal(AtomGraphics::GraphicsContext *context) : Painter(context) {
     }
 
 }

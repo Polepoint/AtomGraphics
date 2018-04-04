@@ -11,7 +11,7 @@
  * @addtogroup base
  * @{
  */
-namespace atomgraphics {
+namespace AtomGraphics {
 /**
  * Defines a math utility class.
  *

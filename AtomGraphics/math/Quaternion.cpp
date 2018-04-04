@@ -3,7 +3,7 @@
 #include <cmath>
 #include "base/AtomMacros.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     const Quaternion Quaternion::ZERO(0.0f, 0.0f, 0.0f, 0.0f);
 

@@ -9,7 +9,7 @@
 
 #include "AtomPainter.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     class Painter_iOSCoreGraphic : public Painter {
 

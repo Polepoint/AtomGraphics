@@ -11,7 +11,7 @@
  * @{
  */
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     struct Color4B;
     struct Color4F;

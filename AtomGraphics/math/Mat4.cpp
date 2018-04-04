@@ -5,7 +5,7 @@
 #include "math/MathUtil.h"
 #include "base/AtomMacros.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     Mat4::Mat4() {
         *this = IDENTITY;

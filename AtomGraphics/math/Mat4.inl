@@ -1,5 +1,6 @@
 #include "math/Mat4.h"
-namespace atomgraphics {
+
+namespace AtomGraphics {
 
     inline Mat4 Mat4::operator+(const Mat4 &mat) const {
         Mat4 result(*this);

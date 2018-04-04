@@ -10,7 +10,7 @@
 #include "AtomNode.h"
 #include "AtomGraphicsContext.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     class Node;
 

@@ -8,7 +8,7 @@
 
 #define ATOM_SAFE_DELETE(p)           do { delete (p); (p) = nullptr; } while(0)
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     Node *Node::create() {
         Node *ret = new(std::nothrow) Node();

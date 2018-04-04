@@ -1,6 +1,6 @@
 #include "math/Vec2.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     inline Vec2::Vec2()
             : x(0.0f), y(0.0f) {

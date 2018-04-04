@@ -1,6 +1,6 @@
 #include "math/Quaternion.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     inline Quaternion Quaternion::operator*(const Quaternion &q) const {
         Quaternion result(*this);

@@ -5,7 +5,7 @@
 
 #include "AtomPainter_AndroidCanvas.h"
 
-namespace atomgraphics {
-    Painter_AndroidCanvas::Painter_AndroidCanvas(atomgraphics::GraphicsContext *context) : Painter(context) {
+namespace AtomGraphics {
+    Painter_AndroidCanvas::Painter_AndroidCanvas(AtomGraphics::GraphicsContext *context) : Painter(context) {
     }
 }

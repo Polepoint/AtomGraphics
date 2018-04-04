@@ -6,7 +6,7 @@
 #include "AtomGraphicsContext.h"
 #include "AtomPainter_iOSCoreGraphic.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     PlatformContext GraphicsContext::platformContext() const {
         return _platformContext;

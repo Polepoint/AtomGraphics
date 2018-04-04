@@ -8,7 +8,7 @@
 
 #include "AtomPainter.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
     class Painter_iOSMetal : public Painter {
     public:
         Painter_iOSMetal(GraphicsContext *context);

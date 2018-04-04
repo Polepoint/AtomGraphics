@@ -5,7 +5,7 @@
 
 #include "AtomPainter_iOSCoreGraphic.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     void Painter_iOSCoreGraphic::drawLine(const Vec2 &origin, const Vec2 &destination, const Color4F &color) {
         CGContextRef platformContext = this->getContext()->platformContext();

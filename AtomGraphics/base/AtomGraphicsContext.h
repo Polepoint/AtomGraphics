@@ -18,7 +18,7 @@ typedef CGContextRef PlatformContext;
 
 #endif
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     class Painter;
 

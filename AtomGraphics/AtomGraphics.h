@@ -8,7 +8,7 @@
 
 #include "base/AtomRef.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     class Node;
 

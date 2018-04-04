@@ -5,7 +5,7 @@
 
 #include "AtomPainter.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     GraphicsContext *Painter::getContext() {
         return _context;

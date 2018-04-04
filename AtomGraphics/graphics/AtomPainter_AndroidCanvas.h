@@ -9,7 +9,7 @@
 
 #include "AtomPainter.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
     class Painter_AndroidCanvas : Painter {
     public:
         Painter_AndroidCanvas(GraphicsContext *context);

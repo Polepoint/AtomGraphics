@@ -1,7 +1,7 @@
 #include "math/Mat4.h"
 #include "math/Vec4.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     inline Vec4 Vec4::operator+(const Vec4 &v) const {
         Vec4 result(*this);

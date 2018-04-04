@@ -10,7 +10,7 @@
 #include "AtomImageProvider.h"
 #include "AtomTypes.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     class GraphicsContext;
 

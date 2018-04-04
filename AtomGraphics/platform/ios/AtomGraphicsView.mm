@@ -8,7 +8,7 @@
 #import "AtomPainter_iOSCoreGraphic.h"
 #import "AtomGraphics.h"
 
-using namespace atomgraphics;
+using namespace AtomGraphics;
 
 @implementation AtomGraphicsView {
     Node *_node;
@@ -28,8 +28,8 @@ using namespace atomgraphics;
 - (void)initNode {
     _node = new Node();
     _node->setBackgroundColor(Color4F::RED);
-    _node->setPosition(Vec2(10, 100));
-    _node->setContentSize(atomgraphics::Size(100, 300));
+    _node->setPosition(Vec2(20, 100));
+    _node->setContentSize(AtomGraphics::Size(200, 40));
 }
 
 - (void)layoutSubviews {
@@ -48,9 +48,5 @@ using namespace atomgraphics;
     }
 }
 
-
-- (void)renderNode {
-
-}
 
 @end

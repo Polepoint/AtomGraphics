@@ -5,8 +5,8 @@
 
 #include "AtomPainterGL.h"
 
-namespace atomgraphics {
-    PainterGL::PainterGL(atomgraphics::GraphicsContext *context) : Painter(context) {
+namespace AtomGraphics {
+    PainterGL::PainterGL(AtomGraphics::GraphicsContext *context) : Painter(context) {
     }
 
 }

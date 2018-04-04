@@ -15,7 +15,7 @@
  * @{
  */
 
-namespace atomgraphics {
+namespace AtomGraphics {
 //class Plane;
 
 /**

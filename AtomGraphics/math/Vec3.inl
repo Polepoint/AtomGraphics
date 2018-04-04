@@ -1,7 +1,7 @@
 #include "math/Vec3.h"
 #include "math/Mat4.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
 
     inline bool Vec3::isZero() const {

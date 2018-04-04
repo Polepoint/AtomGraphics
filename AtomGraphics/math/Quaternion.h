@@ -10,7 +10,7 @@
  * @{
  */
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     class Mat4;
 

@@ -5,7 +5,7 @@
 
 #include "AtomRenderer.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     void Renderer::render(Node *node, GraphicsContext *context) {
 //        node->draw(context);

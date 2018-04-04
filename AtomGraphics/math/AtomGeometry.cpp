@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <cmath>
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
 // implementation of Vec2
 

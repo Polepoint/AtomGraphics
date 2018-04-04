@@ -1,4 +1,4 @@
-namespace atomgraphics {
+namespace AtomGraphics {
 
     class MathUtilC {
     public:

@@ -6,7 +6,7 @@
 #include <cmath>
 #include "math/AtomMathBase.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
 /**
  * @addtogroup base

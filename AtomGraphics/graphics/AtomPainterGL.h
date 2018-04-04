@@ -8,7 +8,7 @@
 
 #include "AtomPainter.h"
 
-namespace atomgraphics {
+namespace AtomGraphics {
 
     class PainterGL : public Painter {
     public:
