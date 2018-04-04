@@ -3,8 +3,8 @@
 // Copyright (c) 2018 neo. All rights reserved.
 //
 
-#ifndef ATOMGRAPHICS_ATOMNODE_H
-#define ATOMGRAPHICS_ATOMNODE_H
+#ifndef ATOMNODE_H
+#define ATOMNODE_H
 
 #include <vector>
 #include <string>
@@ -138,4 +138,4 @@ namespace AtomGraphics {
 
 }
 
-#endif //ATOMGRAPHICS_ATOMNODE_H
+#endif //ATOMNODE_H

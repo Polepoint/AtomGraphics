@@ -8,15 +8,19 @@
 
 #include "AtomNode.h"
 #include "AtomImageBuffer.h"
+#include "AtomCanvasContext.h"
+
+/**
+ * CanvasAPI
+ * http://www.w3school.com.cn/tags/html_ref_canvas.asp
+ */
 
 namespace AtomGraphics {
 
     class CanvasNode : public Node {
 
-    public:
-
     private:
-        ImageBuffer *_imageBuffer;
+        CanvasContext *_canvasContext;
     };
 }
 
