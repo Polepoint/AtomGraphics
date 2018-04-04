@@ -12,6 +12,7 @@ using namespace AtomGraphics;
 
 @implementation AtomGraphicsView {
     Node *_node;
+    NSTimer *_animationTimer;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -28,8 +29,16 @@ using namespace AtomGraphics;
 - (void)initNode {
     _node = new Node();
     _node->setBackgroundColor(Color4F::RED);
-    _node->setPosition(Vec2(20, 100));
+    _node->setPosition(Vec2(100, 300));
     _node->setContentSize(AtomGraphics::Size(200, 40));
+    __block float inc = 0;
+    _animationTimer = [NSTimer timerWithTimeInterval:1 / 60.0 repeats:YES block:^(NSTimer *timer) {
+        _node->setPosition(Vec2(100 + sin(inc) * 50, 300 + cos(inc) * 100));
+        inc += 0.1;
+        [self setNeedsDisplay];
+    }];
+
+    [[NSRunLoop currentRunLoop] addTimer:_animationTimer forMode:NSDefaultRunLoopMode];
 }
 
 - (void)layoutSubviews {

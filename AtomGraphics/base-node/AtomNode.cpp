@@ -199,7 +199,10 @@ namespace AtomGraphics {
     }
 
     void Node::setPosition(const Vec2 &position) {
-        _position = position;
+        if(_position != position){
+            _position = position;
+            _dirty = true;
+        }
     }
 
     const Size &Node::getContentSize() const {
@@ -207,7 +210,10 @@ namespace AtomGraphics {
     }
 
     void Node::setContentSize(const Size &contentSize) {
-        _contentSize = contentSize;
+        if (!_contentSize.equals(contentSize)) {
+            _contentSize = contentSize;
+            _dirty = true;
+        }
     }
 
     void Node::draw(GraphicsContext *context, Painter *painter) {
