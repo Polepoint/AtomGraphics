@@ -8,7 +8,8 @@
 
 #include "AtomNode.h"
 #include "AtomImageBuffer.h"
-#include "AtomCanvasContext.h"
+#include "AtomCanvasContext2d.h"
+#include "AtomCanvasContext3d.h"
 
 /**
  * CanvasAPI
@@ -20,7 +21,8 @@ namespace AtomGraphics {
     class CanvasNode : public Node {
 
     private:
-        CanvasContext *_canvasContext;
+        CanvasContext2d *_canvasContext2d;
+        CanvasContext3d *_canvasContext3d;
     };
 }
 

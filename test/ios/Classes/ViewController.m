@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "AtomGraphicsView.h"
+#import "FPSLabel.h"
 
 @interface ViewController ()
 
@@ -21,6 +22,7 @@
     contentView.backgroundColor = [UIColor orangeColor];
     contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:contentView];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[FPSLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)]];
     // Do any additional setup after loading the view, typically from a nib.
 }
 

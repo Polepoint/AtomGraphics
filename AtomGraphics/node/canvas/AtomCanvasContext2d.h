@@ -10,7 +10,7 @@
 
 namespace AtomGraphics {
 
-    class CanvasContext {
+    class CanvasContext2d {
 
     public:
         //color|gradient|pattern;
