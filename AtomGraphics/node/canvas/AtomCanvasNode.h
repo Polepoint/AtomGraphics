@@ -11,16 +11,16 @@
 #include "AtomCanvasContext2d.h"
 #include "AtomCanvasContext3d.h"
 
-/**
- * CanvasAPI
- * http://www.w3school.com.cn/tags/html_ref_canvas.asp
- */
-
 namespace AtomGraphics {
 
     class CanvasNode : public Node {
 
     private:
+
+        CanvasContext2d *createContext2d();
+
+        CanvasContext3d *createContext3d();
+
         CanvasContext2d *_canvasContext2d;
         CanvasContext3d *_canvasContext3d;
     };

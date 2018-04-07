@@ -5,9 +5,23 @@
 
 #include "AtomCanvasContext2d.h"
 
+#if ATOM_TARGET_PLATFORM == ATOM_PLATFORM_IOS
+
+#include <CoreGraphics/CGBitmapContext.h>
+
+#endif
+
 namespace AtomGraphics {
 
-    void CanvasContext2d::setFillStyle() {
+    void CanvasContext2d::setFillStyle(const Color4B &color) {
+
+    }
+
+    void CanvasContext2d::setFillStyle(const CanvasPattern &pattern) {
+
+    }
+
+    void CanvasContext2d::setFillStyle(const CanvasGradient &gradient) {
 
     }
 
@@ -31,11 +45,11 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2d::createPattern() {
-
+    CanvasPattern *CanvasContext2d::createPattern() {
+        return nullptr;
     }
 
-    void *CanvasContext2d::createLinearGradient(float x0, float y0, float x1, float y1) {
+    CanvasGradient *CanvasContext2d::createLinearGradient(float x0, float y0, float x1, float y1) {
         return nullptr;
     }
 
@@ -209,6 +223,13 @@ namespace AtomGraphics {
 
     void *CanvasContext2d::toDataURL() {
         return nullptr;
+    }
+
+    CanvasContext2d::CanvasContext2d(const Size contentSize) {
+        size_t width = static_cast<size_t>(contentSize.width), height = static_cast<size_t>(contentSize.height);
+        _drawingContext = CGBitmapContextCreate(_imageData, width, height, 8, width * 4,
+                CGColorSpaceCreateDeviceRGB(), kCGImageAlphaPremultipliedLast);
+
     }
 
 }

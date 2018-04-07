@@ -7,14 +7,26 @@
 #define ATOMCANVASCONTEXT_H
 
 #include "AtomImageBuffer.h"
+#include "AtomCanvasGradient.h"
+#include "AtomCanvasPattern.h"
+
+/**
+ * CanvasAPI
+ * http://www.w3school.com.cn/tags/html_ref_canvas.asp
+ */
 
 namespace AtomGraphics {
 
     class CanvasContext2d {
 
     public:
+//        using Style = Variant<std::string, CanvasGradient, CanvasPattern>;
         //color|gradient|pattern;
-        virtual void setFillStyle();
+        virtual void setFillStyle(const Color4B &color);
+
+        virtual void setFillStyle(const CanvasPattern &pattern);
+
+        virtual void setFillStyle(const CanvasGradient &gradient);
 
         //color|gradient|pattern;
         virtual void setStrokeStyle();
@@ -32,11 +44,11 @@ namespace AtomGraphics {
         virtual void setShadowOffsetY();
 
         //context.createPattern(image,"repeat|repeat-x|repeat-y|no-repeat");
-        virtual void createPattern();
+        virtual CanvasPattern *createPattern();
 
         //context.createLinearGradient(x0,y0,x1,y1);
         //return object that represent the gradient
-        virtual void *createLinearGradient(float x0, float y0, float x1, float y1);
+        virtual CanvasGradient *createLinearGradient(float x0, float y0, float x1, float y1);
 
         //context.createRadialGradient(x0,y0,r0,x1,y1,r1);
         virtual void *createRadialGradient();
@@ -200,6 +212,13 @@ namespace AtomGraphics {
         virtual void *getContext();
 
         virtual void *toDataURL();
+
+        CanvasContext2d(const Size contentSize);
+
+    private:
+
+        PlatformContext _drawingContext;
+        uint8_t *_imageData;
     };
 }
 
