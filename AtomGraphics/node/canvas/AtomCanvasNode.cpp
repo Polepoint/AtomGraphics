@@ -13,9 +13,27 @@
 
 namespace AtomGraphics {
 
+    void CanvasNode::setContentSize(const Size &contentSize) {
+        Node::setContentSize(contentSize);
+        _canvasContext2d->setContentSize(contentSize);
+    }
+
+    CanvasContext2d *CanvasNode::getContext2d() {
+        _canvasContext2d->ensureDrawingContext();
+        return _canvasContext2d;
+    }
+
+    void CanvasNode::draw(GraphicsContext *context, Painter *painter) {
+        _canvasContext2d->drawConsuming(context, Rect(_position.x, _position.y, _contentSize.width, _contentSize.height));
+    }
+
+    CanvasNode::CanvasNode() {
+        _canvasContext2d = new CanvasContext2d();
+    }
+
     CanvasContext2d *CanvasNode::createContext2d() {
         if (!_canvasContext2d) {
-            _canvasContext2d = new CanvasContext2d(getContentSize());
+            _canvasContext2d = new CanvasContext2d();
         }
 
         return _canvasContext2d;

@@ -4,14 +4,14 @@
 //
 
 #include "AtomGraphicsView.h"
-#import "AtomNode.h"
 #import "AtomPainter_iOSCoreGraphic.h"
 #import "AtomGraphics.h"
+#import "AtomCanvasNode.h"
 
 using namespace AtomGraphics;
 
 @implementation AtomGraphicsView {
-    Node *_node;
+    CanvasNode *_node;
     NSTimer *_animationTimer;
 }
 
@@ -27,14 +27,18 @@ using namespace AtomGraphics;
 
 
 - (void)initNode {
-    _node = new Node();
-    _node->setBackgroundColor(Color4F::RED);
-    _node->setPosition(Vec2(100, 300));
-    _node->setContentSize(AtomGraphics::Size(200, 40));
+    _node = new CanvasNode();
+    _node->setPosition(Vec2(0, 0));
+    _node->setContentSize(AtomGraphics::Size(350, 600));
+    CanvasContext2d *ctx = _node->getContext2d();
+    ctx->setFillStyle(Color4F::RED);
     __block float inc = 0;
-    _animationTimer = [NSTimer timerWithTimeInterval:1 / 60.0 repeats:YES block:^(NSTimer *timer) {
-        _node->setPosition(Vec2(100 + sin(inc) * 50, 300 + cos(inc) * 100));
-        inc += 0.1;
+    _animationTimer = [NSTimer timerWithTimeInterval:0.05 repeats:YES block:^(NSTimer *timer) {
+        ctx->beginPath();
+        float r = sin(inc) * 10 + 100;
+        ctx->arc(150, 200, r, 0, 2 * M_PI, 0);
+        inc += 0.1 * 3.14;
+        ctx->fill();
         [self setNeedsDisplay];
     }];
 

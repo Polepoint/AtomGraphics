@@ -22,14 +22,18 @@ namespace AtomGraphics {
     public:
 //        using Style = Variant<std::string, CanvasGradient, CanvasPattern>;
         //color|gradient|pattern;
-        virtual void setFillStyle(const Color4B &color);
+        virtual void setFillStyle(const Color4F &color);
 
         virtual void setFillStyle(const CanvasPattern &pattern);
 
         virtual void setFillStyle(const CanvasGradient &gradient);
 
         //color|gradient|pattern;
-        virtual void setStrokeStyle();
+        virtual void setStrokeStyle(const Color4F &color);
+
+        virtual void setStrokeStyle(const CanvasPattern &pattern);
+
+        virtual void setStrokeStyle(const CanvasGradient &gradient);
 
         //color
         virtual void setShadowColor();
@@ -98,8 +102,8 @@ namespace AtomGraphics {
         virtual void stroke();
 
         //eg. ctx.beginPath();
-        //context.beginPath(x,y,width,height);
-        virtual void beginPath(float x, float y, float width, float height);
+        //context.beginPath();
+        virtual void beginPath();
 
         //eg. ctx.moveTo(0,0);
         //context.moveTo(x,y);
@@ -123,7 +127,7 @@ namespace AtomGraphics {
 
         //eg. ctx.arc(100,75,50,0,2*Math.PI);
         //context.arc(x,y,r,sAngle,eAngle,counterclockwise);
-        virtual void arc(float x, float y, float r, float sAngle, float eAngle, bool counterclockwise);
+        virtual void arc(float x, float y, float r, float sAngle, float eAngle, int counterclockwise);
 
         //eg. ctx.arcTo(150,20,150,70,50);
         //context.arcTo(x1,y1,x2,y2,r);
@@ -213,12 +217,19 @@ namespace AtomGraphics {
 
         virtual void *toDataURL();
 
-        CanvasContext2d(const Size contentSize);
+        virtual void drawConsuming(const GraphicsContext *context, Rect destRect);
+
+        void ensureDrawingContext();
+
+        void setContentSize(const Size &contentSize);
+
+        void setDrawingContext(CGContextRef context);
 
     private:
 
         PlatformContext _drawingContext;
         uint8_t *_imageData;
+        Size _contentSize;
     };
 }
 

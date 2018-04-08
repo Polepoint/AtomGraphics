@@ -86,7 +86,7 @@ namespace AtomGraphics {
 
         const Size &getContentSize() const;
 
-        void setContentSize(const Size &contentSize);
+        virtual void setContentSize(const Size &contentSize);
 
         virtual void draw(GraphicsContext *context, Painter *painter);
 

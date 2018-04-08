@@ -15,6 +15,15 @@ namespace AtomGraphics {
 
     class CanvasNode : public Node {
 
+    public:
+        CanvasNode();
+
+        CanvasContext2d *getContext2d();
+
+        void draw(GraphicsContext *context, Painter *painter) override;
+
+        void setContentSize(const Size &contentSize) override;
+
     private:
 
         CanvasContext2d *createContext2d();
