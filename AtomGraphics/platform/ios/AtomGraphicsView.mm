@@ -38,6 +38,7 @@ using namespace AtomGraphics;
         float r = sin(inc) * 10 + 100;
         ctx->arc(150, 200, r, 0, 2 * M_PI, 0);
         inc += 0.1 * 3.14;
+        ctx->stroke();
         ctx->fill();
         [self setNeedsDisplay];
     }];

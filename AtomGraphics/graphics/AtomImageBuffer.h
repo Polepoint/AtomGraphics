@@ -12,10 +12,17 @@ namespace AtomGraphics {
 
     class ImageBuffer {
 
-        void * getBufferData();
+        void *getBufferData();
+
+        void *data;
+
+        int backingStoreWidth;
+        int backingStoreHeight;
+
+        PlatformContext context;
 
     private:
-        PlatformContext _context;
+
     };
 
 }

@@ -14,12 +14,12 @@
 namespace AtomGraphics {
 
     void *ImageBuffer::getBufferData() {
-        if (!_context) {
+        if (!context) {
             return nullptr;
         }
 
 #if ATOM_TARGET_PLATFORM == ATOM_PLATFORM_IOS
-        return CGBitmapContextGetData(_context);
+        return CGBitmapContextGetData(context);
 #endif
 
     }

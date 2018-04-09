@@ -7,9 +7,21 @@
 #define ATOMGRAPHICS_ATOMPATH_H
 
 
-class AtomPath {
+#import "AtomGraphicsContext.h"
 
-};
+namespace AtomGraphics {
+
+    class Path {
+
+    public:
+        PlatformPath platformPath() {
+            return _platformPath;
+        }
+
+    private:
+        PlatformPath _platformPath;
+    };
+}
 
 
 #endif //ATOMGRAPHICS_ATOMPATH_H

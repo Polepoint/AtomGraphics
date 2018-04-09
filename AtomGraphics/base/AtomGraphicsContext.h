@@ -15,6 +15,7 @@
 #import <CoreGraphics/CGContext.h>
 
 typedef CGContextRef PlatformContext;
+typedef CGMutablePathRef PlatformPath;
 
 #endif
 

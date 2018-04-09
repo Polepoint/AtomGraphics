@@ -101,17 +101,25 @@ namespace AtomGraphics {
     }
 
     void CanvasContext2d::fill() {
-//        CGContextFillPath(_drawingContext);
-        CGContextDrawPath(_drawingContext, kCGPathFillStroke); //绘制路径加填充
+        CGContextBeginPath(_drawingContext);
+        CGContextAddPath(_drawingContext, _path);
+        CGContextFillPath(_drawingContext);
     }
 
     void CanvasContext2d::stroke() {
-//        CGContextStrokePath(_drawingContext);
-        CGContextDrawPath(_drawingContext, kCGPathStroke); //绘制路径加填充
+        if (_path && !CGPathIsEmpty(_path)) {
+            CGContextBeginPath(_drawingContext);
+            CGContextAddPath(_drawingContext, _path);
+            CGContextStrokePath(_drawingContext);
+        }
     }
 
     void CanvasContext2d::beginPath() {
-        CGContextBeginPath(_drawingContext);
+        if (!_path)
+            return;
+
+        CGPathRelease(_path);
+        _path = CGPathCreateMutable();
     }
 
     void CanvasContext2d::moveTo(float x, float y) {
@@ -134,8 +142,8 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2d::arc(float x, float y, float r, float sAngle, float eAngle, int counterclockwise) {
-        CGContextAddArc(_drawingContext, x, y, r, sAngle, eAngle, counterclockwise);
+    void CanvasContext2d::arc(float x, float y, float r, float sAngle, float eAngle, bool counterclockwise) {
+        CGPathAddArc(ensurePlatformPath(), nullptr, x, y, r, sAngle, eAngle, counterclockwise);
     }
 
     void CanvasContext2d::arcTo(float x1, float y1, float x2, float y2, float r) {
@@ -254,6 +262,14 @@ namespace AtomGraphics {
             _drawingContext = CGBitmapContextCreate(_imageData, width, height, 8, width * 4,
                     CGColorSpaceCreateDeviceRGB(), kCGImageAlphaPremultipliedFirst | kCGBitmapByteOrder32Host);
         }
+    }
+
+    PlatformPath CanvasContext2d::ensurePlatformPath() {
+        if (!_path) {
+            _path = CGPathCreateMutable();;
+        }
+
+        return _path;
     }
 
 }

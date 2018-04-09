@@ -94,7 +94,7 @@ namespace AtomGraphics {
         virtual void clearRect(float x, float y, float width, float height);
 
         //eg. ctx.fill();
-        //context.fill();
+        //context.fill('nonzero' | 'evenodd'); default 'nonzero';
         virtual void fill();
 
         //eg. ctx.stroke();
@@ -127,7 +127,7 @@ namespace AtomGraphics {
 
         //eg. ctx.arc(100,75,50,0,2*Math.PI);
         //context.arc(x,y,r,sAngle,eAngle,counterclockwise);
-        virtual void arc(float x, float y, float r, float sAngle, float eAngle, int counterclockwise);
+        virtual void arc(float x, float y, float r, float sAngle, float eAngle, bool counterclockwise);
 
         //eg. ctx.arcTo(150,20,150,70,50);
         //context.arcTo(x1,y1,x2,y2,r);
@@ -223,13 +223,14 @@ namespace AtomGraphics {
 
         void setContentSize(const Size &contentSize);
 
-        void setDrawingContext(CGContextRef context);
-
     private:
 
         PlatformContext _drawingContext;
+        PlatformPath _path;
         uint8_t *_imageData;
         Size _contentSize;
+
+        PlatformPath ensurePlatformPath();
     };
 }
 
