@@ -39,7 +39,7 @@ namespace AtomGraphics {
         return _canvasContext2d;
     }
 
-    CanvasContext3d *CanvasNode::createContext3d() {
+    CanvasContextGL *CanvasNode::createContextGL() {
         return nullptr;
     }
 }

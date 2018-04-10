@@ -9,6 +9,7 @@
 #include "AtomImageBuffer.h"
 #include "AtomCanvasGradient.h"
 #include "AtomCanvasPattern.h"
+#include "AtomCanvasContextBase.h"
 
 /**
  * CanvasAPI
@@ -17,7 +18,7 @@
 
 namespace AtomGraphics {
 
-    class CanvasContext2d {
+    class CanvasContext2d :public CanvasContextBase{
 
     public:
 //        using Style = Variant<std::string, CanvasGradient, CanvasPattern>;
@@ -216,6 +217,8 @@ namespace AtomGraphics {
         virtual void *getContext();
 
         virtual void *toDataURL();
+
+        bool is2d() override;
 
         virtual void drawConsuming(const GraphicsContext *context, Rect destRect);
 

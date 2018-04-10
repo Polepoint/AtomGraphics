@@ -272,4 +272,8 @@ namespace AtomGraphics {
         return _path;
     }
 
+    bool CanvasContext2d::is2d() {
+        return true;
+    }
+
 }

@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "AtomGraphicsView.h"
 #import "FPSLabel.h"
+#import "AtomGraphicsGCanvasView.h"
 
 @interface ViewController ()
 
@@ -19,8 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIView *contentView = [[AtomGraphicsView alloc] initWithFrame:self.view.bounds];
-    contentView.backgroundColor = [UIColor orangeColor];
+//    UIView *contentView = [[AtomGraphicsGCanvasView alloc] initWithFrame:self.view.bounds];
     contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    contentView.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:contentView];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[FPSLabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)]];
     // Do any additional setup after loading the view, typically from a nib.

@@ -1,0 +1,5 @@
+platform :ios, '8.0'
+
+target 'AtomGraphics' do
+  pod 'GCanvas', '~> 0.1.1'
+end
