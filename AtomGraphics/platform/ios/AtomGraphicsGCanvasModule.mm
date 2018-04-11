@@ -62,6 +62,10 @@ static AtomGraphicsGCanvasModule *sharedModuleInstance;
 - (void)addCommand:(NSString *)command componentID:(NSString *)componentID {
     NSMutableArray *renderCommands = _renderCommands[componentID];
     [renderCommands addObject:command];
+//    TODO: request layout if need
+//    AtomGraphicsGCanvasView *gCanvasView = _registeredCanvasViews[componentID];
+//    [gCanvasView.glkview setNeedsDisplay];
+//    gCanvasView.needChangeEAGLContenxt = YES;
 }
 
 - (void)setContextType:(NSUInteger)type componentID:(NSString *)componentID {

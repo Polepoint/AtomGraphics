@@ -8,12 +8,14 @@
 #import "AtomGraphics.h"
 #import "AtomCanvasNode.h"
 #import "AtomGCanvasNode.h"
+#import "AtomJavaScriptCore.h"
 
 using namespace AtomGraphics;
 
 @implementation AtomGraphicsView {
     GCanvasNode *_node;
-    NSTimer *_animationTimer;
+//    NSTimer *_animationTimer;
+    AtomJavaScriptCore *_javaScriptCore;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -21,6 +23,7 @@ using namespace AtomGraphics;
     if (self) {
         self.contentMode = UIViewContentModeRedraw;
         [self initNode];
+        _javaScriptCore = [[AtomJavaScriptCore alloc] initWithCanvasNode:_node];
     }
 
     return self;
@@ -31,27 +34,34 @@ using namespace AtomGraphics;
     _node = new GCanvasNode((__bridge void *) self);
     _node->setPosition(Vec2(0, 0));
     _node->setContentSize(AtomGraphics::Size(350, 600));
-    CanvasContext2d *ctx = _node->getContext2d();
-    ctx->setFillStyle(Color4F::RED);
-    __block float inc = 0;
+//    CanvasContext2d *ctx = _node->getContext2d();
+//    ctx->setFillStyle(Color4F::RED);
+//    __block float inc = 0;
 //    _animationTimer = [NSTimer timerWithTimeInterval:0.05 repeats:YES block:^(NSTimer *timer) {
-        ctx->beginPath();
-        float r = sin(inc) * 10 + 100;
-        ctx->arc(150, 400, r, 0, 2 * M_PI, 0);
-        inc += 0.1 * 3.14;
-        ctx->stroke();
-        ctx->fill();
+//        ctx->beginPath();
+//        float r = sin(inc) * 10 + 100;
+//        ctx->arc(150, 400, r, 0, 2 * M_PI, 0);
+//        inc += 0.1 * 3.14;
+//        ctx->stroke();
+//        ctx->fill();
 //        [self setNeedsDisplay];
 //    }];
 //
 //    [[NSRunLoop currentRunLoop] addTimer:_animationTimer forMode:NSDefaultRunLoopMode];
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    _node->setDirty(true);
+
+- (void)didMoveToWindow {
+    [super didMoveToWindow];
+    [_javaScriptCore runScriptFile:[[NSBundle mainBundle] pathForResource:@"main" ofType:@"js"]];
 }
 
+
+//- (void)layoutSubviews {
+//    [super layoutSubviews];
+//    _node->setDirty(true);
+//}
+//
 //
 //- (void)drawRect:(CGRect)rect {
 //    [super drawRect:rect];

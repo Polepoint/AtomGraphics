@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A99801EBD9892473958476A /* AtomJavaScriptCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998EBB9EC266F59F7761CA /* AtomJavaScriptCore.mm */; };
 		1A99809A0A00D58DEF937D7F /* AtomNodeTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9983E035178C2E057DEFE1 /* AtomNodeTree.cpp */; };
 		1A99818F42A4FE2E3860B407 /* AtomPainter_iOSCoreGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998ACC2E14B78D55B3DC70 /* AtomPainter_iOSCoreGraphic.cpp */; };
 		1A9981C1D6BEBCC4B1F42800 /* Vec2.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A998EAB42079481E9734A9A /* Vec2.inl */; };
@@ -29,6 +30,7 @@
 		1A9987A1995008A6754E7FCC /* AtomPainterGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9987D90FD08DE72DC96D9D /* AtomPainterGL.cpp */; };
 		1A9987B5C2F9B85F056AB489 /* Quaternion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A99817FE3A8D2EF5C952760 /* Quaternion.cpp */; };
 		1A9987CEF8954EDCA6A9B8EF /* Vec4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998DF3E124384E0C27267E /* Vec4.cpp */; };
+		1A9987E304E80562EAF0E4C3 /* core.js in Sources */ = {isa = PBXBuildFile; fileRef = 1A998575B5E6431A80C42B53 /* core.js */; };
 		1A99887D73C4C4303B4C1663 /* AtomGraphicsContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A99864A56D8FE38AF8DA0E8 /* AtomGraphicsContext.cpp */; };
 		1A99888D79D0BAB99B600D58 /* Vec4.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A998E18B7FFA6728827A484 /* Vec4.inl */; };
 		1A99890BAA1F011AD9D75000 /* Vec2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9988FCAF8188A7DF16D7E3 /* Vec2.cpp */; };
@@ -53,6 +55,9 @@
 		1A998EF4F4336C7F3818B4DA /* Quaternion.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A9981F3E363D720195B5984 /* Quaternion.inl */; };
 		1A998F381EA60231664E901A /* AtomCanvasGradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9987CE809CA131914BD026 /* AtomCanvasGradient.cpp */; };
 		1A998FDA716A3DEC0F9E73D4 /* Mat4.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A998E4E53564B5B56C24ED1 /* Mat4.inl */; };
+		B50FC4CA207DD72400AA1FDF /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B50FC4C9207DD72400AA1FDF /* JavaScriptCore.framework */; };
+		B53A121B207DE3A1002BE136 /* core.js in Resources */ = {isa = PBXBuildFile; fileRef = 1A998575B5E6431A80C42B53 /* core.js */; };
+		B58E5C87207E00D700186D59 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 1A998E328C18A21AE98EBC0C /* main.js */; };
 		B5A4D32B206115BA001DAABD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A4D32A206115BA001DAABD /* main.m */; };
 		B5A4D342206130A8001DAABD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5A4D341206130A8001DAABD /* Assets.xcassets */; };
 		D404E54421CC6AB7F186978F /* libPods-AtomGraphics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1BB2E46AD0B51AB328CE854 /* libPods-AtomGraphics.a */; };
@@ -84,6 +89,7 @@
 		1A9984E79D0DA05D39266158 /* AtomRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomRenderer.cpp; sourceTree = "<group>"; };
 		1A9984F9EF6C494D95BE0C00 /* AtomGCanvasNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomGCanvasNode.h; sourceTree = "<group>"; };
 		1A9985301F95DA0505BB1D16 /* AtomPainterGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomPainterGL.h; sourceTree = "<group>"; };
+		1A998575B5E6431A80C42B53 /* core.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = core.js; sourceTree = "<group>"; };
 		1A9985A69E08E9FD1D30C74B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1A9985DA85B948D4E4A1FD6D /* Mat4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mat4.h; sourceTree = "<group>"; };
 		1A9985DC3A446ADFBF1B041D /* AtomGCanvasNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomGCanvasNode.cpp; sourceTree = "<group>"; };
@@ -139,18 +145,22 @@
 		1A998DF3E124384E0C27267E /* Vec4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vec4.cpp; sourceTree = "<group>"; };
 		1A998E065434A8FBA1D90BF9 /* AtomPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomPath.cpp; sourceTree = "<group>"; };
 		1A998E18B7FFA6728827A484 /* Vec4.inl */ = {isa = PBXFileReference; lastKnownFileType = file.inl; path = Vec4.inl; sourceTree = "<group>"; };
+		1A998E328C18A21AE98EBC0C /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		1A998E32C985B27631BC28FC /* AtomCanvasPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCanvasPattern.h; sourceTree = "<group>"; };
 		1A998E34C023B05175D34A47 /* AtomTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomTypes.h; sourceTree = "<group>"; };
 		1A998E4E53564B5B56C24ED1 /* Mat4.inl */ = {isa = PBXFileReference; lastKnownFileType = file.inl; path = Mat4.inl; sourceTree = "<group>"; };
 		1A998E7800937957B3067EF8 /* AtomCanvasContextGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCanvasContextGL.h; sourceTree = "<group>"; };
 		1A998E7F800CA5DB837E6267 /* FPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPSLabel.h; sourceTree = "<group>"; };
+		1A998EA24FA442A53271CF0F /* AtomJavaScriptCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomJavaScriptCore.h; sourceTree = "<group>"; };
 		1A998EAB42079481E9734A9A /* Vec2.inl */ = {isa = PBXFileReference; lastKnownFileType = file.inl; path = Vec2.inl; sourceTree = "<group>"; };
 		1A998EAFBA5B3ABFDD61C5AD /* AtomGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomGraphics.cpp; sourceTree = "<group>"; };
+		1A998EBB9EC266F59F7761CA /* AtomJavaScriptCore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomJavaScriptCore.mm; sourceTree = "<group>"; };
 		1A998EE44007E712AE9A1CEA /* AtomMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomMacros.h; sourceTree = "<group>"; };
 		1A998F77CFAD49177EBED27E /* AtomImageBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomImageBuffer.h; sourceTree = "<group>"; };
 		1A998FC25A2587955C33435B /* FPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPSLabel.m; sourceTree = "<group>"; };
 		1A998FCA0666D2CE7EBEEFC3 /* Vec2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vec2.h; sourceTree = "<group>"; };
 		6260B2A056CF48662A2CD126 /* Pods-AtomGraphics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AtomGraphics.release.xcconfig"; path = "Pods/Target Support Files/Pods-AtomGraphics/Pods-AtomGraphics.release.xcconfig"; sourceTree = "<group>"; };
+		B50FC4C9207DD72400AA1FDF /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		B59FAB121FBC2B8500417328 /* AtomGraphics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtomGraphics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A4D32A206115BA001DAABD /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B5A4D341206130A8001DAABD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B50FC4CA207DD72400AA1FDF /* JavaScriptCore.framework in Frameworks */,
 				D404E54421CC6AB7F186978F /* libPods-AtomGraphics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,6 +183,7 @@
 		07ED689769B1354224209A79 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B50FC4C9207DD72400AA1FDF /* JavaScriptCore.framework */,
 				C1BB2E46AD0B51AB328CE854 /* libPods-AtomGraphics.a */,
 			);
 			name = Frameworks;
@@ -301,6 +313,24 @@
 			path = "base-renderer";
 			sourceTree = "<group>";
 		};
+		1A998C17594E18FD1577709F /* js */ = {
+			isa = PBXGroup;
+			children = (
+				1A998575B5E6431A80C42B53 /* core.js */,
+				1A998EBB9EC266F59F7761CA /* AtomJavaScriptCore.mm */,
+				1A998EA24FA442A53271CF0F /* AtomJavaScriptCore.h */,
+			);
+			path = js;
+			sourceTree = "<group>";
+		};
+		1A998C1AF3A8A32899F551CD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1A998E328C18A21AE98EBC0C /* main.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		1A998D03C782C35D6EB4AE72 /* AtomGraphics */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +360,7 @@
 				1A998D204FFF0BA5AEFDD3D7 /* AtomGraphicsGCanvasView.h */,
 				1A998A379E7A5093CF86A010 /* AtomGraphicsGCanvasModule.mm */,
 				1A9981DF4207062C62C15AF4 /* AtomGraphicsGCanvasModule.h */,
+				1A998C17594E18FD1577709F /* js */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -373,6 +404,7 @@
 				1A9984C74D4C96BDB39ABEFD /* README.md */,
 				5D7A84AE4DDA8CCC84482FFA /* Pods */,
 				07ED689769B1354224209A79 /* Frameworks */,
+				1A998C1AF3A8A32899F551CD /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -444,6 +476,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B58E5C87207E00D700186D59 /* main.js in Resources */,
+				B53A121B207DE3A1002BE136 /* core.js in Resources */,
 				B5A4D342206130A8001DAABD /* Assets.xcassets in Resources */,
 				1A9981C1D6BEBCC4B1F42800 /* Vec2.inl in Resources */,
 				1A998BCED3BA52CEF19BF049 /* Vec3.inl in Resources */,
@@ -523,6 +557,8 @@
 				1A998A1003AF2A7DB4BA429E /* AtomGraphicsGCanvasModule.mm in Sources */,
 				1A99831BADB00DF30C97F2FB /* AtomGCanvasNode.cpp in Sources */,
 				1A99852446CFB50C46AEE41A /* AtomCanvasContextBase.cpp in Sources */,
+				1A9987E304E80562EAF0E4C3 /* core.js in Sources */,
+				1A99801EBD9892473958476A /* AtomJavaScriptCore.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

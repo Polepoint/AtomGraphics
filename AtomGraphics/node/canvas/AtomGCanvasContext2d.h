@@ -124,8 +124,6 @@ namespace AtomGraphics {
 
         void addCommand(const std::string &command);
 
-        std::string &getComponentID();
-
         void setComponentID(const std::string &componentID);
 
     private:
