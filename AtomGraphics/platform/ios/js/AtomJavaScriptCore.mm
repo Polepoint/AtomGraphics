@@ -42,7 +42,7 @@ static inline Color4F colorWithRgba(NSString *rgba) {
     return color;
 }
 
-@protocol CanvasContextJavaScriptInterfaceAPI <JSExport>
+@protocol CanvasContextJavaScriptInterfaceExport <JSExport>
 
 @property(nonatomic, copy) NSString *fillStyle;
 
@@ -56,7 +56,7 @@ static inline Color4F colorWithRgba(NSString *rgba) {
 
 @end
 
-@interface CanvasContextJavaScriptInterface : NSObject <CanvasContextJavaScriptInterfaceAPI>
+@interface CanvasContextJavaScriptInterface : NSObject <CanvasContextJavaScriptInterfaceExport>
 
 @end
 
@@ -101,13 +101,13 @@ static inline Color4F colorWithRgba(NSString *rgba) {
 
 @end
 
-@protocol CanvasJavaScriptInterfaceAPI <JSExport>
+@protocol CanvasJavaScriptInterfaceExport <JSExport>
 
 - (CanvasContextJavaScriptInterface *)getContext:(NSString *)contentType;
 
 @end
 
-@interface CanvasJavaScriptInterface : NSObject <CanvasJavaScriptInterfaceAPI>
+@interface CanvasJavaScriptInterface : NSObject <CanvasJavaScriptInterfaceExport>
 
 @end
 

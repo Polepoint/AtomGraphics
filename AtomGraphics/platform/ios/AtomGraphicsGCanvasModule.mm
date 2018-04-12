@@ -6,6 +6,7 @@
 #import "AtomGraphicsGCanvasModule.h"
 #import "GCanvasModule.h"
 #import "AtomGraphicsGCanvasView.h"
+#import "AtomGraphicsGCanvasComponent.h"
 
 static AtomGraphicsGCanvasModule *sharedModuleInstance;
 
@@ -13,14 +14,12 @@ static AtomGraphicsGCanvasModule *sharedModuleInstance;
 
 @property(nonatomic, strong) GCanvasModule *gcanvasModule;
 
-@property(nonatomic, strong) NSMutableDictionary *registeredCanvasViews;
-
-@property(nonatomic, strong) NSMutableDictionary<NSString *, NSMutableArray *> *renderCommands;
+@property(nonatomic, strong) NSMutableDictionary<NSString *, AtomGraphicsGCanvasComponent *> *registeredCanvasComponents;
 
 @end
 
 @implementation AtomGraphicsGCanvasModule {
-
+    dispatch_queue_t _commitQueue;
 }
 
 + (AtomGraphicsGCanvasModule *)sharedModule {
@@ -36,8 +35,8 @@ static AtomGraphicsGCanvasModule *sharedModuleInstance;
     if (self) {
         self.gcanvasModule = [[GCanvasModule alloc] initWithDelegate:self];
         self.gcanvasModule.imageLoader = self;
-        _registeredCanvasViews = [NSMutableDictionary dictionary];
-        _renderCommands = [NSMutableDictionary dictionary];
+        _registeredCanvasComponents = [NSMutableDictionary dictionary];
+        _commitQueue = dispatch_queue_create("neo.AtomGraphics.CommitCommand", nullptr);
     }
 
     return self;
@@ -45,27 +44,40 @@ static AtomGraphicsGCanvasModule *sharedModuleInstance;
 
 - (void)registerCanvasView:(AtomGraphicsGCanvasView *)gCanvasView {
     NSString *componentID = gCanvasView.componentId;
-    _registeredCanvasViews[componentID] = gCanvasView;
-    _renderCommands[componentID] = [NSMutableArray array];
+    _registeredCanvasComponents[componentID] = [[AtomGraphicsGCanvasComponent alloc] initWithCanvasView:gCanvasView];
     [self.gcanvasModule enable:@{@"componentId": componentID}];
 }
 
 - (void)unregisterCanvasView:(NSString *)componentID {
-    [_registeredCanvasViews removeObjectForKey:componentID];
-    [_renderCommands removeObjectForKey:componentID];
+    [_registeredCanvasComponents removeObjectForKey:componentID];
 }
 
 - (AtomGraphicsGCanvasView *)getCanvasView:(NSString *)componentID {
-    return _registeredCanvasViews[componentID];
+    return [_registeredCanvasComponents[componentID] gCanvasView];
 }
 
 - (void)addCommand:(NSString *)command componentID:(NSString *)componentID {
-    NSMutableArray *renderCommands = _renderCommands[componentID];
+    AtomGraphicsGCanvasComponent *component = _registeredCanvasComponents[componentID];
+    NSMutableArray *renderCommands = component.renderCommands;
     [renderCommands addObject:command];
-//    TODO: request layout if need
-//    AtomGraphicsGCanvasView *gCanvasView = _registeredCanvasViews[componentID];
-//    [gCanvasView.glkview setNeedsDisplay];
-//    gCanvasView.needChangeEAGLContenxt = YES;
+    [self flushCountDownAtComponent:component];
+}
+
+- (void)flushCountDownAtComponent:(AtomGraphicsGCanvasComponent *)component {
+    if (component.isCountingDown) {
+        return;
+    }
+
+    component.isCountingDown = YES;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_MSEC * 100), _commitQueue, [component] {
+        component.isCountingDown = NO;
+        if (component.renderCommands.count) {
+            NSMutableArray *commands = [component renderCommands];
+            NSString *commandLine = [commands componentsJoinedByString:@";"];
+            [commands removeAllObjects];
+            [[AtomGraphicsGCanvasModule sharedModule].gcanvasModule render:commandLine componentId:component.componentID];
+        }
+    });
 }
 
 - (void)setContextType:(NSUInteger)type componentID:(NSString *)componentID {
@@ -80,17 +92,10 @@ static AtomGraphicsGCanvasModule *sharedModuleInstance;
 }
 
 - (id <GCanvasViewProtocol>)gcanvasComponentById:(NSString *)componentId {
-    return _registeredCanvasViews[componentId];
+    return [_registeredCanvasComponents[componentId] gCanvasView];
 }
 
 - (void)dispatchGlobalEvent:(NSString *)event params:(NSDictionary *)params {
-    NSString *componentID = params[@"ref"];
-    if (componentID) {
-        NSMutableArray *commands = _renderCommands[componentID];
-        NSString *commandLine = [commands componentsJoinedByString:@";"];
-        [commands removeAllObjects];
-        [self.gcanvasModule render:commandLine componentId:componentID];
-    }
 
 }
 
