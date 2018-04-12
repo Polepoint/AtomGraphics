@@ -3,13 +3,11 @@
 // Copyright (c) 2018 neo. All rights reserved.
 //
 
-#include "AtomCanvasContext2dCG.h"
 
 #if ATOM_TARGET_PLATFORM == ATOM_PLATFORM_IOS
 
+#include "AtomCanvasContext2dCG.h"
 #include <CoreGraphics/CGBitmapContext.h>
-
-#endif
 
 namespace AtomGraphics {
 
@@ -261,3 +259,5 @@ namespace AtomGraphics {
     }
 
 }
+
+#endif

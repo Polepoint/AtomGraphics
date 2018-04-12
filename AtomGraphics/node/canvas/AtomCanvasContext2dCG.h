@@ -5,6 +5,7 @@
 
 #ifndef ATOMCANVASCONTEXT2DCG_H
 #define ATOMCANVASCONTEXT2DCG_H
+#if ATOM_TARGET_PLATFORM == ATOM_PLATFORM_IOS
 
 /**
  * CG: CoreGraphics
@@ -136,5 +137,5 @@ namespace AtomGraphics {
 
 }
 
-
+#endif
 #endif //ATOMCANVASCONTEXT2DCG_H
