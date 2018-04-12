@@ -5,18 +5,10 @@
 
 #include "AtomCanvasContext2d.h"
 
-#if ATOM_TARGET_PLATFORM == ATOM_PLATFORM_IOS
-
-#include <CoreGraphics/CGBitmapContext.h>
-
-#endif
-
 namespace AtomGraphics {
 
     void CanvasContext2d::setFillStyle(const Color4F &color) {
-        const CGFloat colorComponents[4] = {color.r, color.g, color.b, color.a};
-        // TODO: colorSpace should be cached
-        CGContextSetFillColorWithColor(_drawingContext, CGColorCreate(CGColorSpaceCreateDeviceRGB(), colorComponents));
+
     }
 
     void CanvasContext2d::setFillStyle(const CanvasPattern &pattern) {
@@ -28,8 +20,7 @@ namespace AtomGraphics {
     }
 
     void CanvasContext2d::setStrokeStyle(const Color4F &color) {
-        const CGFloat colorComponents[4] = {color.r, color.g, color.b, color.a};
-        CGContextSetStrokeColor(_drawingContext, colorComponents);
+
     }
 
     void CanvasContext2d::setStrokeStyle(const CanvasPattern &pattern) {
@@ -101,25 +92,12 @@ namespace AtomGraphics {
     }
 
     void CanvasContext2d::fill() {
-        CGContextBeginPath(_drawingContext);
-        CGContextAddPath(_drawingContext, _path);
-        CGContextFillPath(_drawingContext);
     }
 
     void CanvasContext2d::stroke() {
-        if (_path && !CGPathIsEmpty(_path)) {
-            CGContextBeginPath(_drawingContext);
-            CGContextAddPath(_drawingContext, _path);
-            CGContextStrokePath(_drawingContext);
-        }
     }
 
     void CanvasContext2d::beginPath() {
-        if (!_path)
-            return;
-
-        CGPathRelease(_path);
-        _path = CGPathCreateMutable();
     }
 
     void CanvasContext2d::moveTo(float x, float y) {
@@ -143,11 +121,11 @@ namespace AtomGraphics {
     }
 
     void CanvasContext2d::arc(float x, float y, float r, float sAngle, float eAngle, bool counterclockwise) {
-        CGPathAddArc(ensurePlatformPath(), nullptr, x, y, r, sAngle, eAngle, counterclockwise);
+
     }
 
     void CanvasContext2d::arcTo(float x1, float y1, float x2, float y2, float r) {
-        CGContextAddArcToPoint(_drawingContext, x1, y1, x2, y2, r);
+
     }
 
     void CanvasContext2d::isPointInPath(float x, float y) {
@@ -251,25 +229,15 @@ namespace AtomGraphics {
     }
 
     void CanvasContext2d::drawConsuming(const GraphicsContext *context, Rect destRect) {
-        CGImageRef image = CGBitmapContextCreateImage(_drawingContext);
-        CGContextDrawImage(context->platformContext(), CGRectMake(destRect.origin.x, destRect.origin.y, destRect.size.width, destRect.size.height), image);
+
     }
 
     void CanvasContext2d::ensureDrawingContext() {
-        if (_drawingContext == nullptr && _contentSize.width && _contentSize.height) {
-            size_t width = static_cast<size_t>(_contentSize.width), height = static_cast<size_t>(_contentSize.height);
-            _imageData = (uint8_t *) calloc(width * height * 4, sizeof(uint8_t));
-            _drawingContext = CGBitmapContextCreate(_imageData, width, height, 8, width * 4,
-                    CGColorSpaceCreateDeviceRGB(), kCGImageAlphaPremultipliedFirst | kCGBitmapByteOrder32Host);
-        }
+
     }
 
     PlatformPath CanvasContext2d::ensurePlatformPath() {
-        if (!_path) {
-            _path = CGPathCreateMutable();;
-        }
-
-        return _path;
+        return nullptr;
     }
 
     bool CanvasContext2d::is2d() {

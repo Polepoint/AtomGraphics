@@ -222,18 +222,18 @@ namespace AtomGraphics {
 
         virtual void drawConsuming(const GraphicsContext *context, Rect destRect);
 
-        void ensureDrawingContext();
+        virtual void ensureDrawingContext();
 
         void setContentSize(const Size &contentSize);
 
-    private:
+    protected:
 
         PlatformContext _drawingContext;
         PlatformPath _path;
         uint8_t *_imageData;
         Size _contentSize;
 
-        PlatformPath ensurePlatformPath();
+        virtual PlatformPath ensurePlatformPath();
     };
 }
 

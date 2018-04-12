@@ -6,6 +6,8 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "AtomJavaScriptCore.h"
 
+
+//TODO: improve implement and move to AtomTypes
 static inline Color4F colorWithRgba(NSString *rgba) {
     Color4F color;
     if (!rgba) {

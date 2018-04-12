@@ -6,3 +6,10 @@
 
 工程的雏形(prototype)参考了cocos2d，有的代码来自其开源代码，后边会逐一声明
 
+ ## Getting Started
+ 
+ ### iOS
+ test/ios/AtomGraphics.xcworkspace
+ 
+ ### Android
+ 有生之年
