@@ -45,11 +45,11 @@ namespace AtomGraphics {
 
         void setLineCap(const std::string lineCap) override;
 
-        void setLineJoin() override;
+        void setLineJoin(const std::string lineJoin) override;
 
         void setLineWidth(float width) override;
 
-        void setMiterLimit() override;
+        void setMiterLimit(float limit) override;
 
         void setRect(float x, float y, float width, float height) override;
 

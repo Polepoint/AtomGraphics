@@ -48,9 +48,13 @@ static inline Color4F colorWithRgba(NSString *rgba) {
 
 @property(nonatomic, copy) NSString *fillStyle;
 
-@property(nonatomic, assign) CGFloat lineWidth;
+@property(nonatomic, assign) float lineWidth;
 
 @property(nonatomic, copy) NSString *lineCap;
+
+@property(nonatomic, copy) NSString *lineJoin;
+
+@property(nonatomic, assign) float miterLimit;
 
 - (void)beginPath;
 
@@ -117,11 +121,11 @@ static inline Color4F colorWithRgba(NSString *rgba) {
     _canvasContext2d->lineTo(x, y);
 }
 
-- (CGFloat)lineWidth {
+- (float)lineWidth {
     return 0;
 }
 
-- (void)setLineWidth:(CGFloat)lineWidth {
+- (void)setLineWidth:(float)lineWidth {
     _canvasContext2d->setLineWidth(lineWidth);
 }
 - (NSString *)lineCap {
@@ -131,6 +135,23 @@ static inline Color4F colorWithRgba(NSString *rgba) {
 - (void)setLineCap:(NSString *)lineCap {
     _canvasContext2d->setLineCap(std::string([lineCap UTF8String]));
 }
+
+- (NSString *)lineJoin {
+    return @"";
+}
+
+- (void)setLineJoin:(NSString *)lineJoin {
+    _canvasContext2d->setLineJoin(std::string([lineJoin UTF8String]));
+}
+
+- (float)miterLimit {
+    return 0;
+}
+
+- (void)setMiterLimit:(float)miterLimit {
+    _canvasContext2d->setMiterLimit(miterLimit);
+}
+
 
 @end
 

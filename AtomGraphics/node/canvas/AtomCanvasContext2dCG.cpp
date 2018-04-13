@@ -62,7 +62,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2dCG::setLineJoin() {
+    void CanvasContext2dCG::setLineJoin(const std::string lineJoin) {
 
     }
 
@@ -70,7 +70,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2dCG::setMiterLimit() {
+    void CanvasContext2dCG::setMiterLimit(float limit) {
 
     }
 

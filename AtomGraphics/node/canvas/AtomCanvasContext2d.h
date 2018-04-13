@@ -68,7 +68,7 @@ namespace AtomGraphics {
 
         //eg. ctx.lineJoin="round";
         //context.lineJoin="bevel|round|miter";
-        virtual void setLineJoin();
+        virtual void setLineJoin(const std::string lineJoin);
 
         //eg. ctx.lineWidth=10;
         //context.lineWidth=number;
@@ -76,7 +76,7 @@ namespace AtomGraphics {
 
         //eg. ctx.miterLimit=5;
         //context.miterLimit=number;
-        virtual void setMiterLimit();
+        virtual void setMiterLimit(float limit);
 
         //eg. ctx.rect(20,20,150,100);
         //context.rect(x,y,width,height);

@@ -5,6 +5,7 @@
 
 #include "AtomGCanvasContext2d.h"
 #include <string>
+
 using namespace std;
 
 
@@ -15,9 +16,9 @@ namespace AtomGraphics {
         int g = (int) (color.g * 255);
         int b = (int) (color.b * 255);
         float a = color.a;
-        string const& cmd = string("Frgb(") + to_string(r) + string(",")
+        string const &cmd = string("Frgb(") + to_string(r) + string(",")
                 + to_string(g) + string(",") + to_string(b) + string(",")
-                + to_string(a) + string(");");
+                + to_string(a) + string(")");
         addCommand(cmd);
     }
 
@@ -74,21 +75,24 @@ namespace AtomGraphics {
 
     void GCanvasContext2d::setLineCap(const string lineCap) {
         //lineCap includes "butt" "round" "square"
-        string const& cmd = string("C") + lineCap + string(";");
+        string const &cmd = string("C") + lineCap;
         addCommand(cmd);
     }
 
-    void GCanvasContext2d::setLineJoin() {
-        ;
+    void GCanvasContext2d::setLineJoin(const string lineJoin) {
+        //lineJoin includes "miter" "bevel" "round"
+        string const &cmd = string("J") + lineJoin;
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::setLineWidth(float width) {
-        string const& cmd = string("W") + to_string(width) + string(";");
+        string const &cmd = string("W") + to_string(width);
         addCommand(cmd);
     }
 
-    void GCanvasContext2d::setMiterLimit() {
-
+    void GCanvasContext2d::setMiterLimit(float limit) {
+        string const &cmd = string("M") + to_string(limit);
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::setRect(float x, float y, float width, float height) {
@@ -108,31 +112,32 @@ namespace AtomGraphics {
     }
 
     void GCanvasContext2d::fill() {
-        string const& cmd = string("L") + string(";");
+        string const &cmd = string("L");
         addCommand(cmd);
     }
 
     void GCanvasContext2d::stroke() {
-        string const& cmd = string("x") + string(";");
+        string const &cmd = string("x");
         addCommand(cmd);
     }
 
     void GCanvasContext2d::beginPath() {
-        string const& cmd = string("b") + string(";");
+        string const &cmd = string("b");
         addCommand(cmd);
     }
 
     void GCanvasContext2d::moveTo(float x, float y) {
-        string const& cmd = string("g") + to_string(x) + string(",") + to_string(y) + string(";");
+        string const &cmd = string("g") + to_string(x) + string(",") + to_string(y);
         addCommand(cmd);
     }
 
     void GCanvasContext2d::closePath() {
-
+        string const &cmd = string("o");
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::lineTo(float x, float y) {
-        string const& cmd = string("i") + to_string(x) + string(",") + to_string(y) + string(";");
+        string const &cmd = string("i") + to_string(x) + string(",") + to_string(y);
         addCommand(cmd);
     }
 
