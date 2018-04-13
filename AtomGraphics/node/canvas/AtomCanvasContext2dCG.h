@@ -53,7 +53,7 @@ namespace AtomGraphics {
 
         void setRect(float x, float y, float width, float height) override;
 
-        void fillRect() override;
+        void fillRect(float x, float y, float width, float height) override;
 
         void strokeRect(float x, float y, float width, float height) override;
 

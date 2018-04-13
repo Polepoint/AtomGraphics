@@ -78,7 +78,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2dCG::fillRect() {
+    void CanvasContext2dCG::fillRect(float x, float y, float width, float height) {
 
     }
 

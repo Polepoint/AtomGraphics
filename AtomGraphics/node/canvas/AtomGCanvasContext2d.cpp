@@ -8,7 +8,6 @@
 
 using namespace std;
 
-
 namespace AtomGraphics {
 
     void GCanvasContext2d::setFillStyle(const Color4F &color) {
@@ -96,19 +95,23 @@ namespace AtomGraphics {
     }
 
     void GCanvasContext2d::setRect(float x, float y, float width, float height) {
-
+        string const &cmd = string("w") + to_string(x) + string(",") + to_string(y) + string(",") + to_string(width) + string(",") + to_string(height);
+        addCommand(cmd);
     }
 
-    void GCanvasContext2d::fillRect() {
-
+    void GCanvasContext2d::fillRect(float x, float y, float width, float height) {
+        string const &cmd = string("n") + to_string(x) + string(",") + to_string(y) + string(",") + to_string(width) + string(",") + to_string(height);
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::strokeRect(float x, float y, float width, float height) {
-
+        string const &cmd = string("s") + to_string(x) + string(",") + to_string(y) + string(",") + to_string(width) + string(",") + to_string(height);
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::clearRect(float x, float y, float width, float height) {
-
+        string const &cmd = string("c") + to_string(x) + string(",") + to_string(y) + string(",") + to_string(width) + string(",") + to_string(height);
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::fill() {

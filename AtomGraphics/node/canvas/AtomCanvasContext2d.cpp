@@ -79,7 +79,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2d::fillRect() {
+    void CanvasContext2d::fillRect(float x, float y, float width, float height) {
 
     }
 

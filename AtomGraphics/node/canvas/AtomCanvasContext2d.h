@@ -84,7 +84,7 @@ namespace AtomGraphics {
 
         //eg. ctx.fillRect(20,20,150,100);
         //context.fillRect(x,y,width,height);
-        virtual void fillRect();
+        virtual void fillRect(float x, float y, float width, float height);
 
         //eg. ctx.strokeRect(20,20,150,100);
         //context.strokeRect(x,y,width,height);

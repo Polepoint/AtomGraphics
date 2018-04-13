@@ -68,6 +68,15 @@ static inline Color4F colorWithRgba(NSString *rgba) {
 
 - (void)lineTo:(float)x :(float)y;
 
+- (void)rect:(float)x :(float)y :(float)width :(float)height;
+
+- (void)fillRect:(float)x :(float)y :(float)width :(float)height;
+
+- (void)strokeRect:(float)x :(float)y :(float)width :(float)height;
+
+- (void)clearRect:(float)x :(float)y :(float)width :(float)height;
+
+
 @end
 
 @interface CanvasContextJavaScriptInterface : NSObject <CanvasContextJavaScriptInterfaceExport>
@@ -128,6 +137,7 @@ static inline Color4F colorWithRgba(NSString *rgba) {
 - (void)setLineWidth:(float)lineWidth {
     _canvasContext2d->setLineWidth(lineWidth);
 }
+
 - (NSString *)lineCap {
     return @"";
 }
@@ -152,6 +162,21 @@ static inline Color4F colorWithRgba(NSString *rgba) {
     _canvasContext2d->setMiterLimit(miterLimit);
 }
 
+- (void)rect:(float)x :(float)y :(float)width :(float)height {
+    _canvasContext2d->setRect(x, y, width, height);
+}
+
+- (void)fillRect:(float)x :(float)y :(float)width :(float)height {
+    _canvasContext2d->fillRect(x, y, width, height);
+}
+
+- (void)strokeRect:(float)x :(float)y :(float)width :(float)height {
+    _canvasContext2d->strokeRect(x, y, width, height);
+}
+
+- (void)clearRect:(float)x :(float)y :(float)width :(float)height {
+    _canvasContext2d->clearRect(x, y, width, height);
+}
 
 @end
 
