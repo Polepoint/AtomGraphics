@@ -43,11 +43,11 @@ namespace AtomGraphics {
 
         void *createRadialGradient() override;
 
-        void setLineCap() override;
+        void setLineCap(const std::string lineCap) override;
 
         void setLineJoin() override;
 
-        void setLineWidth() override;
+        void setLineWidth(float width) override;
 
         void setMiterLimit() override;
 

@@ -4,13 +4,21 @@
 //
 
 #include "AtomGCanvasContext2d.h"
+#include <string>
+using namespace std;
+
 
 namespace AtomGraphics {
 
     void GCanvasContext2d::setFillStyle(const Color4F &color) {
-        char buffer[40] = {0};
-        sprintf(buffer, "Frgb(%d,%d,%d,%f)", (int) (color.r * 255), (int) (color.g * 255), (int) (color.b * 255), color.a);
-        addCommand(std::string(buffer));
+        int r = (int) (color.r * 255);
+        int g = (int) (color.g * 255);
+        int b = (int) (color.b * 255);
+        float a = color.a;
+        string const& cmd = string("Frgb(") + to_string(r) + string(",")
+                + to_string(g) + string(",") + to_string(b) + string(",")
+                + to_string(a) + string(");");
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::setFillStyle(const CanvasPattern &pattern) {
@@ -36,7 +44,7 @@ namespace AtomGraphics {
     }
 
     void GCanvasContext2d::setShadowColor() {
-
+        //todo require canvas shadow color api
     }
 
     void GCanvasContext2d::setShadowBlur() {
@@ -56,6 +64,7 @@ namespace AtomGraphics {
     }
 
     CanvasGradient *GCanvasContext2d::createLinearGradient(float x0, float y0, float x1, float y1) {
+        //todo executeCmd , then get a p
         return nullptr;
     }
 
@@ -63,16 +72,19 @@ namespace AtomGraphics {
         return nullptr;
     }
 
-    void GCanvasContext2d::setLineCap() {
-
+    void GCanvasContext2d::setLineCap(const string lineCap) {
+        //lineCap includes "butt" "round" "square"
+        string const& cmd = string("C") + lineCap + string(";");
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::setLineJoin() {
         ;
     }
 
-    void GCanvasContext2d::setLineWidth() {
-
+    void GCanvasContext2d::setLineWidth(float width) {
+        string const& cmd = string("W") + to_string(width) + string(";");
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::setMiterLimit() {
@@ -96,19 +108,23 @@ namespace AtomGraphics {
     }
 
     void GCanvasContext2d::fill() {
-        addCommand("L");
+        string const& cmd = string("L") + string(";");
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::stroke() {
-        addCommand("x");
+        string const& cmd = string("x") + string(";");
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::beginPath() {
-
+        string const& cmd = string("b") + string(";");
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::moveTo(float x, float y) {
-
+        string const& cmd = string("g") + to_string(x) + string(",") + to_string(y) + string(";");
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::closePath() {
@@ -116,7 +132,8 @@ namespace AtomGraphics {
     }
 
     void GCanvasContext2d::lineTo(float x, float y) {
-
+        string const& cmd = string("i") + to_string(x) + string(",") + to_string(y) + string(";");
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::clip() {

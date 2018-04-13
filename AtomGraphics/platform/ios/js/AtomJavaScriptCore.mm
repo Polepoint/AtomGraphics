@@ -48,6 +48,10 @@ static inline Color4F colorWithRgba(NSString *rgba) {
 
 @property(nonatomic, copy) NSString *fillStyle;
 
+@property(nonatomic, assign) CGFloat lineWidth;
+
+@property(nonatomic, copy) NSString *lineCap;
+
 - (void)beginPath;
 
 - (void)arc:(float)x :(float)y :(float)r :(float)sAngle :(float)eAngle :(bool)counterclockwise;
@@ -55,6 +59,10 @@ static inline Color4F colorWithRgba(NSString *rgba) {
 - (void)stroke;
 
 - (void)fill;
+
+- (void)moveTo:(float)x :(float)y;
+
+- (void)lineTo:(float)x :(float)y;
 
 @end
 
@@ -99,6 +107,29 @@ static inline Color4F colorWithRgba(NSString *rgba) {
 
 - (void)fill {
     _canvasContext2d->fill();
+}
+
+- (void)moveTo:(float)x :(float)y {
+    _canvasContext2d->moveTo(x, y);
+}
+
+- (void)lineTo:(float)x :(float)y {
+    _canvasContext2d->lineTo(x, y);
+}
+
+- (CGFloat)lineWidth {
+    return 0;
+}
+
+- (void)setLineWidth:(CGFloat)lineWidth {
+    _canvasContext2d->setLineWidth(lineWidth);
+}
+- (NSString *)lineCap {
+    return @"";
+}
+
+- (void)setLineCap:(NSString *)lineCap {
+    _canvasContext2d->setLineCap(std::string([lineCap UTF8String]));
 }
 
 @end

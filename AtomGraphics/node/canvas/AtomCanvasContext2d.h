@@ -64,7 +64,7 @@ namespace AtomGraphics {
 
         //eg. ctx.lineCap="round";
         //context.lineCap="butt|round|square";
-        virtual void setLineCap();
+        virtual void setLineCap(const std::string lineCap);
 
         //eg. ctx.lineJoin="round";
         //context.lineJoin="bevel|round|miter";
@@ -72,7 +72,7 @@ namespace AtomGraphics {
 
         //eg. ctx.lineWidth=10;
         //context.lineWidth=number;
-        virtual void setLineWidth();
+        virtual void setLineWidth(float width);
 
         //eg. ctx.miterLimit=5;
         //context.miterLimit=number;

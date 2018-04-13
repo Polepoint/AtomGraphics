@@ -59,7 +59,7 @@ namespace AtomGraphics {
         return nullptr;
     }
 
-    void CanvasContext2d::setLineCap() {
+    void CanvasContext2d::setLineCap(const std::string lineCap) {
 
     }
 
@@ -67,7 +67,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2d::setLineWidth() {
+    void CanvasContext2d::setLineWidth(float width) {
 
     }
 
