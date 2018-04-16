@@ -80,7 +80,7 @@ namespace AtomGraphics {
 
         void scale(float scaleWidth, float scaleHeight) override;
 
-        void rotate(float angle) override;
+        void rotate(double angle) override;
 
         void translate(float x, float y) override;
 
@@ -88,13 +88,13 @@ namespace AtomGraphics {
 
         void setTransform(float a, float b, float c, float d, float e, float f) override;
 
-        void setFont(const std::string &font) override;
+        void setFont(const std::string font) override;
 
         void setTextAlign() override;
 
         void setTextBaseline() override;
 
-        void fillText(float text, float x, float y, float maxWidth) override;
+        void fillText(std::string text, float x, float y, float maxWidth) override;
 
         void strokeText(const std::string &text, float x, float y, float maxWidth) override;
 

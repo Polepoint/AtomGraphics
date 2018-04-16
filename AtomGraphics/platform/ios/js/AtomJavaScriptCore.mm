@@ -56,6 +56,9 @@ static inline Color4F colorWithRgba(NSString *rgba) {
 
 @property(nonatomic, assign) float miterLimit;
 
+// e.g. "40px Arial";
+@property(nonatomic, copy) NSString *font;
+
 - (void)beginPath;
 
 - (void)arc:(float)x :(float)y :(float)r :(float)sAngle :(float)eAngle :(bool)counterclockwise;
@@ -76,7 +79,23 @@ static inline Color4F colorWithRgba(NSString *rgba) {
 
 - (void)clearRect:(float)x :(float)y :(float)width :(float)height;
 
+- (void)clip;
 
+- (void)quadraticCurveTo:(float)cpx :(float)cpy :(float)x :(float)y;
+
+- (void)arcTo:(float)x1 :(float)y1 :(float)x2 :(float)y2 :(float)r;
+
+- (void)scale:(float)scaleWidth :(float)scaleHeight;
+
+- (void)rotate:(double)angle;
+
+- (void)translate:(float)x :(float)y;
+
+- (void)transform:(float)a :(float)b :(float)c :(float)d :(float)e :(float)f;
+
+- (void)setTransform:(float)a :(float)b :(float)c :(float)d :(float)e :(float)f;
+
+- (void)fillText:(NSString *)text :(float)x :(float)y :(float)maxWidth;
 @end
 
 @interface CanvasContextJavaScriptInterface : NSObject <CanvasContextJavaScriptInterfaceExport>
@@ -176,6 +195,50 @@ static inline Color4F colorWithRgba(NSString *rgba) {
 
 - (void)clearRect:(float)x :(float)y :(float)width :(float)height {
     _canvasContext2d->clearRect(x, y, width, height);
+}
+
+- (void)clip {
+    _canvasContext2d->clip();
+}
+
+- (void)quadraticCurveTo:(float)cpx :(float)cpy :(float)x :(float)y {
+    _canvasContext2d->quadraticCurveTo(cpx, cpy, x, y);
+}
+
+- (void)arcTo:(float)x1 :(float)y1 :(float)x2 :(float)y2 :(float)r {
+    _canvasContext2d->arcTo(x1, y1, x2, y2, r);
+}
+
+- (void)scale:(float)scaleWidth :(float)scaleHeight {
+    _canvasContext2d->scale(scaleWidth, scaleHeight);
+}
+
+- (void)rotate:(double)angle {
+    _canvasContext2d->rotate(angle);
+}
+
+- (void)translate:(float)x :(float)y {
+    _canvasContext2d->translate(x, y);
+}
+
+- (void)transform:(float)a :(float)b :(float)c :(float)d :(float)e :(float)f {
+    _canvasContext2d->transform(a, b, c, d, e, f);
+}
+
+- (void)setTransform:(float)a :(float)b :(float)c :(float)d :(float)e :(float)f {
+    _canvasContext2d->setTransform(a, b, c, d, e, f);
+}
+
+- (void)fillText:(NSString *)text :(float)x :(float)y :(float)maxWidth {
+    _canvasContext2d->fillText(std::string([text UTF8String]), x, y, maxWidth);
+}
+
+- (NSString *)font {
+    return @"";
+}
+
+- (void)setFont:(NSString *)font {
+    _canvasContext2d->setFont(std::string([font UTF8String]));
 }
 
 @end

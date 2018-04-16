@@ -148,7 +148,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2dCG::rotate(float angle) {
+    void CanvasContext2dCG::rotate(double angle) {
 
     }
 
@@ -164,7 +164,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2dCG::setFont(const std::string &font) {
+    void CanvasContext2dCG::setFont(const std::string font) {
 
     }
 
@@ -176,7 +176,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2dCG::fillText(float text, float x, float y, float maxWidth) {
+    void CanvasContext2dCG::fillText(std::string text, float x, float y, float maxWidth) {
 
     }
 

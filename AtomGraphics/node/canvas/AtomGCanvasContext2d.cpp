@@ -145,49 +145,60 @@ namespace AtomGraphics {
     }
 
     void GCanvasContext2d::clip() {
-
+        string const &cmd = string("p");
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::quadraticCurveTo(float cpx, float cpy, float x, float y) {
-
+        string const &cmd = string("u") + to_string(cpx) + string(",")+ to_string(cpy) + string(",")+ to_string(x) + string(",")+ to_string(y);
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::arc(float x, float y, float r, float sAngle, float eAngle, bool counterclockwise) {
         char buffer[100] = {0};
         sprintf(buffer, "y%f,%f,%f,%f,%f,%d", x, y, r, sAngle, eAngle, counterclockwise);
         addCommand(std::string(buffer));
+        //todo 改成string
     }
 
     void GCanvasContext2d::arcTo(float x1, float y1, float x2, float y2, float r) {
-
+        string const &cmd = string("h") + to_string(x1) + string(",")+ to_string(y1) + string(",")+ to_string(x2) + string(",")+ to_string(y2) + string(",")+ to_string(r);
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::isPointInPath(float x, float y) {
-
+        //todo GCanvas 未提供对应api
+        // 缺少当前路径的一个副本，用于判断point与当前路径的一个位置关系，返回值应是bool？
     }
 
     void GCanvasContext2d::scale(float scaleWidth, float scaleHeight) {
-
+        string const &cmd = string("k") + to_string(scaleWidth) + string(",")  + to_string(scaleHeight);
+        addCommand(cmd);
     }
 
-    void GCanvasContext2d::rotate(float angle) {
-
+    void GCanvasContext2d::rotate(double angle) {
+        string const &cmd = string("r") + to_string(angle);
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::translate(float x, float y) {
-
+        string const &cmd = string("l") + to_string(x) + string(",")  + to_string(y);
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::transform(float a, float b, float c, float d, float e, float f) {
-
+        string const &cmd = string("f") + to_string(a) + string(",") + to_string(b) + string(",")+ to_string(c) + string(",")+ to_string(d) + string(",")+ to_string(e) + string(",")+ to_string(f);
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::setTransform(float a, float b, float c, float d, float e, float f) {
-
+        string const &cmd = string("t") + to_string(a) + string(",") + to_string(b) + string(",")+ to_string(c) + string(",")+ to_string(d) + string(",")+ to_string(e) + string(",")+ to_string(f);
+        addCommand(cmd);
     }
 
-    void GCanvasContext2d::setFont(const std::string &font) {
-
+    void GCanvasContext2d::setFont(const string font) {
+        string const &cmd = string("j") + font;
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::setTextAlign() {
@@ -198,8 +209,9 @@ namespace AtomGraphics {
 
     }
 
-    void GCanvasContext2d::fillText(float text, float x, float y, float maxWidth) {
-
+    void GCanvasContext2d::fillText(string text, float x, float y, float maxWidth) {
+        string const &cmd = string("T") + text + string(",") + to_string(x) + string(",") + to_string(y) + string(",") + to_string(maxWidth);
+        addCommand(cmd);
     }
 
     void GCanvasContext2d::strokeText(const std::string &text, float x, float y, float maxWidth) {

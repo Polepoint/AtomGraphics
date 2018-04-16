@@ -144,7 +144,7 @@ namespace AtomGraphics {
 
         //eg. ctx.rotate(20*Math.PI/180);
         //context.rotate(angle);
-        virtual void rotate(float angle);
+        virtual void rotate(double angle);
 
         //eg. ctx.translate(70,70);
         //context.translate(x,y);
@@ -159,7 +159,7 @@ namespace AtomGraphics {
         virtual void setTransform(float a, float b, float c, float d, float e, float f);
 
         //eg. ctx.font="40px Arial";
-        virtual void setFont(const std::string &font);
+        virtual void setFont(const std::string font);
 
         //eg. ctx.textAlign="right";
         //context.textAlign="center|end|left|right|start";
@@ -171,7 +171,7 @@ namespace AtomGraphics {
 
         //eg. ctx.fillText("Hello World!",10,50);
         //context.fillText(text,x,y,maxWidth);
-        virtual void fillText(float text, float x, float y, float maxWidth);
+        virtual void fillText(std::string text, float x, float y, float maxWidth);
 
         //eg. ctx.strokeText("Hello World!",10,50);
         //context.strokeText(text,x,y,maxWidth);
