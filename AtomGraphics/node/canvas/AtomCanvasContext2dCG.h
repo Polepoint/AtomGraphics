@@ -43,17 +43,17 @@ namespace AtomGraphics {
 
         void *createRadialGradient() override;
 
-        void setLineCap() override;
+        void setLineCap(const std::string lineCap) override;
 
-        void setLineJoin() override;
+        void setLineJoin(const std::string lineJoin) override;
 
-        void setLineWidth() override;
+        void setLineWidth(float width) override;
 
-        void setMiterLimit() override;
+        void setMiterLimit(float limit) override;
 
         void setRect(float x, float y, float width, float height) override;
 
-        void fillRect() override;
+        void fillRect(float x, float y, float width, float height) override;
 
         void strokeRect(float x, float y, float width, float height) override;
 
@@ -75,6 +75,8 @@ namespace AtomGraphics {
 
         void quadraticCurveTo(float cpx, float cpy, float x, float y) override;
 
+        void bezierCurveTo(float cp1x, float cp1y, float cp2x, float cp2y, float x, float y) override;
+
         void arc(float x, float y, float r, float sAngle, float eAngle, bool counterclockwise) override;
 
         void arcTo(float x1, float y1, float x2, float y2, float r) override;
@@ -83,7 +85,7 @@ namespace AtomGraphics {
 
         void scale(float scaleWidth, float scaleHeight) override;
 
-        void rotate(float angle) override;
+        void rotate(double angle) override;
 
         void translate(float x, float y) override;
 
@@ -91,15 +93,15 @@ namespace AtomGraphics {
 
         void setTransform(float a, float b, float c, float d, float e, float f) override;
 
-        void setFont(const std::string &font) override;
+        void setFont(const std::string font) override;
 
-        void setTextAlign() override;
+        void setTextAlign(const std::string textAlign) override;
 
-        void setTextBaseline() override;
+        void setTextBaseline(const std::string textBaseline) override;
 
-        void fillText(float text, float x, float y, float maxWidth) override;
+        void fillText(std::string text, float x, float y, float maxWidth) override;
 
-        void strokeText(const std::string &text, float x, float y, float maxWidth) override;
+        void strokeText(const std::string text, float x, float y, float maxWidth) override;
 
         void *measureText(const std::string &text) override;
 
@@ -115,7 +117,7 @@ namespace AtomGraphics {
 
         void setGlobalAlpha(float number) override;
 
-        void setGlobalCompositeOperation() override;
+        void setGlobalCompositeOperation(const std::string operation) override;
 
         void save() override;
 

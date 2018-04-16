@@ -58,19 +58,19 @@ namespace AtomGraphics {
         return nullptr;
     }
 
-    void CanvasContext2dCG::setLineCap() {
+    void CanvasContext2dCG::setLineCap(const std::string lineCap) {
 
     }
 
-    void CanvasContext2dCG::setLineJoin() {
+    void CanvasContext2dCG::setLineJoin(const std::string lineJoin) {
 
     }
 
-    void CanvasContext2dCG::setLineWidth() {
+    void CanvasContext2dCG::setLineWidth(float width) {
 
     }
 
-    void CanvasContext2dCG::setMiterLimit() {
+    void CanvasContext2dCG::setMiterLimit(float limit) {
 
     }
 
@@ -78,7 +78,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2dCG::fillRect() {
+    void CanvasContext2dCG::fillRect(float x, float y, float width, float height) {
 
     }
 
@@ -131,6 +131,9 @@ namespace AtomGraphics {
     void CanvasContext2dCG::quadraticCurveTo(float cpx, float cpy, float x, float y) {
 
     }
+    void CanvasContext2dCG::bezierCurveTo(float cp1x, float cp1y, float cp2x, float cp2y, float x, float y){
+
+    }
 
     void CanvasContext2dCG::arc(float x, float y, float r, float sAngle, float eAngle, bool counterclockwise) {
         CGPathAddArc(ensurePlatformPath(), nullptr, x, y, r, sAngle, eAngle, counterclockwise);
@@ -148,7 +151,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2dCG::rotate(float angle) {
+    void CanvasContext2dCG::rotate(double angle) {
 
     }
 
@@ -164,23 +167,23 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2dCG::setFont(const std::string &font) {
+    void CanvasContext2dCG::setFont(const std::string font) {
 
     }
 
-    void CanvasContext2dCG::setTextAlign() {
+    void CanvasContext2dCG::setTextAlign(const std::string textAlign) {
 
     }
 
-    void CanvasContext2dCG::setTextBaseline() {
+    void CanvasContext2dCG::setTextBaseline(const std::string textBaseline) {
 
     }
 
-    void CanvasContext2dCG::fillText(float text, float x, float y, float maxWidth) {
+    void CanvasContext2dCG::fillText(std::string text, float x, float y, float maxWidth) {
 
     }
 
-    void CanvasContext2dCG::strokeText(const std::string &text, float x, float y, float maxWidth) {
+    void CanvasContext2dCG::strokeText(const std::string text, float x, float y, float maxWidth) {
 
     }
 
@@ -212,7 +215,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2dCG::setGlobalCompositeOperation() {
+    void CanvasContext2dCG::setGlobalCompositeOperation(const std::string operation) {
 
     }
 

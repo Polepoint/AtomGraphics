@@ -64,19 +64,19 @@ namespace AtomGraphics {
 
         //eg. ctx.lineCap="round";
         //context.lineCap="butt|round|square";
-        virtual void setLineCap();
+        virtual void setLineCap(const std::string lineCap);
 
         //eg. ctx.lineJoin="round";
         //context.lineJoin="bevel|round|miter";
-        virtual void setLineJoin();
+        virtual void setLineJoin(const std::string lineJoin);
 
         //eg. ctx.lineWidth=10;
         //context.lineWidth=number;
-        virtual void setLineWidth();
+        virtual void setLineWidth(float width);
 
         //eg. ctx.miterLimit=5;
         //context.miterLimit=number;
-        virtual void setMiterLimit();
+        virtual void setMiterLimit(float limit);
 
         //eg. ctx.rect(20,20,150,100);
         //context.rect(x,y,width,height);
@@ -84,7 +84,7 @@ namespace AtomGraphics {
 
         //eg. ctx.fillRect(20,20,150,100);
         //context.fillRect(x,y,width,height);
-        virtual void fillRect();
+        virtual void fillRect(float x, float y, float width, float height);
 
         //eg. ctx.strokeRect(20,20,150,100);
         //context.strokeRect(x,y,width,height);
@@ -126,6 +126,8 @@ namespace AtomGraphics {
         //context.quadraticCurveTo(cpx,cpy,x,y);
         virtual void quadraticCurveTo(float cpx, float cpy, float x, float y);
 
+        virtual void bezierCurveTo(float cp1x, float cp1y, float cp2x, float cp2y, float x, float y);
+
         //eg. ctx.arc(100,75,50,0,2*Math.PI);
         //context.arc(x,y,r,sAngle,eAngle,counterclockwise);
         virtual void arc(float x, float y, float r, float sAngle, float eAngle, bool counterclockwise);
@@ -144,7 +146,7 @@ namespace AtomGraphics {
 
         //eg. ctx.rotate(20*Math.PI/180);
         //context.rotate(angle);
-        virtual void rotate(float angle);
+        virtual void rotate(double angle);
 
         //eg. ctx.translate(70,70);
         //context.translate(x,y);
@@ -159,23 +161,23 @@ namespace AtomGraphics {
         virtual void setTransform(float a, float b, float c, float d, float e, float f);
 
         //eg. ctx.font="40px Arial";
-        virtual void setFont(const std::string &font);
+        virtual void setFont(const std::string font);
 
         //eg. ctx.textAlign="right";
         //context.textAlign="center|end|left|right|start";
-        virtual void setTextAlign();
+        virtual void setTextAlign(const std::string textAlign);
 
         //eg. ctx.textBaseline="top";
         //context.textBaseline="alphabetic|top|hanging|middle|ideographic|bottom";
-        virtual void setTextBaseline();
+        virtual void setTextBaseline(const std::string textBaseline);
 
         //eg. ctx.fillText("Hello World!",10,50);
         //context.fillText(text,x,y,maxWidth);
-        virtual void fillText(float text, float x, float y, float maxWidth);
+        virtual void fillText(std::string text, float x, float y, float maxWidth);
 
         //eg. ctx.strokeText("Hello World!",10,50);
         //context.strokeText(text,x,y,maxWidth);
-        virtual void strokeText(const std::string &text, float x, float y, float maxWidth);
+        virtual void strokeText(const std::string text, float x, float y, float maxWidth);
 
         //eg. ctx.measureText(txt).width
         //context.measureText(text);
@@ -206,7 +208,7 @@ namespace AtomGraphics {
         virtual void setGlobalAlpha(float number);
 
         //eg. ctx.globalCompositeOperation="source-over";
-        virtual void setGlobalCompositeOperation();
+        virtual void setGlobalCompositeOperation(const std::string operation);
 
         virtual void save();
 

@@ -59,19 +59,19 @@ namespace AtomGraphics {
         return nullptr;
     }
 
-    void CanvasContext2d::setLineCap() {
+    void CanvasContext2d::setLineCap(const std::string lineCap) {
 
     }
 
-    void CanvasContext2d::setLineJoin() {
+    void CanvasContext2d::setLineJoin(const std::string lineJoin) {
 
     }
 
-    void CanvasContext2d::setLineWidth() {
+    void CanvasContext2d::setLineWidth(float width) {
 
     }
 
-    void CanvasContext2d::setMiterLimit() {
+    void CanvasContext2d::setMiterLimit(float limit) {
 
     }
 
@@ -79,7 +79,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2d::fillRect() {
+    void CanvasContext2d::fillRect(float x, float y, float width, float height) {
 
     }
 
@@ -120,6 +120,10 @@ namespace AtomGraphics {
 
     }
 
+    void CanvasContext2d::bezierCurveTo(float cp1x, float cp1y, float cp2x, float cp2y, float x, float y) {
+
+    }
+
     void CanvasContext2d::arc(float x, float y, float r, float sAngle, float eAngle, bool counterclockwise) {
 
     }
@@ -136,7 +140,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2d::rotate(float angle) {
+    void CanvasContext2d::rotate(double angle) {
 
     }
 
@@ -152,23 +156,23 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2d::setFont(const std::string &font) {
+    void CanvasContext2d::setFont(const std::string font) {
 
     }
 
-    void CanvasContext2d::setTextAlign() {
+    void CanvasContext2d::setTextAlign(const std::string textAlign) {
 
     }
 
-    void CanvasContext2d::setTextBaseline() {
+    void CanvasContext2d::setTextBaseline(const std::string textBaseline) {
 
     }
 
-    void CanvasContext2d::fillText(float text, float x, float y, float maxWidth) {
+    void CanvasContext2d::fillText(std::string text, float x, float y, float maxWidth) {
 
     }
 
-    void CanvasContext2d::strokeText(const std::string &text, float x, float y, float maxWidth) {
+    void CanvasContext2d::strokeText(const std::string text, float x, float y, float maxWidth) {
 
     }
 
@@ -200,7 +204,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2d::setGlobalCompositeOperation() {
+    void CanvasContext2d::setGlobalCompositeOperation(const std::string operation) {
 
     }
 
