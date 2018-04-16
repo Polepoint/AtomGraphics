@@ -126,6 +126,8 @@ namespace AtomGraphics {
         //context.quadraticCurveTo(cpx,cpy,x,y);
         virtual void quadraticCurveTo(float cpx, float cpy, float x, float y);
 
+        virtual void bezierCurveTo(float cp1x, float cp1y, float cp2x, float cp2y, float x, float y);
+
         //eg. ctx.arc(100,75,50,0,2*Math.PI);
         //context.arc(x,y,r,sAngle,eAngle,counterclockwise);
         virtual void arc(float x, float y, float r, float sAngle, float eAngle, bool counterclockwise);
@@ -163,11 +165,11 @@ namespace AtomGraphics {
 
         //eg. ctx.textAlign="right";
         //context.textAlign="center|end|left|right|start";
-        virtual void setTextAlign();
+        virtual void setTextAlign(const std::string textAlign);
 
         //eg. ctx.textBaseline="top";
         //context.textBaseline="alphabetic|top|hanging|middle|ideographic|bottom";
-        virtual void setTextBaseline();
+        virtual void setTextBaseline(const std::string textBaseline);
 
         //eg. ctx.fillText("Hello World!",10,50);
         //context.fillText(text,x,y,maxWidth);
@@ -175,7 +177,7 @@ namespace AtomGraphics {
 
         //eg. ctx.strokeText("Hello World!",10,50);
         //context.strokeText(text,x,y,maxWidth);
-        virtual void strokeText(const std::string &text, float x, float y, float maxWidth);
+        virtual void strokeText(const std::string text, float x, float y, float maxWidth);
 
         //eg. ctx.measureText(txt).width
         //context.measureText(text);
@@ -206,7 +208,7 @@ namespace AtomGraphics {
         virtual void setGlobalAlpha(float number);
 
         //eg. ctx.globalCompositeOperation="source-over";
-        virtual void setGlobalCompositeOperation();
+        virtual void setGlobalCompositeOperation(const std::string operation);
 
         virtual void save();
 

@@ -56,8 +56,16 @@ static inline Color4F colorWithRgba(NSString *rgba) {
 
 @property(nonatomic, assign) float miterLimit;
 
+@property(nonatomic, assign) float globalAlpha;
+
+@property(nonatomic, copy) NSString *globalCompositeOperation;
+
 // e.g. "40px Arial";
 @property(nonatomic, copy) NSString *font;
+
+@property(nonatomic, copy) NSString *textAlign;
+
+@property(nonatomic, copy) NSString *textBaseline;
 
 - (void)beginPath;
 
@@ -83,6 +91,8 @@ static inline Color4F colorWithRgba(NSString *rgba) {
 
 - (void)quadraticCurveTo:(float)cpx :(float)cpy :(float)x :(float)y;
 
+- (void)bezierCurveTo:(float)cp1x :(float)cp1y :(float)cp2x :(float)cp2y :(float)x :(float)y;
+
 - (void)arcTo:(float)x1 :(float)y1 :(float)x2 :(float)y2 :(float)r;
 
 - (void)scale:(float)scaleWidth :(float)scaleHeight;
@@ -96,6 +106,9 @@ static inline Color4F colorWithRgba(NSString *rgba) {
 - (void)setTransform:(float)a :(float)b :(float)c :(float)d :(float)e :(float)f;
 
 - (void)fillText:(NSString *)text :(float)x :(float)y :(float)maxWidth;
+
+- (void)strokeText:(NSString *)text :(float)x :(float)y :(float)maxWidth;
+
 @end
 
 @interface CanvasContextJavaScriptInterface : NSObject <CanvasContextJavaScriptInterfaceExport>
@@ -241,6 +254,45 @@ static inline Color4F colorWithRgba(NSString *rgba) {
     _canvasContext2d->setFont(std::string([font UTF8String]));
 }
 
+- (NSString *)textAlign {
+    return @"";
+}
+
+- (void)setTextAlign:(NSString *)textAlign {
+    _canvasContext2d->setTextAlign(std::string([textAlign UTF8String]));
+}
+
+- (NSString *)textBaseline {
+    return @"";
+}
+
+- (void)setTextBaseline:(NSString *)textBaseline {
+    _canvasContext2d->setTextBaseline(std::string([textBaseline UTF8String]));
+}
+
+- (void)strokeText:(NSString *)text :(float)x :(float)y :(float)maxWidth {
+    _canvasContext2d->strokeText(std::string([text UTF8String]), x, y, maxWidth);
+}
+
+- (float)globalAlpha {
+    return 0;
+}
+
+- (void)setGlobalAlpha:(float)globalAlpha {
+    _canvasContext2d->setGlobalAlpha(globalAlpha);
+}
+
+- (NSString *)globalCompositeOperation {
+    return @"";
+}
+
+- (void)setGlobalCompositeOperation:(NSString *)globalCompositeOperation {
+    _canvasContext2d->setGlobalCompositeOperation(std::string([globalCompositeOperation UTF8String]));
+}
+
+- (void)bezierCurveTo:(float)cp1x :(float)cp1y :(float)cp2x :(float)cp2y :(float)x :(float)y {
+    _canvasContext2d->bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
+}
 @end
 
 @protocol CanvasJavaScriptInterfaceExport <JSExport>

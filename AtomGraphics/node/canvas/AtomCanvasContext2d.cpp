@@ -120,6 +120,10 @@ namespace AtomGraphics {
 
     }
 
+    void CanvasContext2d::bezierCurveTo(float cp1x, float cp1y, float cp2x, float cp2y, float x, float y) {
+
+    }
+
     void CanvasContext2d::arc(float x, float y, float r, float sAngle, float eAngle, bool counterclockwise) {
 
     }
@@ -156,11 +160,11 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2d::setTextAlign() {
+    void CanvasContext2d::setTextAlign(const std::string textAlign) {
 
     }
 
-    void CanvasContext2d::setTextBaseline() {
+    void CanvasContext2d::setTextBaseline(const std::string textBaseline) {
 
     }
 
@@ -168,7 +172,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2d::strokeText(const std::string &text, float x, float y, float maxWidth) {
+    void CanvasContext2d::strokeText(const std::string text, float x, float y, float maxWidth) {
 
     }
 
@@ -200,7 +204,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2d::setGlobalCompositeOperation() {
+    void CanvasContext2d::setGlobalCompositeOperation(const std::string operation) {
 
     }
 

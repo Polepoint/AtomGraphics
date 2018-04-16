@@ -75,6 +75,8 @@ namespace AtomGraphics {
 
         void quadraticCurveTo(float cpx, float cpy, float x, float y) override;
 
+        void bezierCurveTo(float cp1x, float cp1y, float cp2x, float cp2y, float x, float y) override;
+
         void arc(float x, float y, float r, float sAngle, float eAngle, bool counterclockwise) override;
 
         void arcTo(float x1, float y1, float x2, float y2, float r) override;
@@ -93,13 +95,13 @@ namespace AtomGraphics {
 
         void setFont(const std::string font) override;
 
-        void setTextAlign() override;
+        void setTextAlign(const std::string textAlign) override;
 
-        void setTextBaseline() override;
+        void setTextBaseline(const std::string textBaseline) override;
 
         void fillText(std::string text, float x, float y, float maxWidth) override;
 
-        void strokeText(const std::string &text, float x, float y, float maxWidth) override;
+        void strokeText(const std::string text, float x, float y, float maxWidth) override;
 
         void *measureText(const std::string &text) override;
 
@@ -115,7 +117,7 @@ namespace AtomGraphics {
 
         void setGlobalAlpha(float number) override;
 
-        void setGlobalCompositeOperation() override;
+        void setGlobalCompositeOperation(const std::string operation) override;
 
         void save() override;
 

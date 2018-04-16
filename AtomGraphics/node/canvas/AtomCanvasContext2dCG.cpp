@@ -131,6 +131,9 @@ namespace AtomGraphics {
     void CanvasContext2dCG::quadraticCurveTo(float cpx, float cpy, float x, float y) {
 
     }
+    void CanvasContext2dCG::bezierCurveTo(float cp1x, float cp1y, float cp2x, float cp2y, float x, float y){
+
+    }
 
     void CanvasContext2dCG::arc(float x, float y, float r, float sAngle, float eAngle, bool counterclockwise) {
         CGPathAddArc(ensurePlatformPath(), nullptr, x, y, r, sAngle, eAngle, counterclockwise);
@@ -168,11 +171,11 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2dCG::setTextAlign() {
+    void CanvasContext2dCG::setTextAlign(const std::string textAlign) {
 
     }
 
-    void CanvasContext2dCG::setTextBaseline() {
+    void CanvasContext2dCG::setTextBaseline(const std::string textBaseline) {
 
     }
 
@@ -180,7 +183,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2dCG::strokeText(const std::string &text, float x, float y, float maxWidth) {
+    void CanvasContext2dCG::strokeText(const std::string text, float x, float y, float maxWidth) {
 
     }
 
@@ -212,7 +215,7 @@ namespace AtomGraphics {
 
     }
 
-    void CanvasContext2dCG::setGlobalCompositeOperation() {
+    void CanvasContext2dCG::setGlobalCompositeOperation(const std::string operation) {
 
     }
 
