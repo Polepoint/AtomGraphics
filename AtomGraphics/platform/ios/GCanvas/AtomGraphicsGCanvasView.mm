@@ -79,7 +79,7 @@ namespace AtomGraphics {
     void GCanvasNode::setPosition(const Vec2 &position) {
         Node::setPosition(position);
 
-        AtomGraphicsGCanvasView *gCanvasView = [[AtomGraphicsGCanvasModule sharedModule] getCanvasView:[NSString stringWithCString:_componentId.c_str()]];
+        AtomGraphicsGCanvasView *gCanvasView = [[AtomGraphicsGCanvasModule sharedModule] getCanvasView:_componentId.c_str()];
         CGRect oldFrame = gCanvasView.frame;
         gCanvasView.frame = CGRectMake(position.x, position.y, oldFrame.size.width, oldFrame.size.height);
     }
@@ -88,7 +88,7 @@ namespace AtomGraphics {
     void GCanvasNode::setContentSize(const AtomGraphics::Size &contentSize) {
         Node::setContentSize(contentSize);
 
-        AtomGraphicsGCanvasView *gCanvasView = [[AtomGraphicsGCanvasModule sharedModule] getCanvasView:[NSString stringWithCString:_componentId.c_str()]];
+        AtomGraphicsGCanvasView *gCanvasView = [[AtomGraphicsGCanvasModule sharedModule] getCanvasView:_componentId.c_str()];
         CGRect oldFrame = gCanvasView.frame;
         gCanvasView.frame = CGRectMake(oldFrame.origin.x, oldFrame.origin.y, contentSize.width, contentSize.height);
     }
@@ -98,6 +98,10 @@ namespace AtomGraphics {
     }
 
     void GCanvasContext2d::addCommand(const std::string &command) {
-        [[AtomGraphicsGCanvasModule sharedModule] addCommand:[NSString stringWithCString:command.c_str()] componentID:[NSString stringWithCString:_componentId.c_str()]];
+        [[AtomGraphicsGCanvasModule sharedModule] addCommand:command componentID:_componentId];
+    }
+
+    void *GCanvasContext2d::executeCommand(const std::string &command) {
+        return nullptr;
     }
 }

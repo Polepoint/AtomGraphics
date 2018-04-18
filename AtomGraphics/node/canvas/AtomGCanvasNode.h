@@ -7,7 +7,7 @@
 #define ATOMGCANVASNODE_H
 
 
-#import "AtomCanvasNode.h"
+#include "AtomCanvasNode.h"
 #include "AtomGCanvasContext2d.h"
 
 namespace AtomGraphics {

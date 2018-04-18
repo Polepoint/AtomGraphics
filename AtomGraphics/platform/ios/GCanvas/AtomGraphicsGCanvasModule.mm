@@ -4,22 +4,21 @@
 //
 
 #import "AtomGraphicsGCanvasModule.h"
-#import "GCanvasModule.h"
 #import "AtomGraphicsGCanvasView.h"
-#import "AtomGraphicsGCanvasComponent.h"
+#import "AtomGCanvasLayerBackingStore.h"
+#import "AtomContentFlushController.h"
+
+using namespace AtomGraphics;
 
 static AtomGraphicsGCanvasModule *sharedModuleInstance;
 
 @interface AtomGraphicsGCanvasModule () <GCanvasModuleProtocol, GCVImageLoaderProtocol>
 
-@property(nonatomic, strong) GCanvasModule *gcanvasModule;
-
-@property(nonatomic, strong) NSMutableDictionary<NSString *, AtomGraphicsGCanvasComponent *> *registeredCanvasComponents;
-
 @end
 
 @implementation AtomGraphicsGCanvasModule {
-    dispatch_queue_t _commitQueue;
+    AtomContentFlushController *_flushController;
+    std::map<std::string, AtomGCanvasLayerBackingStore *> _registeredBackingStore;
 }
 
 + (AtomGraphicsGCanvasModule *)sharedModule {
@@ -35,8 +34,7 @@ static AtomGraphicsGCanvasModule *sharedModuleInstance;
     if (self) {
         self.gcanvasModule = [[GCanvasModule alloc] initWithDelegate:self];
         self.gcanvasModule.imageLoader = self;
-        _registeredCanvasComponents = [NSMutableDictionary dictionary];
-        _commitQueue = dispatch_queue_create("neo.AtomGraphics.CommitCommand", nullptr);
+        _flushController = new AtomContentFlushController();
     }
 
     return self;
@@ -44,39 +42,25 @@ static AtomGraphicsGCanvasModule *sharedModuleInstance;
 
 - (void)registerCanvasView:(AtomGraphicsGCanvasView *)gCanvasView {
     NSString *componentID = gCanvasView.componentId;
-    _registeredCanvasComponents[componentID] = [[AtomGraphicsGCanvasComponent alloc] initWithCanvasView:gCanvasView];
+    _registeredBackingStore[componentID.cString] = new AtomGCanvasLayerBackingStore(gCanvasView);
     [self.gcanvasModule enable:@{@"componentId": componentID}];
 }
 
 - (void)unregisterCanvasView:(NSString *)componentID {
-    [_registeredCanvasComponents removeObjectForKey:componentID];
+    _registeredBackingStore.erase(componentID.cString);
 }
 
-- (AtomGraphicsGCanvasView *)getCanvasView:(NSString *)componentID {
-    return [_registeredCanvasComponents[componentID] gCanvasView];
+- (AtomGraphicsGCanvasView *)getCanvasView:(const std::string &)componentID {
+    AtomGCanvasLayerBackingStore *backingStore = _registeredBackingStore[componentID];
+    return backingStore->getGCanvasView();
 }
 
-- (void)addCommand:(NSString *)command componentID:(NSString *)componentID {
-    AtomGraphicsGCanvasComponent *component = _registeredCanvasComponents[componentID];
-    NSMutableArray *renderCommands = component.renderCommands;
-    [renderCommands addObject:command];
-    if (!component.isCountingDown) {
-        [self flushCountDownAtComponent:component];
+- (void)addCommand:(const std::string &)command componentID:(const std::string &)componentID {
+    AtomGCanvasLayerBackingStore *backingStore = _registeredBackingStore[componentID];
+    if (backingStore->addCommand(command)) {
+        _flushController->setBackingStoreToFlush(backingStore);
+        _flushController->scheduleLayerFlush();
     }
-}
-
-- (void)flushCountDownAtComponent:(AtomGraphicsGCanvasComponent *)component {
-
-    component.isCountingDown = YES;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_MSEC * 10), _commitQueue, [component] {
-        component.isCountingDown = NO;
-        if (component.renderCommands.count) {
-            NSMutableArray *commands = [component renderCommands];
-            NSString *commandLine = [commands componentsJoinedByString:@";"];
-            [commands removeAllObjects];
-            [[AtomGraphicsGCanvasModule sharedModule].gcanvasModule render:commandLine componentId:component.componentID];
-        }
-    });
 }
 
 - (void)setContextType:(NSUInteger)type componentID:(NSString *)componentID {
@@ -91,7 +75,7 @@ static AtomGraphicsGCanvasModule *sharedModuleInstance;
 }
 
 - (id <GCanvasViewProtocol>)gcanvasComponentById:(NSString *)componentId {
-    return [_registeredCanvasComponents[componentId] gCanvasView];
+    return _registeredBackingStore[componentId.cString]->getGCanvasView();
 }
 
 - (void)dispatchGlobalEvent:(NSString *)event params:(NSDictionary *)params {

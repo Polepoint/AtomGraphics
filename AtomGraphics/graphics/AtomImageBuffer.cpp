@@ -24,4 +24,8 @@ namespace AtomGraphics {
 
     }
 
+    PlatformContext ImageBuffer::createGraphicsContext() {
+        return nullptr;
+    }
+
 }

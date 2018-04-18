@@ -6,10 +6,28 @@
 #ifndef ATOMLAYERRENDERCONTROLLER_H
 #define ATOMLAYERRENDERCONTROLLER_H
 
+#import <QuartzCore/CALayer.h>
 
-class AtomLayerRenderController {
+namespace AtomGraphics {
 
-};
+    class AtomLayerRenderController {
+
+    public:
+
+        AtomLayerRenderController();
+
+        void updateLayers(NSArray *layerIDs);
+
+    private:
+
+        void dumpChangedLayer(CALayer *layer);
+
+        NSArray *_changedLayerProperties;
+
+        NSMutableDictionary *_layers;
+
+    };
+}
 
 
 #endif //ATOMLAYERRENDERCONTROLLER_H

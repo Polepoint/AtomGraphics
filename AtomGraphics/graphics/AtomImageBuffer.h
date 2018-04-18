@@ -12,6 +12,10 @@ namespace AtomGraphics {
 
     class ImageBuffer {
 
+    public:
+
+        PlatformContext createGraphicsContext();
+
         void *getBufferData();
 
         void *data;
