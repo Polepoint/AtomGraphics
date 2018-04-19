@@ -39,6 +39,12 @@
     return self;
 }
 
+- (void)setFrame:(CGRect)frame {
+    super.frame = frame;
+    _componetFrame = frame;
+    _needChangeEAGLContenxt = YES;
+}
+
 - (void)removeFromSuperview {
     [super removeFromSuperview];
     [[AtomGraphicsGCanvasModule sharedModule] unregisterCanvasView:_componentID];
