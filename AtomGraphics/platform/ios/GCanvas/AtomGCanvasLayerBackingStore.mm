@@ -25,7 +25,7 @@ namespace AtomGraphics {
 
     bool AtomGCanvasLayerBackingStore::addCommand(const std::string &command) {
         _renderCommandLine += command + ";";
-        _contentDirty &= isDirtyCommand(command);
+        _contentDirty = _contentDirty || isDirtyCommand(command);
         if (_contentDirty && isFlushCommand(command)) {
             _contentDirty = false;
             return true;
