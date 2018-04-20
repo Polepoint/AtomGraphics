@@ -3,9 +3,9 @@
 // Copyright (c) 2018 neo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "AtomLayerBackingStore.h"
 #import "AtomNode.h"
+#import "AtomImageBufferCG.h"
 
 namespace AtomGraphics {
 
@@ -13,15 +13,20 @@ namespace AtomGraphics {
 
     public:
 
+        AtomLayerBackingStoreCG(Node *_rootNode);
+
         void applyBackingStoreToLayer(CALayer *layer);
 
-        void flush();
+        void flush() override;
 
-        void paintContext();
+        void paintContext() override;
+
+        void setContentSize(Size _contentSize);
 
     private:
-        AtomGraphics::ImageBuffer *_frontBuffer;
+        ImageBufferCG *_frontBuffer;
         Node *_rootNode;
+        Size _contentSize;
     };
 
 }

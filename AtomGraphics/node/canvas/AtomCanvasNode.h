@@ -27,7 +27,7 @@ namespace AtomGraphics {
 
     protected:
 
-        CanvasContext2d *createContext2d();
+        virtual CanvasContext2d *createContext2d();
 
         CanvasContextGL *createContextGL();
 

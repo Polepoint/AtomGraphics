@@ -14,14 +14,15 @@ namespace AtomGraphics {
 
     public:
 
-        PlatformContext createGraphicsContext();
+        virtual PlatformContext createGraphicsContext();
 
         void *getBufferData();
 
-        void *data;
+        void *m_data;
 
-        int backingStoreWidth;
-        int backingStoreHeight;
+        size_t m_bytesPerRow;
+        size_t m_backingStoreHeight;
+        size_t m_backingStoreWidth;
 
         PlatformContext context;
 

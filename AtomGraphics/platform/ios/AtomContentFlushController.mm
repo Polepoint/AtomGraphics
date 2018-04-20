@@ -5,6 +5,7 @@
 
 #import "AtomContentFlushController.h"
 #import <QuartzCore/CADisplayLink.h>
+#import <Foundation/Foundation.h>
 
 @interface AtomViewContentDisplayLinkHandler : NSObject
 
@@ -75,6 +76,9 @@ namespace AtomGraphics {
 
     void AtomContentFlushController::flushLayer() {
         AtomContentFlushController *thisRef = this;
+        if (!_backingStoreToFlush) {
+            return;
+        }
         AtomLayerBackingStore *backingStore = _backingStoreToFlush;
         dispatch_async(_commitQueue, [thisRef, backingStore] {
             backingStore->flush();
@@ -100,6 +104,10 @@ namespace AtomGraphics {
 
     void AtomContentFlushController::setBackingStoreToFlush(AtomLayerBackingStore *backingStoreToFlush) {
         _backingStoreToFlush = backingStoreToFlush;
+    }
+
+    void AtomContentFlushController::setContentLayer(CALayer *contentLayer) {
+        _contentLayer = contentLayer;
     }
 }
 

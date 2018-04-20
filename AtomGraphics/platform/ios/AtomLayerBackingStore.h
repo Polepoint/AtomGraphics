@@ -20,6 +20,10 @@ namespace AtomGraphics {
 
         virtual void flush() {
         };
+
+        virtual void paintContext() {
+
+        };
     };
 
 }

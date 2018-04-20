@@ -3,7 +3,6 @@
 // Copyright (c) 2018 neo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "AtomMessageReceiver.h"
 #import "AtomConnection.h"
 #import "AtomLayerBackingStore.h"
@@ -34,6 +33,8 @@ namespace AtomGraphics {
         void commitLayerContent();
 
         void setBackingStoreToFlush(AtomLayerBackingStore *backingStoreToFlush);
+
+        void setContentLayer(CALayer *contentLayer);
 
     private:
 

@@ -33,15 +33,12 @@
         _componentID = [[NSUUID UUID] UUIDString];
     }
 
-    _componetFrame = frame;
-    _needChangeEAGLContenxt = YES;
-
     return self;
 }
 
 - (void)setFrame:(CGRect)frame {
     super.frame = frame;
-    _componetFrame = frame;
+    _componetFrame = self.bounds;
     _needChangeEAGLContenxt = YES;
 }
 

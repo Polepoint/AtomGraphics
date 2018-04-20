@@ -12,6 +12,8 @@
 namespace AtomGraphics {
 
     void CanvasContext2dCG::setFillStyle(const Color4F &color) {
+        m_dirty = true;
+
         const CGFloat colorComponents[4] = {color.r, color.g, color.b, color.a};
         // TODO: colorSpace should be cached
         CGContextSetFillColorWithColor(_drawingContext, CGColorCreate(CGColorSpaceCreateDeviceRGB(), colorComponents));
@@ -24,6 +26,8 @@ namespace AtomGraphics {
     }
 
     void CanvasContext2dCG::setStrokeStyle(const Color4F &color) {
+        m_dirty = true;
+
         const CGFloat colorComponents[4] = {color.r, color.g, color.b, color.a};
         CGContextSetStrokeColor(_drawingContext, colorComponents);
     }
@@ -94,6 +98,10 @@ namespace AtomGraphics {
         CGContextBeginPath(_drawingContext);
         CGContextAddPath(_drawingContext, _path);
         CGContextFillPath(_drawingContext);
+        if (m_dirty) {
+            m_flushController->flushLayer();
+            m_dirty = false;
+        }
     }
 
     void CanvasContext2dCG::stroke() {
@@ -101,6 +109,10 @@ namespace AtomGraphics {
             CGContextBeginPath(_drawingContext);
             CGContextAddPath(_drawingContext, _path);
             CGContextStrokePath(_drawingContext);
+            if (m_dirty) {
+                m_flushController->flushLayer();
+                m_dirty = false;
+            }
         }
     }
 
@@ -131,15 +143,18 @@ namespace AtomGraphics {
     void CanvasContext2dCG::quadraticCurveTo(float cpx, float cpy, float x, float y) {
 
     }
-    void CanvasContext2dCG::bezierCurveTo(float cp1x, float cp1y, float cp2x, float cp2y, float x, float y){
+
+    void CanvasContext2dCG::bezierCurveTo(float cp1x, float cp1y, float cp2x, float cp2y, float x, float y) {
 
     }
 
     void CanvasContext2dCG::arc(float x, float y, float r, float sAngle, float eAngle, bool counterclockwise) {
+        m_dirty = true;
         CGPathAddArc(ensurePlatformPath(), nullptr, x, y, r, sAngle, eAngle, counterclockwise);
     }
 
     void CanvasContext2dCG::arcTo(float x1, float y1, float x2, float y2, float r) {
+        m_dirty = true;
         CGContextAddArcToPoint(_drawingContext, x1, y1, x2, y2, r);
     }
 
@@ -239,7 +254,12 @@ namespace AtomGraphics {
         return nullptr;
     }
 
+    CanvasContext2dCG::CanvasContext2dCG(AtomContentFlushController *pFlushController) {
+        m_flushController = pFlushController;
+    }
+
     void CanvasContext2dCG::drawConsuming(const GraphicsContext *context, Rect destRect) {
+        // TODO: Use CGImageCreate()
         CGImageRef image = CGBitmapContextCreateImage(_drawingContext);
         CGContextDrawImage(context->platformContext(), CGRectMake(destRect.origin.x, destRect.origin.y, destRect.size.width, destRect.size.height), image);
     }

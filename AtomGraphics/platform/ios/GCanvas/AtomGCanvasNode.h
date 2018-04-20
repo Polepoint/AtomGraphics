@@ -16,13 +16,14 @@ namespace AtomGraphics {
 
 
     public:
+
+        GCanvasNode(const void *container);
+
         CanvasContext2d *getContext2d() override;
 
         void setPosition(const Vec2 &position) override;
 
         void setContentSize(const Size &contentSize) override;
-
-        GCanvasNode(const void *container);
 
         void setContextType(int type);
 

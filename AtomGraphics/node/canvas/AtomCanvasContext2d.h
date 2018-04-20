@@ -231,7 +231,7 @@ namespace AtomGraphics {
     protected:
 
         PlatformContext _drawingContext;
-        PlatformPath _path;
+        PlatformPath _path = nullptr;
         uint8_t *_imageData;
         Size _contentSize;
 

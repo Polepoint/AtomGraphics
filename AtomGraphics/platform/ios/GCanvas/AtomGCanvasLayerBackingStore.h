@@ -3,7 +3,7 @@
 // Copyright (c) 2018 neo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <string>
 #import "AtomLayerBackingStore.h"
 
 @class AtomGraphicsGCanvasView;

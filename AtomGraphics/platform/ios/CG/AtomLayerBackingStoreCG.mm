@@ -7,6 +7,10 @@
 
 namespace AtomGraphics {
 
+    AtomLayerBackingStoreCG::AtomLayerBackingStoreCG(Node *rootNode) : _rootNode(rootNode) {
+
+    }
+
     void AtomLayerBackingStoreCG::applyBackingStoreToLayer(CALayer *layer) {
         CGImageRef image = CGBitmapContextCreateImage(_frontBuffer->createGraphicsContext());
         layer.contents = (__bridge id) image;
@@ -20,5 +24,12 @@ namespace AtomGraphics {
         CGContextRef context = _frontBuffer->createGraphicsContext();
         GraphicsContext *graphicsContext = new GraphicsContext(context);
         _rootNode->draw(graphicsContext, nullptr);
+    }
+
+    void AtomLayerBackingStoreCG::setContentSize(Size contentSize) {
+        _contentSize = contentSize;
+        _frontBuffer = new ImageBufferCG(static_cast<size_t>(contentSize.width),
+                static_cast<size_t>(contentSize.height),
+                static_cast<size_t>(4 * contentSize.width));
     }
 }
