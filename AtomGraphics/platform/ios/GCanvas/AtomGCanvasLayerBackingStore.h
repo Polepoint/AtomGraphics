@@ -28,8 +28,11 @@ namespace AtomGraphics {
         std::string _renderCommandLine;
         AtomGraphicsGCanvasView *_gCanvasView;
 
-        bool _contentChanged;
+        bool _contentDirty;
 
+        bool isDirtyCommand(const std::string &command);
+
+        bool isFlushCommand(const std::string &command);
     };
 
 }

@@ -25,13 +25,23 @@ namespace AtomGraphics {
 
     bool AtomGCanvasLayerBackingStore::addCommand(const std::string &command) {
         _renderCommandLine += command + ";";
-        if (_contentChanged && (command[0] == 'x' || command[0] == 'L')) {
-            _contentChanged = false;
+        _contentDirty &= isDirtyCommand(command);
+        if (_contentDirty && isFlushCommand(command)) {
+            _contentDirty = false;
             return true;
         } else {
-            _contentChanged = true;
             return false;
         }
+    }
+
+    bool AtomGCanvasLayerBackingStore::isDirtyCommand(const std::string &command) {
+        char shortCommand = command[0];
+        return shortCommand != 'x' && shortCommand != 'L';
+    }
+
+    bool AtomGCanvasLayerBackingStore::isFlushCommand(const std::string &command) {
+        char shortCommand = command[0];
+        return shortCommand == 'x' || shortCommand == 'L' || shortCommand == 's';
     }
 
     AtomGraphicsGCanvasView *AtomGCanvasLayerBackingStore::getGCanvasView() const {
