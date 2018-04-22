@@ -5,6 +5,7 @@
 
 #include "AtomImageBufferCG.h"
 #include <CoreGraphics/CGBitmapContext.h>
+#include <cstring>
 
 static void releaseImageData(void *, const void *data, size_t) {
 //    delete data;
@@ -18,6 +19,7 @@ namespace AtomGraphics {
         m_backingStoreHeight = height;
         m_bytesPerRow = bytesPerRow;
         m_data = malloc(m_bytesPerRow * m_backingStoreHeight);
+        memset(m_data, 0, m_bytesPerRow * m_backingStoreHeight);
         m_DataProvider = CGDataProviderCreateWithData(0, m_data, height * m_bytesPerRow, releaseImageData);
     }
 

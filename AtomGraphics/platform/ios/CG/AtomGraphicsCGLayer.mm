@@ -17,10 +17,8 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _backingStoreCG = new AtomGraphics::AtomLayerBackingStoreCG(_rootNode);
         _flushController = new AtomGraphics::AtomContentFlushController();
         _flushController->setContentLayer(self);
-        _flushController->setBackingStoreToFlush(_backingStoreCG);
     }
 
     return self;
@@ -31,6 +29,9 @@
     _rootNode = rootNode;
     _rootNode->setPosition(AtomGraphics::Vec2(self.bounds.origin.x, self.bounds.origin.y));
     _rootNode->setContentSize(AtomGraphics::Size(self.bounds.size.width, self.bounds.size.height));
+    _backingStoreCG = new AtomGraphics::AtomLayerBackingStoreCG(_rootNode);
+    _backingStoreCG->setContentSize(AtomGraphics::Size(self.bounds.size.width, self.bounds.size.height));
+    _flushController->setBackingStoreToFlush(_backingStoreCG);
 }
 
 - (AtomGraphics::AtomContentFlushController *)getFlushController {
@@ -43,7 +44,9 @@
         _rootNode->setPosition(AtomGraphics::Vec2(self.bounds.origin.x, self.bounds.origin.y));
         _rootNode->setContentSize(AtomGraphics::Size(self.bounds.size.width, self.bounds.size.height));
     }
-    _backingStoreCG->setContentSize(AtomGraphics::Size(self.bounds.size.width, self.bounds.size.height));
+    if(_backingStoreCG){
+        _backingStoreCG->setContentSize(AtomGraphics::Size(self.bounds.size.width, self.bounds.size.height));
+    }
 }
 
 @end

@@ -89,6 +89,7 @@ namespace AtomGraphics {
     }
 
     void AtomContentFlushController::commitLayerContent() {
+        _backingStoreToFlush->paintContext();
         _backingStoreToFlush->applyBackingStoreToLayer(_contentLayer);
         if (std::exchange(_didUpdateMessageState, NeedsDidUpdate) == MissedCommit)
             didRefreshDisplay();
