@@ -25,7 +25,10 @@ namespace AtomGraphics {
 
     PlatformContext ImageBufferCG::createGraphicsContext() {
 //        CGBitmapContextCreateWithData(m_data, m_backingStoreWidth, m_backingStoreHeight, 8, m_bytesPerRow, CGColorSpaceCreateDeviceRGB(), kCGImageAlphaNoneSkipFirst | kCGBitmapByteOrder32Host, releaseBitmapContextData, this);
-        return CGBitmapContextCreate(m_data, m_backingStoreWidth, m_backingStoreHeight, 8, m_bytesPerRow, CGColorSpaceCreateDeviceRGB(), kCGImageAlphaPremultipliedFirst | kCGBitmapByteOrder32Host);
+        PlatformContext bitmapContext = CGBitmapContextCreate(m_data, m_backingStoreWidth, m_backingStoreHeight, 8, m_bytesPerRow, CGColorSpaceCreateDeviceRGB(), kCGImageAlphaPremultipliedFirst | kCGBitmapByteOrder32Host);
+        CGContextTranslateCTM(bitmapContext, 0, m_backingStoreHeight);
+        CGContextScaleCTM(bitmapContext, 1, -1);
+        return bitmapContext;
     }
 
     void ImageBufferCG::releaseBitmapContextData(void *typelessBitmap, void *typelessData) {
