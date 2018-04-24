@@ -5,6 +5,7 @@
 
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "AtomJavaScriptCore.h"
+#import "AtomJSTimer.h"
 
 
 //TODO: improve implement and move to AtomTypes
@@ -350,6 +351,7 @@ static inline Color4F colorWithRgba(NSString *rgba) {
             _jsContext = [[JSContext alloc] init];
             [_jsContext evaluateScript:[NSString stringWithContentsOfFile:jsCoreFilePath]];
             [self initGlobalContext];
+            [AtomJSTimer initJSTimers:_jsContext];
         }
     }
 

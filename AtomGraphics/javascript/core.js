@@ -1,3 +1,7 @@
+var global = this;
+global.window = global;
+var window = global;
+
 var AG = {
     getRootCanvasNode: function () {
     }
