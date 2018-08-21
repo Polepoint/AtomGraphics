@@ -3,7 +3,6 @@
 namespace AtomGraphics {
 
 	const std::string STD_STRING_EMPTY("");
-	const ssize_t CC_INVALID_INDEX = -1;
 
 /**
  * Color3B

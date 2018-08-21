@@ -1,0 +1,3 @@
+rootProject.name = 'AtomGraphics'
+include ':gcanvas-library', ':atomgraphics-library', ':app'
+project(':atomgraphics-library').projectDir = new File(settingsDir, '../../AtomGraphics/android/atomgraphics-library')

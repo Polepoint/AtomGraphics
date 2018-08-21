@@ -1,0 +1,14 @@
+//
+// Created by neo on 2018/5/17.
+//
+
+#ifndef ATOMGRAPHICS_ATOMGRAPHICSJAVASCRIPTCORE_H
+#define ATOMGRAPHICS_ATOMGRAPHICSJAVASCRIPTCORE_H
+
+
+#include "JSContext.h"
+#include "JSObject.h"
+#include "JSValueConverter.h"
+
+
+#endif //ATOMGRAPHICS_ATOMGRAPHICSJAVASCRIPTCORE_H

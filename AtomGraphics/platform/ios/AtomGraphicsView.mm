@@ -3,75 +3,80 @@
 // Copyright (c) 2018 neo. All rights reserved.
 //
 
-#include "AtomGraphicsView.h"
-#import "AtomPainter_iOSCoreGraphic.h"
+#import "AtomGraphicsView.h"
 #import "AtomGraphics.h"
 #import "AtomCanvasNode.h"
 #import "AtomGCanvasNode.h"
 #import "AtomJavaScriptCore.h"
+#import "PlatformLayerCAEAGL.h"
+#import "GraphicsLayerGCanvas.h"
 
 using namespace AtomGraphics;
 
+static GraphicsPageContext *sharedContext = new GraphicsPageContext();
+
 @implementation AtomGraphicsView {
+    GraphicsPage *_page;
     GCanvasNode *_node;
-//    NSTimer *_animationTimer;
-    AtomJavaScriptCore *_javaScriptCore;
+    AtomGCanvasEAGLLayer *_glLayer;
+}
+
++ (void)initialize {
+    [super initialize];
+    AtomGraphics::GraphicsThread::InitGraphicsThread();
+}
+
++ (GraphicsPageContext *)PageContext {
+    if (!sharedContext) {
+        sharedContext = new GraphicsPageContext();
+    }
+    return sharedContext;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.contentMode = UIViewContentModeRedraw;
-        [self initNode];
-        _javaScriptCore = [[AtomJavaScriptCore alloc] initWithCanvasNode:_node];
+        [self initGraphicsPage];
     }
-
     return self;
 }
 
+- (void)initGraphicsPage {
+    _glLayer = [AtomGCanvasEAGLLayer layer];
+    _glLayer.frame = self.layer.bounds;
+    _glLayer.contentsScale = [UIScreen mainScreen].scale;
+    [self.layer addSublayer:_glLayer];
 
-- (void)initNode {
-    _node = new GCanvasNode((__bridge void *) self);
-    _node->setPosition(Vec2(0, 0));
-    _node->setContentSize(AtomGraphics::Size(350, 600));
-//    CanvasContext2d *ctx = _node->getContext2d();
-//    ctx->setFillStyle(Color4F::RED);
-//    __block float inc = 0;
-//    _animationTimer = [NSTimer timerWithTimeInterval:0.05 repeats:YES block:^(NSTimer *timer) {
-//        ctx->beginPath();
-//        float r = sin(inc) * 10 + 100;
-//        ctx->arc(150, 400, r, 0, 2 * M_PI, 0);
-//        inc += 0.1 * 3.14;
-//        ctx->stroke();
-//        ctx->fill();
-//        [self setNeedsDisplay];
-//    }];
-//
-//    [[NSRunLoop currentRunLoop] addTimer:_animationTimer forMode:NSDefaultRunLoopMode];
+    _node = new GCanvasNode();
+    _node->setFrame(AtomGraphics::Rect(0, 0, self.bounds.size.width, self.bounds.size.height));
+    ((GCanvasContext2D *) _node->getContext2d())->setDevicePixelRatio(_glLayer.contentsScale);
+
+    PlatformLayerCAEAGL *platformLayer = new PlatformLayerCAEAGL(_glLayer);
+    GraphicsLayerGCanvas *graphicsLayer = new GraphicsLayerGCanvas(platformLayer, _node);
+    if (!sharedContext) {
+        sharedContext = new GraphicsPageContext();
+    }
+    _page = new GraphicsPage(sharedContext, graphicsLayer);
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    if (!CGRectEqualToRect(_glLayer.frame, self.layer.bounds)) {
+        CGRect bounds = self.layer.bounds;
+        _glLayer.frame = bounds;
+        _node->setFrame(AtomGraphics::Rect(bounds.origin.x, bounds.origin.y, bounds.size.width, bounds.size.height));
+        [_glLayer resizeLayerBuffer];
+    }
 }
 
 
-- (void)didMoveToWindow {
-    [super didMoveToWindow];
-    [_javaScriptCore runScriptFile:[[NSBundle mainBundle] pathForResource:@"main" ofType:@"js"]];
+- (void)reloadGraphics {
+    [[AtomJavaScriptCore javaScriptCoreForContext:sharedContext] runScript:[NSString stringWithFormat:@"redraw(%ld)", _page->pageID()]];
 }
 
-
-//- (void)layoutSubviews {
-//    [super layoutSubviews];
-//    _node->setDirty(true);
-//}
-//
-//
-//- (void)drawRect:(CGRect)rect {
-//    [super drawRect:rect];
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    GraphicsContext *graphicsContext = new GraphicsContext(context);
-//    Painter *painter = new Painter_iOSCoreGraphic(graphicsContext);
-//    if (_node->dirty()) {
-//        _node->draw(graphicsContext, painter);
-//    }
-//}
-
+- (void)dealloc {
+    delete _page;
+    delete _node;
+}
 
 @end

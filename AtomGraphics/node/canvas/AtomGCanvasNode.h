@@ -8,28 +8,35 @@
 
 
 #include "AtomCanvasNode.h"
-#include "AtomGCanvasContext2d.h"
+#include "AtomGCanvasContext2D.h"
 
 namespace AtomGraphics {
 
-    class GCanvasNode : public CanvasNode {
+    class GCanvasContext2D;
 
+    class GCanvasNode : public CanvasNode {
 
     public:
 
-        GCanvasNode(const void *container);
+        GCanvasNode();
 
-        CanvasContext2d *getContext2d() override;
+#if ATOM_TARGET_PLATFORM == ATOM_PLATFORM_ANDROID
 
-        void setPosition(const Vec2 &position) override;
+        static jclass getClassJObject();
 
-        void setContentSize(const Size &contentSize) override;
+        static void setClassJObject(jclass classObj);
 
-        void setContextType(int type);
+#endif
+
+        CanvasContext2D *getContext2d() override;
+
+        void draw(GraphicsContext *context) override;
 
     private:
-        std::string _componentId;
-        GCanvasContext2d *_gcanvasContext2d;
+        GCanvasContext2D *m_gcanvasContext2d;
+        CanvasContextType m_currentContextType;
+
+        friend class GCanvasContext2D;
     };
 }
 

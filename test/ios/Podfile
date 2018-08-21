@@ -1,5 +1,6 @@
 platform :ios, '8.0'
+source 'ssh://git@cloud.finedevelop.com:7999/mo/finepods.git'
 
 target 'AtomGraphics' do
-  pod 'GCanvas', '~> 0.1.1'
+  pod 'GCanvas', :path => '../../GCanvas/GCanvas.podspec'
 end

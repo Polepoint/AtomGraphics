@@ -11,7 +11,7 @@ namespace AtomGraphics {
     class CanvasContextBase {
 
     public:
-        virtual bool is2d();
+        virtual bool is2D();
 
         virtual bool isWebGL();
     };

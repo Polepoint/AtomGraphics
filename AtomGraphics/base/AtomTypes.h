@@ -1,5 +1,5 @@
-#ifndef __BASE_CCTYPES_H__
-#define __BASE_CCTYPES_H__
+#ifndef __BASE_ATOMTYPES_H__
+#define __BASE_ATOMTYPES_H__
 
 #include <string>
 

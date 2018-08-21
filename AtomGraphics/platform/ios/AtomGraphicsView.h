@@ -7,11 +7,15 @@
 #define ATOMGRAPHICSVIEW_H
 
 #import <UIKit/UIKit.h>
+#import "GraphicsPageContext.h"
 
-@interface AtomGraphicsView: UIView  {
+@interface AtomGraphicsView : UIView {
 
 }
 
++ (AtomGraphics::GraphicsPageContext *)PageContext;
+
+- (void)reloadGraphics;
 
 @end
 

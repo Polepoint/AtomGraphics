@@ -6,10 +6,14 @@
 #ifndef ATOMCANVASCONTEXT_H
 #define ATOMCANVASCONTEXT_H
 
-#include "AtomImageBuffer.h"
+#include "graphics/ImageBuffer.h"
 #include "AtomCanvasGradient.h"
 #include "AtomCanvasPattern.h"
 #include "AtomCanvasContextBase.h"
+#include "AtomCanvasFillStyle.h"
+#include "AtomCanvasImageData.h"
+#include "base/AtomTypes.h"
+#include "AtomCanvasNode.h"
 
 /**
  * CanvasAPI
@@ -18,16 +22,24 @@
 
 namespace AtomGraphics {
 
-    class CanvasContext2d :public CanvasContextBase{
+    class CanvasNode;
+
+    class CanvasContext2D : public CanvasContextBase {
 
     public:
+
+        CanvasContext2D(CanvasNode *node) : m_node(node) {
+        };
+
 //        using Style = Variant<std::string, CanvasGradient, CanvasPattern>;
         //color|gradient|pattern;
         virtual void setFillStyle(const Color4F &color);
 
-        virtual void setFillStyle(const CanvasPattern &pattern);
+        virtual void setFillStyle(const AtomCanvasPattern *pattern);
 
-        virtual void setFillStyle(const CanvasGradient &gradient);
+        virtual void setFillStyle(const AtomGraphics::AtomCanvasLinearGradient *gradient);
+
+        virtual void setFillStyle(const AtomGraphics::AtomCanvasRadialGradient *gradient);
 
         //color|gradient|pattern;
         virtual void setStrokeStyle(const Color4F &color);
@@ -37,26 +49,26 @@ namespace AtomGraphics {
         virtual void setStrokeStyle(const CanvasGradient &gradient);
 
         //color
-        virtual void setShadowColor();
+        virtual void setShadowColor(const Color4F &color);
 
         //number
-        virtual void setShadowBlur();
+        virtual void setShadowBlur(const int shadowBlur);
 
         //number
-        virtual void setShadowOffsetX();
+        virtual void setShadowOffsetX(const float offsetX);
 
         //number
-        virtual void setShadowOffsetY();
+        virtual void setShadowOffsetY(const float offsetY);
 
         //context.createPattern(image,"repeat|repeat-x|repeat-y|no-repeat");
-        virtual CanvasPattern *createPattern();
+        virtual AtomCanvasPattern *createPattern(const std::string &style, const AtomCanvasImage *image);
 
         //context.createLinearGradient(x0,y0,x1,y1);
         //return object that represent the gradient
-        virtual CanvasGradient *createLinearGradient(float x0, float y0, float x1, float y1);
+        virtual AtomCanvasLinearGradient *createLinearGradient(float x0, float y0, float x1, float y1);
 
         //context.createRadialGradient(x0,y0,r0,x1,y1,r1);
-        virtual void *createRadialGradient();
+        virtual AtomCanvasRadialGradient *createRadialGradient(float x0, float y0, float r0, float x1, float y1, float r1);
 
         //var grd=ctx.createLinearGradient(0,0,170,0);
         //grd.addColorStop(0,"black");
@@ -72,7 +84,7 @@ namespace AtomGraphics {
 
         //e.g. ctx.lineWidth=10;
         //context.lineWidth=number;
-        virtual void setLineWidth(float width);
+        virtual void setLineWidth(double width);
 
         //e.g. ctx.miterLimit=5;
         //context.miterLimit=number;
@@ -108,7 +120,7 @@ namespace AtomGraphics {
 
         //e.g. ctx.moveTo(0,0);
         //context.moveTo(x,y);
-        virtual void moveTo(float x, float y);
+        virtual void moveTo(double x, double y);
 
         //e.g. ctx.closePath();
         //context.closePath();
@@ -116,7 +128,7 @@ namespace AtomGraphics {
 
         //e.g. ctx.lineTo(300,150);
         //context.lineTo(x,y);
-        virtual void lineTo(float x, float y);
+        virtual void lineTo(double x, double y);
 
         //e.g. ctx.clip();
         //context.clip();
@@ -130,7 +142,7 @@ namespace AtomGraphics {
 
         //e.g. ctx.arc(100,75,50,0,2*Math.PI);
         //context.arc(x,y,r,sAngle,eAngle,counterclockwise);
-        virtual void arc(float x, float y, float r, float sAngle, float eAngle, bool counterclockwise);
+        virtual void arc(double x, double y, double r, double sAngle, double eAngle, bool counterclockwise);
 
         //e.g. ctx.arcTo(150,20,150,70,50);
         //context.arcTo(x1,y1,x2,y2,r);
@@ -158,7 +170,7 @@ namespace AtomGraphics {
 
         //e.g. ctx.setTransform(1,0.5,-0.5,1,30,10);
         //context.setTransform(a,b,c,d,e,f);
-        virtual void setTransform(float a, float b, float c, float d, float e, float f);
+        virtual void setTransform(double a, double b, double c, double d, double e, double f);
 
         //e.g. ctx.font="40px Arial";
         virtual void setFont(const std::string font);
@@ -173,39 +185,44 @@ namespace AtomGraphics {
 
         //e.g. ctx.fillText("Hello World!",10,50);
         //context.fillText(text,x,y,maxWidth);
-        virtual void fillText(std::string text, float x, float y, float maxWidth);
+        virtual void fillText(std::string text, double x, double y, float maxWidth);
 
         //e.g. ctx.strokeText("Hello World!",10,50);
         //context.strokeText(text,x,y,maxWidth);
-        virtual void strokeText(const std::string text, float x, float y, float maxWidth);
+        virtual void strokeText(const std::string text, double x, double y, float maxWidth);
 
         //e.g. ctx.measureText(txt).width
         //context.measureText(text);
-        virtual void *measureText(const std::string &text);
+        virtual float measureText(const std::string &text);
 
         //e.g. ctx.drawImage(img,10,10);
         //context.drawImage(img,x,y);
-        virtual void *drawImage(ImageBuffer *imageBuffer, float x, float y);
+        virtual void drawImage(AtomCanvasImage *image, float x, float y);
 
         //e.g. ctx.drawImage(img,10,10,240,160);
         //context.drawImage(img,x,y,width,height);
-        virtual void *drawImage(ImageBuffer *imageBuffer, float x, float y, float with, float height);
+        virtual void drawImage(AtomCanvasImage *image, float x, float y, float width, float height);
 
         //e.g. ctx.drawImage(img,90,130,90,80,20,20,90,80);
         //context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
-        virtual void *drawImage(ImageBuffer *imageBuffer, float sx, float sy, float swith, float sheight, float x, float y, float width, float height);
+        virtual void drawImage(AtomCanvasImage *image, float sx, float sy, float swidth, float sheight, float x, float y, float width, float height);
+
+        virtual void drawImage(CanvasNode *canvasNode);
 
         //e.g. var imgData=ctx.createImageData(100,100);
         //var imgData=context.createImageData(width,height);
-        virtual void *createImageData(float width, float height);
+        virtual AtomCanvasImageData *createImageData(int width, int height);
 
         //e.g. var imgData=context.createImageData(imageData);
         //var imgData=context.createImageData(imageData);
-        virtual void *createImageData(void *imageData);
+        virtual AtomCanvasImageData *createImageData(AtomCanvasImageData *imageData);
 
+        virtual void *getImageData(int x, int y, int width, int height);
+
+        virtual void putImageData(AtomCanvasImageData *imageData, int x, int y, int srcWidth, int srcHeight, int destWidth, int destHeight);
 
         //e.g.  context.globalAlpha=number;
-        virtual void setGlobalAlpha(float number);
+        virtual void setGlobalAlpha(double number);
 
         //e.g. ctx.globalCompositeOperation="source-over";
         virtual void setGlobalCompositeOperation(const std::string operation);
@@ -220,7 +237,7 @@ namespace AtomGraphics {
 
         virtual void *toDataURL();
 
-        bool is2d() override;
+        bool is2D() override;
 
         virtual void drawConsuming(const GraphicsContext *context, Rect destRect);
 
@@ -230,12 +247,8 @@ namespace AtomGraphics {
 
     protected:
 
-        PlatformContext _drawingContext;
-        PlatformPath _path = nullptr;
-        uint8_t *_imageData;
-        Size _contentSize;
+        CanvasNode *m_node;
 
-        virtual PlatformPath ensurePlatformPath();
     };
 }
 

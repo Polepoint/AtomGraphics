@@ -7,203 +7,255 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A99807C9BB5699E374E2CE2 /* AtomLayerRenderController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998A6E524CE124B4263A67 /* AtomLayerRenderController.mm */; };
-		1A99809A0A00D58DEF937D7F /* AtomNodeTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9983E035178C2E057DEFE1 /* AtomNodeTree.cpp */; };
-		1A9980C8930DF29787E6C728 /* AtomTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998B6604098EB87FE21852 /* AtomTimer.cpp */; };
-		1A9981312E4ABBF0526F985F /* AtomGCanvasLayerBackingStore.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998300B895E777D2DEBE2B /* AtomGCanvasLayerBackingStore.mm */; };
-		1A9981752C28D3231160C304 /* AtomImageBufferCG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998D748BD770C59A81D3B6 /* AtomImageBufferCG.cpp */; };
-		1A99818F42A4FE2E3860B407 /* AtomPainter_iOSCoreGraphic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998ACC2E14B78D55B3DC70 /* AtomPainter_iOSCoreGraphic.cpp */; };
+		1A99801B1A0DD20159DCEA39 /* GraphicsLayerCG.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A9983CA99751AEEEDA9E40D /* GraphicsLayerCG.mm */; };
+		1A99806E8DC54A6E54DB3D3B /* DisplayRefreshMonitor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998243571CCD3D53AC4875 /* DisplayRefreshMonitor.cpp */; };
+		1A998088F7101737B154BE0E /* ThreadTimer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998EEE7D022F3CA99902F6 /* ThreadTimer.mm */; };
+		1A9980B07FC44AF530492C95 /* AtomJSZRender.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9983889298EA00DF1B2F06 /* AtomJSZRender.m */; };
+		1A9981752C28D3231160C304 /* ImageBufferCG.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998D748BD770C59A81D3B6 /* ImageBufferCG.mm */; };
+		1A998186CA17A60CD72B4A3E /* GraphicsPageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998AB5F911BE743F15B14B /* GraphicsPageManager.cpp */; };
 		1A9981C1D6BEBCC4B1F42800 /* Vec2.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A998EAB42079481E9734A9A /* Vec2.inl */; };
-		1A998281455E12B6D43987CF /* AtomGraphicsCGLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998364310496F6E27D9E62 /* AtomGraphicsCGLayer.mm */; };
+		1A99825BEB092D4E3138F375 /* DisplayRefreshMonitorClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998C760470B7E6C4BFA34B /* DisplayRefreshMonitorClient.cpp */; };
 		1A99828F4F9AA5D81862BFF3 /* Vec3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A99898E53D10B80F4602D7D /* Vec3.cpp */; };
-		1A9982CB46998018F1BB9A8D /* AtomGraphicsGCanvasView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A9983D55D1D06CCDC599B1F /* AtomGraphicsGCanvasView.mm */; };
+		1A99829E753BE49C415F55FC /* GraphicsContextCG.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998F25ADBB3041384B2B22 /* GraphicsContextCG.mm */; };
+		1A99829FDA748FACECDF774C /* GraphicsContentFlushController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998EDE8FD2340F8944C070 /* GraphicsContentFlushController.mm */; };
 		1A9982DD651F857CF0ECA86A /* AtomCanvasContext2dCG.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A99889DC6C71E7B503098C1 /* AtomCanvasContext2dCG.mm */; };
+		1A9983027338D8BD268C0962 /* AtomJSTimer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998EC89C0641776CAB7C91 /* AtomJSTimer.mm */; };
 		1A99832857AA0186BBD84A92 /* AtomCanvasNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998D943FF3E2F1458BF114 /* AtomCanvasNode.cpp */; };
+		1A99836103F0147C56DB0705 /* AtomGCanvasContext2D.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A9988F0871AFD56CB529643 /* AtomGCanvasContext2D.mm */; };
+		1A998370BA20D05FC46A6AD4 /* GraphicsThread.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998B135AD30EFE1BA77533 /* GraphicsThread.mm */; };
 		1A99838C31BC731D992B62B3 /* MathUtilNeon64.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A9980D81A0C9C376D3C2078 /* MathUtilNeon64.inl */; };
 		1A998392D0E04EFF43E058F0 /* Mat4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998CF27B229634588AB455 /* Mat4.cpp */; };
-		1A9984224C179BAA2B3F18E4 /* AtomCanvasContext2d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9981FAC37CB043F245177D /* AtomCanvasContext2d.cpp */; };
-		1A99842D23D62B3F98E3AE7D /* AtomLayerTransaction.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998DC2A15DAFDDEB548D02 /* AtomLayerTransaction.mm */; };
+		1A998392E698719B3DEF3E98 /* GraphicsLayerBackingStoreGCanvas.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A99820A70ECAAB79EE97761 /* GraphicsLayerBackingStoreGCanvas.mm */; };
+		1A9983C1B6D02FA0D8F50189 /* DisplayLink.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998002BFDF856620C0A6DB /* DisplayLink.cpp */; };
+		1A9984224C179BAA2B3F18E4 /* AtomCanvasContext2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9981FAC37CB043F245177D /* AtomCanvasContext2D.cpp */; };
 		1A99844C312C635824CDD92E /* MathUtilSSE.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A998D4EAD821431E9005D51 /* MathUtilSSE.inl */; };
 		1A998451F9BECBC387235BD6 /* AtomRef.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998A81A6F8C05EEA2ED88A /* AtomRef.cpp */; };
-		1A998461EED1E79B7A536740 /* AtomConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998EFFF9A846105586681A /* AtomConnection.mm */; };
 		1A9984812A5E6FA80B99C024 /* AtomGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998EAFBA5B3ABFDD61C5AD /* AtomGraphics.cpp */; };
 		1A99852446CFB50C46AEE41A /* AtomCanvasContextBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998BFD377242DAAA7CA57D /* AtomCanvasContextBase.cpp */; };
-		1A99854431FFBC6467713994 /* AtomGCanvasContext2d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998044D9F950AB6ACDD526 /* AtomGCanvasContext2d.cpp */; };
-		1A9985504F135437A6D4AC64 /* AtomPainter_AndroidCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9988095ED789A6643B3FE6 /* AtomPainter_AndroidCanvas.cpp */; };
+		1A998534CDA819CD1EBA2FCC /* Timer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998890024E1A15C2A6628F /* Timer.mm */; };
 		1A99856BDD4B6731687A78E5 /* AtomPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998E065434A8FBA1D90BF9 /* AtomPath.cpp */; };
-		1A9985B654A21A1EDB14D842 /* AtomJSTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A998FB031A633EF6FB56C1F /* AtomJSTimer.m */; };
+		1A9985824990C2A0184AC880 /* GraphicsLayerBackingStore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998A8C6C294E38FEA18938 /* GraphicsLayerBackingStore.cpp */; };
+		1A998587D5DFF86B12C58049 /* GraphicsPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9985898213D9D4D7B2488F /* GraphicsPage.cpp */; };
+		1A99859EA5A0D341B42DC078 /* GraphicsLayerBackingStoreCG.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A9986A6847592198799BAA6 /* GraphicsLayerBackingStoreCG.mm */; };
+		1A9985A2DF6A258F960C452E /* TimerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A99897E27AE3CD6B3BFC364 /* TimerManager.cpp */; };
+		1A9985B4979EED2B2DB06B1B /* ChartGroupView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A9987C6FCD948DBF343EF91 /* ChartGroupView.mm */; };
+		1A9985D3A9E013AF894135B8 /* CanvasJavaScriptInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998A684BAA79B67A82D918 /* CanvasJavaScriptInterface.mm */; };
+		1A99860D1C3190145C06B5C9 /* GraphicsRunLoop.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998411C73FF519002D7045 /* GraphicsRunLoop.mm */; };
 		1A99863CBF38893D41BBB8B9 /* AtomCanvasNodeCG.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A9980B8A0AB70C7918429E1 /* AtomCanvasNodeCG.mm */; };
-		1A99865B787B436E6B172E6E /* AtomLayerProperties.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A99808AC5CF84CE2009EFA6 /* AtomLayerProperties.mm */; };
-		1A9986BFF11CFBA0DEEC6B3C /* AtomPainter_iOSMetal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998247703E926E6A527BCF /* AtomPainter_iOSMetal.cpp */; };
 		1A9987303BE2E183CDCA080C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9985A69E08E9FD1D30C74B /* AppDelegate.m */; };
-		1A99873E7A77C9DB12C4A657 /* AtomJavaScriptCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A99874F0003A5A061954F49 /* AtomJavaScriptCore.mm */; };
+		1A99879F4F069ED8F377793D /* AtomGCanvasContext2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9982A22148A15115021D74 /* AtomGCanvasContext2D.cpp */; };
 		1A9987A1995008A6754E7FCC /* AtomPainterGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9987D90FD08DE72DC96D9D /* AtomPainterGL.cpp */; };
 		1A9987B5C2F9B85F056AB489 /* Quaternion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A99817FE3A8D2EF5C952760 /* Quaternion.cpp */; };
 		1A9987CEF8954EDCA6A9B8EF /* Vec4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998DF3E124384E0C27267E /* Vec4.cpp */; };
-		1A99887D73C4C4303B4C1663 /* AtomGraphicsContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A99864A56D8FE38AF8DA0E8 /* AtomGraphicsContext.cpp */; };
+		1A998866FAF86361BF5A78EA /* GraphicsPageContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998BB01079B2D00FE8532C /* GraphicsPageContext.cpp */; };
 		1A99888D79D0BAB99B600D58 /* Vec4.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A998E18B7FFA6728827A484 /* Vec4.inl */; };
+		1A99889AF3A9CE5754067BC0 /* DisplayLinkCA.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998C1B5E94686F6EE5C8D0 /* DisplayLinkCA.mm */; };
 		1A9988E1F180FD1A1F52BB72 /* AtomGCanvasNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9989E16FCAB2C06F825CE7 /* AtomGCanvasNode.cpp */; };
+		1A998902B64E40080E2E8A46 /* GraphicsLayerBackingStoreGCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998E12CEA0E4DD8E9A728E /* GraphicsLayerBackingStoreGCanvas.cpp */; };
 		1A99890BAA1F011AD9D75000 /* Vec2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9988FCAF8188A7DF16D7E3 /* Vec2.cpp */; };
 		1A9989258128EEEA2F508534 /* AtomCanvasPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998C1A4E3542C27DA30030 /* AtomCanvasPattern.cpp */; };
-		1A998955C27FD67266DDC065 /* AtomCanvasContextGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998A00A17BF121099ADF0C /* AtomCanvasContextGL.cpp */; };
+		1A998955C27FD67266DDC065 /* AtomCanvasContext3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998A00A17BF121099ADF0C /* AtomCanvasContext3D.cpp */; };
 		1A9989823E57F438ADA76A85 /* MathUtilNeon.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A9989149E478D5E29D07B1B /* MathUtilNeon.inl */; };
 		1A9989C00A643D3C287D6270 /* MathUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9987B59B1481B73FD97A5D /* MathUtil.cpp */; };
 		1A9989D3C2E24799F6761062 /* AtomGraphicsView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A9983AB6445D2B35FE4CCD2 /* AtomGraphicsView.mm */; };
+		1A9989DF68927D07E48A768E /* AtomNodeTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9982A66E515FBDBA7A3CEA /* AtomNodeTree.cpp */; };
 		1A998A396120D68E32D69111 /* AtomTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998C7C25287D00B8B2BE9E /* AtomTypes.cpp */; };
-		1A998A3D573773221B9211C2 /* AtomContentFlushController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A9989B33152F6D19AE5910A /* AtomContentFlushController.mm */; };
-		1A998A544992B38C14F991FC /* AtomImageBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998823EAC685CC98614861 /* AtomImageBuffer.cpp */; };
 		1A998AD8BD9ED170DA128849 /* AtomGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998C886D27AD06CED65793 /* AtomGeometry.cpp */; };
-		1A998B1DD5FB835DE96FB42F /* AtomMessageReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998CD9744F8494222D5926 /* AtomMessageReceiver.cpp */; };
-		1A998BBC580CA447DFA06040 /* AtomRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9984E79D0DA05D39266158 /* AtomRenderer.cpp */; };
+		1A998B18878796621BB529BD /* AtomNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A99864104427B314D52045D /* AtomNode.cpp */; };
+		1A998B33746D4B38987B3F32 /* CanvasContextJavaScriptInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A9988BE4FE6733D271109BC /* CanvasContextJavaScriptInterface.mm */; };
+		1A998B438EF6981B9695667A /* AtomGCanvasEAGLLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A99838A38ADA855A31EFF9C /* AtomGCanvasEAGLLayer.mm */; };
+		1A998BA623F981D88B04D01A /* ScriptAnimationFrameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998135063DA0233E0AF3E2 /* ScriptAnimationFrameController.cpp */; };
 		1A998BCED3BA52CEF19BF049 /* Vec3.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A9988226FE916CB8550B3C9 /* Vec3.inl */; };
 		1A998C21F04E935CB7501CED /* FPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A998FC25A2587955C33435B /* FPSLabel.m */; };
-		1A998C24CA6A431A5AB30798 /* AtomNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9980B768A53722DF64E582 /* AtomNode.cpp */; };
 		1A998C31BEC24B68A672CEA3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9981F2FA75E281E8C76D35 /* ViewController.m */; };
 		1A998C34832AF33ED23D0D39 /* AtomPainter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998960AFEC261525C95624 /* AtomPainter.cpp */; };
-		1A998D915B990B95607BAE5F /* AtomGraphicsGCanvasModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A99896D088BF89DF0427C7A /* AtomGraphicsGCanvasModule.mm */; };
-		1A998E41083118A8D7CB16F6 /* AtomLayerBackingStoreCG.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998518CBB7F5ED15EF8C67 /* AtomLayerBackingStoreCG.mm */; };
-		1A998E87B4FB8C046AE6CC5E /* AtomConnectionMessage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A998A3BF97E1813AD65E9C6 /* AtomConnectionMessage.mm */; };
+		1A998C63D473D5C7723994C4 /* GraphicsLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998B4209460B298076EE0C /* GraphicsLayer.cpp */; };
+		1A998D387CDC39F6A8419B96 /* AtomJavaScriptCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1A9988A30605319F1F139A29 /* AtomJavaScriptCore.mm */; };
+		1A998E6128A910095C92E931 /* GraphicsContentFlushController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A99830AB2530E1C42F38539 /* GraphicsContentFlushController.cpp */; };
+		1A998E62B0F5BA1A6612AB8D /* GraphicsLayerGCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A99886B4A93C93EAC50421B /* GraphicsLayerGCanvas.cpp */; };
+		1A998E860DCD1F82DD694BE7 /* ScriptTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998492364E981FF3FF9A4E /* ScriptTimer.cpp */; };
 		1A998E9B85D9F58056A14CE0 /* AtomImageProvider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A99806A46AE94BF7B094252 /* AtomImageProvider.cpp */; };
 		1A998EACA986A9826A904292 /* MathUtil.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A9980B8AE8B3CE5BA5F4C0B /* MathUtil.inl */; };
 		1A998EF4F4336C7F3818B4DA /* Quaternion.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A9981F3E363D720195B5984 /* Quaternion.inl */; };
 		1A998F381EA60231664E901A /* AtomCanvasGradient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A9987CE809CA131914BD026 /* AtomCanvasGradient.cpp */; };
+		1A998F9AB09FB7709FD19D58 /* RequestAnimationCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A998A233CFC9DECE7A79D67 /* RequestAnimationCallback.cpp */; };
 		1A998FDA716A3DEC0F9E73D4 /* Mat4.inl in Resources */ = {isa = PBXBuildFile; fileRef = 1A998E4E53564B5B56C24ED1 /* Mat4.inl */; };
+		1CC978DEB1D82EB15A52928F /* AtomCanvasImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CC977EBBB9FCAB10B36BD77 /* AtomCanvasImage.cpp */; };
+		1CC9791B7054BDB999C2B5A8 /* AtomCanvasImageData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CC97EBB0B8859691B232457 /* AtomCanvasImageData.cpp */; };
+		1CC97CC7C4285D6D22D3D432 /* AtomConvert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CC974E65FA13B71277A34AE /* AtomConvert.cpp */; };
+		1CC97D3881DE7C24E6D1001B /* AtomEncode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CC97D024576703F96E1281C /* AtomEncode.cpp */; };
 		B50FC4CA207DD72400AA1FDF /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B50FC4C9207DD72400AA1FDF /* JavaScriptCore.framework */; };
-		B54E8E66208DC19600F80951 /* core.js in Resources */ = {isa = PBXBuildFile; fileRef = 1A9984EBB7B7A5914B95D2F9 /* core.js */; };
 		B58E5C87207E00D700186D59 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 1A998E328C18A21AE98EBC0C /* main.js */; };
 		B5A4D32B206115BA001DAABD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5A4D32A206115BA001DAABD /* main.m */; };
 		B5A4D342206130A8001DAABD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5A4D341206130A8001DAABD /* Assets.xcassets */; };
-		B5F3DCC1208F15FB001D1B37 /* JSTimers.js in Resources */ = {isa = PBXBuildFile; fileRef = 1A998248AD215B68C3553C52 /* JSTimers.js */; };
+		B5C75B9921097E52004B8670 /* core.js in Resources */ = {isa = PBXBuildFile; fileRef = 1A998A29257BAA8169306F52 /* core.js */; };
+		B5C75B9A21097E52004B8670 /* JSTimers.js in Resources */ = {isa = PBXBuildFile; fileRef = 1A99854BF966DBE4F036DD75 /* JSTimers.js */; };
+		B5C75B9C21097E52004B8670 /* zrender.js in Resources */ = {isa = PBXBuildFile; fileRef = 1A998BAABCC9FC1C0FBF3855 /* zrender.js */; };
 		D404E54421CC6AB7F186978F /* libPods-AtomGraphics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1BB2E46AD0B51AB328CE854 /* libPods-AtomGraphics.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		10AB47E74C21EDA168593FD4 /* Pods-AtomGraphics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AtomGraphics.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AtomGraphics/Pods-AtomGraphics.debug.xcconfig"; sourceTree = "<group>"; };
-		1A998044D9F950AB6ACDD526 /* AtomGCanvasContext2d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomGCanvasContext2d.cpp; sourceTree = "<group>"; };
+		1A998002BFDF856620C0A6DB /* DisplayLink.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DisplayLink.cpp; sourceTree = "<group>"; };
+		1A9980083AFC24DCC296DC0B /* PlatformLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformLayer.h; sourceTree = "<group>"; };
+		1A99800E75C7F7A6280AA129 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		1A99805EBA0BFCC106E9A82C /* AtomGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomGraphics.h; sourceTree = "<group>"; };
 		1A99806A46AE94BF7B094252 /* AtomImageProvider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomImageProvider.cpp; sourceTree = "<group>"; };
-		1A99808AC5CF84CE2009EFA6 /* AtomLayerProperties.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomLayerProperties.mm; sourceTree = "<group>"; };
-		1A9980A25F2E164F7E376C2C /* AtomConnectionMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomConnectionMessage.h; sourceTree = "<group>"; };
-		1A9980A3FDA4BB8D15C5481C /* AtomGraphicsGCanvasModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomGraphicsGCanvasModule.h; sourceTree = "<group>"; };
-		1A9980B768A53722DF64E582 /* AtomNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomNode.cpp; sourceTree = "<group>"; };
+		1A99809F4A0387C4913BE053 /* AtomGCanvasContext2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomGCanvasContext2D.h; sourceTree = "<group>"; };
+		1A9980AFDACEB55AF12ED12B /* AtomJavaScriptCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomJavaScriptCore.h; sourceTree = "<group>"; };
 		1A9980B8A0AB70C7918429E1 /* AtomCanvasNodeCG.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomCanvasNodeCG.mm; sourceTree = "<group>"; };
 		1A9980B8AE8B3CE5BA5F4C0B /* MathUtil.inl */ = {isa = PBXFileReference; lastKnownFileType = file.inl; path = MathUtil.inl; sourceTree = "<group>"; };
 		1A9980D81A0C9C376D3C2078 /* MathUtilNeon64.inl */ = {isa = PBXFileReference; lastKnownFileType = file.inl; path = MathUtilNeon64.inl; sourceTree = "<group>"; };
+		1A99810D239A0ADDFDF80ECD /* GraphicsLayerCG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsLayerCG.h; sourceTree = "<group>"; };
+		1A998135063DA0233E0AF3E2 /* ScriptAnimationFrameController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScriptAnimationFrameController.cpp; sourceTree = "<group>"; };
 		1A99817FE3A8D2EF5C952760 /* Quaternion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Quaternion.cpp; sourceTree = "<group>"; };
+		1A9981AFF8BC02EBC51A9620 /* ChartGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartGroupView.h; sourceTree = "<group>"; };
 		1A9981F2FA75E281E8C76D35 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1A9981F3C592369BDC942475 /* AtomImageProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomImageProvider.h; sourceTree = "<group>"; };
 		1A9981F3E363D720195B5984 /* Quaternion.inl */ = {isa = PBXFileReference; lastKnownFileType = file.inl; path = Quaternion.inl; sourceTree = "<group>"; };
-		1A9981FAC37CB043F245177D /* AtomCanvasContext2d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomCanvasContext2d.cpp; sourceTree = "<group>"; };
+		1A9981FAC37CB043F245177D /* AtomCanvasContext2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomCanvasContext2D.cpp; sourceTree = "<group>"; };
+		1A99820A70ECAAB79EE97761 /* GraphicsLayerBackingStoreGCanvas.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GraphicsLayerBackingStoreGCanvas.mm; sourceTree = "<group>"; };
 		1A998231A84CD7F62B600213 /* AtomGCanvasNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomGCanvasNode.h; sourceTree = "<group>"; };
-		1A998247703E926E6A527BCF /* AtomPainter_iOSMetal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomPainter_iOSMetal.cpp; sourceTree = "<group>"; };
-		1A998248AD215B68C3553C52 /* JSTimers.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = JSTimers.js; sourceTree = "<group>"; };
-		1A998300B895E777D2DEBE2B /* AtomGCanvasLayerBackingStore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomGCanvasLayerBackingStore.mm; sourceTree = "<group>"; };
-		1A99833436306C559D74D407 /* AtomLayerRenderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomLayerRenderController.h; sourceTree = "<group>"; };
-		1A998364310496F6E27D9E62 /* AtomGraphicsCGLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomGraphicsCGLayer.mm; sourceTree = "<group>"; };
-		1A99836AB3DB2F638B7F2C5A /* AtomGraphicsCGLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomGraphicsCGLayer.h; sourceTree = "<group>"; };
+		1A99823AF29219ABF4ECA6D7 /* CanvasJavaScriptInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasJavaScriptInterface.h; sourceTree = "<group>"; };
+		1A998243571CCD3D53AC4875 /* DisplayRefreshMonitor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DisplayRefreshMonitor.cpp; sourceTree = "<group>"; };
+		1A998255B0D0E5A0A92469C7 /* TimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerManager.h; sourceTree = "<group>"; };
+		1A99829AF52F9E0B80A55F2C /* GraphicsLayerBackingStoreGCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsLayerBackingStoreGCanvas.h; sourceTree = "<group>"; };
+		1A9982A22148A15115021D74 /* AtomGCanvasContext2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomGCanvasContext2D.cpp; sourceTree = "<group>"; };
+		1A9982A4482115419A812A78 /* GraphicsLayerBackingStoreCG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsLayerBackingStoreCG.h; sourceTree = "<group>"; };
+		1A9982A66E515FBDBA7A3CEA /* AtomNodeTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomNodeTree.cpp; sourceTree = "<group>"; };
+		1A99830AB2530E1C42F38539 /* GraphicsContentFlushController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsContentFlushController.cpp; sourceTree = "<group>"; };
+		1A998314166438D5856EECDF /* DisplayLinkCA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayLinkCA.h; sourceTree = "<group>"; };
+		1A9983889298EA00DF1B2F06 /* AtomJSZRender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtomJSZRender.m; sourceTree = "<group>"; };
+		1A99838A38ADA855A31EFF9C /* AtomGCanvasEAGLLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomGCanvasEAGLLayer.mm; sourceTree = "<group>"; };
 		1A9983AAFE3EEBF086E0B86D /* Vec4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vec4.h; sourceTree = "<group>"; };
 		1A9983AB6445D2B35FE4CCD2 /* AtomGraphicsView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomGraphicsView.mm; sourceTree = "<group>"; };
-		1A9983D3747627D7C4B71D3F /* AtomJavaScriptCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomJavaScriptCore.h; sourceTree = "<group>"; };
-		1A9983D55D1D06CCDC599B1F /* AtomGraphicsGCanvasView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomGraphicsGCanvasView.mm; sourceTree = "<group>"; };
-		1A9983DD5962527BAF4B7816 /* AtomGraphicsGCanvasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomGraphicsGCanvasView.h; sourceTree = "<group>"; };
-		1A9983E035178C2E057DEFE1 /* AtomNodeTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomNodeTree.cpp; sourceTree = "<group>"; };
+		1A9983B5D8692247251D445F /* AtomGCanvasEAGLLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomGCanvasEAGLLayer.h; sourceTree = "<group>"; };
+		1A9983CA99751AEEEDA9E40D /* GraphicsLayerCG.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GraphicsLayerCG.mm; sourceTree = "<group>"; };
 		1A998401E71DECEC26A40B3A /* MathUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathUtil.h; sourceTree = "<group>"; };
+		1A998411C73FF519002D7045 /* GraphicsRunLoop.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GraphicsRunLoop.mm; sourceTree = "<group>"; };
 		1A9984247143F744A5460958 /* AtomPlatformDefine-ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AtomPlatformDefine-ios.h"; sourceTree = "<group>"; };
-		1A998427A018018A6438862D /* AtomLayerBackingStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomLayerBackingStore.h; sourceTree = "<group>"; };
-		1A998470583D4BE5C88ECE86 /* AtomPainter_iOSMetal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomPainter_iOSMetal.h; sourceTree = "<group>"; };
+		1A998492364E981FF3FF9A4E /* ScriptTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScriptTimer.cpp; sourceTree = "<group>"; };
 		1A9984AC6B692D235D63C632 /* AtomCanvasNodeCG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCanvasNodeCG.h; sourceTree = "<group>"; };
+		1A9984C2D203240C0A2B1DC3 /* GraphicsLayerBackingStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsLayerBackingStore.h; sourceTree = "<group>"; };
 		1A9984C74D4C96BDB39ABEFD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
-		1A9984E79D0DA05D39266158 /* AtomRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomRenderer.cpp; sourceTree = "<group>"; };
-		1A9984EBB7B7A5914B95D2F9 /* core.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = core.js; sourceTree = "<group>"; };
-		1A998518CBB7F5ED15EF8C67 /* AtomLayerBackingStoreCG.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomLayerBackingStoreCG.mm; sourceTree = "<group>"; };
 		1A9985301F95DA0505BB1D16 /* AtomPainterGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomPainterGL.h; sourceTree = "<group>"; };
+		1A9985324924956166DBB55F /* AtomJSZRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomJSZRender.h; sourceTree = "<group>"; };
+		1A99854BF966DBE4F036DD75 /* JSTimers.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = JSTimers.js; sourceTree = "<group>"; };
+		1A99855DD9FB6154F797DEB0 /* ThreadTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreadTimer.h; sourceTree = "<group>"; };
+		1A9985898213D9D4D7B2488F /* GraphicsPage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsPage.cpp; sourceTree = "<group>"; };
 		1A9985A69E08E9FD1D30C74B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1A9985DA85B948D4E4A1FD6D /* Mat4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mat4.h; sourceTree = "<group>"; };
-		1A99862F2AB3B3D76D7919B9 /* AtomLayerBackingStoreCG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomLayerBackingStoreCG.h; sourceTree = "<group>"; };
-		1A99863E5DDDB638996B6D0A /* AtomPainter_iOSCoreGraphic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomPainter_iOSCoreGraphic.h; sourceTree = "<group>"; };
-		1A99864A56D8FE38AF8DA0E8 /* AtomGraphicsContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomGraphicsContext.cpp; sourceTree = "<group>"; };
+		1A99864104427B314D52045D /* AtomNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomNode.cpp; sourceTree = "<group>"; };
+		1A99864293F0D75B672D5A98 /* ScriptTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptTimer.h; sourceTree = "<group>"; };
+		1A998673656061480EA8B199 /* PlatformLayerCA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformLayerCA.h; sourceTree = "<group>"; };
+		1A99869CA0AA056B3CF3322C /* RequestAnimationCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestAnimationCallback.h; sourceTree = "<group>"; };
+		1A9986A2E6E92C59371FC362 /* DisplayLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayLink.h; sourceTree = "<group>"; };
+		1A9986A6847592198799BAA6 /* GraphicsLayerBackingStoreCG.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GraphicsLayerBackingStoreCG.mm; sourceTree = "<group>"; };
 		1A9986FFD12DB9D1C1F977F0 /* AtomMathBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomMathBase.h; sourceTree = "<group>"; };
-		1A99874F0003A5A061954F49 /* AtomJavaScriptCore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomJavaScriptCore.mm; sourceTree = "<group>"; };
-		1A9987638ACA3FCBA74DF0A0 /* AtomRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomRenderer.h; sourceTree = "<group>"; };
+		1A99879322BD7F6D0BED8EDD /* PlatformLayerCAEAGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformLayerCAEAGL.h; sourceTree = "<group>"; };
 		1A9987B59B1481B73FD97A5D /* MathUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MathUtil.cpp; sourceTree = "<group>"; };
+		1A9987C6FCD948DBF343EF91 /* ChartGroupView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ChartGroupView.mm; sourceTree = "<group>"; };
 		1A9987CE809CA131914BD026 /* AtomCanvasGradient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomCanvasGradient.cpp; sourceTree = "<group>"; };
 		1A9987D90FD08DE72DC96D9D /* AtomPainterGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomPainterGL.cpp; sourceTree = "<group>"; };
-		1A9988095ED789A6643B3FE6 /* AtomPainter_AndroidCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomPainter_AndroidCanvas.cpp; sourceTree = "<group>"; };
 		1A9988169785B9DAF9643495 /* AtomMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomMath.h; sourceTree = "<group>"; };
 		1A9988226FE916CB8550B3C9 /* Vec3.inl */ = {isa = PBXFileReference; lastKnownFileType = file.inl; path = Vec3.inl; sourceTree = "<group>"; };
-		1A998823EAC685CC98614861 /* AtomImageBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomImageBuffer.cpp; sourceTree = "<group>"; };
-		1A99884E16D42C08BFBF817D /* AtomImageBufferCG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomImageBufferCG.h; sourceTree = "<group>"; };
-		1A998861AB1BE20898397278 /* AtomCanvasContext2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCanvasContext2d.h; sourceTree = "<group>"; };
+		1A99883A01372BD3A64EBC25 /* GraphicsThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsThread.h; sourceTree = "<group>"; };
+		1A99884E16D42C08BFBF817D /* ImageBufferCG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageBufferCG.h; sourceTree = "<group>"; };
+		1A998861AB1BE20898397278 /* AtomCanvasContext2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCanvasContext2D.h; sourceTree = "<group>"; };
+		1A99886B4A93C93EAC50421B /* GraphicsLayerGCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsLayerGCanvas.cpp; sourceTree = "<group>"; };
+		1A998890024E1A15C2A6628F /* Timer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Timer.mm; sourceTree = "<group>"; };
 		1A998893DE6BADDEF1608D78 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1A998894A04352BDEC9C21D9 /* AtomCanvasNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCanvasNode.h; sourceTree = "<group>"; };
 		1A99889DC6C71E7B503098C1 /* AtomCanvasContext2dCG.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomCanvasContext2dCG.mm; sourceTree = "<group>"; };
+		1A9988A30605319F1F139A29 /* AtomJavaScriptCore.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomJavaScriptCore.mm; sourceTree = "<group>"; };
+		1A9988BE4FE6733D271109BC /* CanvasContextJavaScriptInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CanvasContextJavaScriptInterface.mm; sourceTree = "<group>"; };
 		1A9988D2F6066A14E369F78C /* AtomCanvasContextBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCanvasContextBase.h; sourceTree = "<group>"; };
 		1A9988E2E453EB7EB4E05351 /* RefCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefCount.h; sourceTree = "<group>"; };
+		1A9988F0871AFD56CB529643 /* AtomGCanvasContext2D.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomGCanvasContext2D.mm; sourceTree = "<group>"; };
 		1A9988FCAF8188A7DF16D7E3 /* Vec2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vec2.cpp; sourceTree = "<group>"; };
-		1A99890BA552C6F911FFA5A5 /* AtomGCanvasContext2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomGCanvasContext2d.h; sourceTree = "<group>"; };
 		1A9989149E478D5E29D07B1B /* MathUtilNeon.inl */ = {isa = PBXFileReference; lastKnownFileType = file.inl; path = MathUtilNeon.inl; sourceTree = "<group>"; };
 		1A998929B0FEC683C28A3B21 /* AtomPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomPath.h; sourceTree = "<group>"; };
 		1A99893FBF3AE387E9C78E37 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1A9989595CA6880EBFE91E70 /* GraphicsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsLayer.h; sourceTree = "<group>"; };
 		1A998960AFEC261525C95624 /* AtomPainter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomPainter.cpp; sourceTree = "<group>"; };
-		1A99896D088BF89DF0427C7A /* AtomGraphicsGCanvasModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomGraphicsGCanvasModule.mm; sourceTree = "<group>"; };
+		1A99897E27AE3CD6B3BFC364 /* TimerManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimerManager.cpp; sourceTree = "<group>"; };
 		1A99898E53D10B80F4602D7D /* Vec3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vec3.cpp; sourceTree = "<group>"; };
-		1A9989B33152F6D19AE5910A /* AtomContentFlushController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomContentFlushController.mm; sourceTree = "<group>"; };
 		1A9989B4A8083E50A807D33B /* Vec3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vec3.h; sourceTree = "<group>"; };
 		1A9989BBC8CE3897B3C6B40A /* Quaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quaternion.h; sourceTree = "<group>"; };
 		1A9989E16FCAB2C06F825CE7 /* AtomGCanvasNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomGCanvasNode.cpp; sourceTree = "<group>"; };
 		1A9989E327CBF901C6006081 /* AtomRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomRef.h; sourceTree = "<group>"; };
-		1A998A00A17BF121099ADF0C /* AtomCanvasContextGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomCanvasContextGL.cpp; sourceTree = "<group>"; };
-		1A998A077850004A323773CF /* AtomLayerProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomLayerProperties.h; sourceTree = "<group>"; };
-		1A998A3BF97E1813AD65E9C6 /* AtomConnectionMessage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomConnectionMessage.mm; sourceTree = "<group>"; };
-		1A998A6E524CE124B4263A67 /* AtomLayerRenderController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomLayerRenderController.mm; sourceTree = "<group>"; };
+		1A998A00A17BF121099ADF0C /* AtomCanvasContext3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomCanvasContext3D.cpp; sourceTree = "<group>"; };
+		1A998A233CFC9DECE7A79D67 /* RequestAnimationCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RequestAnimationCallback.cpp; sourceTree = "<group>"; };
+		1A998A29257BAA8169306F52 /* core.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = core.js; sourceTree = "<group>"; };
+		1A998A684BAA79B67A82D918 /* CanvasJavaScriptInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CanvasJavaScriptInterface.mm; sourceTree = "<group>"; };
 		1A998A81A6F8C05EEA2ED88A /* AtomRef.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomRef.cpp; sourceTree = "<group>"; };
-		1A998A847D338B933B926B65 /* AtomNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomNode.h; sourceTree = "<group>"; };
-		1A998ACC2E14B78D55B3DC70 /* AtomPainter_iOSCoreGraphic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomPainter_iOSCoreGraphic.cpp; sourceTree = "<group>"; };
-		1A998ADC4720E98D5EAA6C21 /* AtomJSTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomJSTimer.h; sourceTree = "<group>"; };
+		1A998A8857362B974B5581D2 /* GraphicsContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsContext.h; sourceTree = "<group>"; };
+		1A998A8C6C294E38FEA18938 /* GraphicsLayerBackingStore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsLayerBackingStore.cpp; sourceTree = "<group>"; };
+		1A998AB5F911BE743F15B14B /* GraphicsPageManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsPageManager.cpp; sourceTree = "<group>"; };
+		1A998ABA63935A39076F785B /* GraphicsPageContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsPageContext.h; sourceTree = "<group>"; };
 		1A998AF876A3F084E4ED00C2 /* AtomPlatformConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomPlatformConfig.h; sourceTree = "<group>"; };
-		1A998B43E5891A14C0D66822 /* AtomTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomTimer.h; sourceTree = "<group>"; };
+		1A998B135AD30EFE1BA77533 /* GraphicsThread.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GraphicsThread.mm; sourceTree = "<group>"; };
+		1A998B4209460B298076EE0C /* GraphicsLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsLayer.cpp; sourceTree = "<group>"; };
 		1A998B60FB90DF57F6F51821 /* AtomGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomGeometry.h; sourceTree = "<group>"; };
-		1A998B6604098EB87FE21852 /* AtomTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomTimer.cpp; sourceTree = "<group>"; };
+		1A998B677368DCDDD46F67A1 /* DisplayRefreshMonitorClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayRefreshMonitorClient.h; sourceTree = "<group>"; };
+		1A998BA37B5BF711ACA440B5 /* CanvasContextJavaScriptInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasContextJavaScriptInterface.h; sourceTree = "<group>"; };
+		1A998BAABCC9FC1C0FBF3855 /* zrender.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = zrender.js; sourceTree = "<group>"; };
+		1A998BB01079B2D00FE8532C /* GraphicsPageContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsPageContext.cpp; sourceTree = "<group>"; };
 		1A998BE68A138F600984D186 /* AtomCanvasGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCanvasGradient.h; sourceTree = "<group>"; };
 		1A998BFD377242DAAA7CA57D /* AtomCanvasContextBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomCanvasContextBase.cpp; sourceTree = "<group>"; };
 		1A998C1A4E3542C27DA30030 /* AtomCanvasPattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomCanvasPattern.cpp; sourceTree = "<group>"; };
-		1A998C1ECA883D9D9AC7D33B /* AtomGraphicsContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomGraphicsContext.h; sourceTree = "<group>"; };
+		1A998C1B5E94686F6EE5C8D0 /* DisplayLinkCA.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DisplayLinkCA.mm; sourceTree = "<group>"; };
+		1A998C360C40132BED528AA3 /* DisplayRefreshMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayRefreshMonitor.h; sourceTree = "<group>"; };
 		1A998C5367EADD330302E2AC /* AtomTimerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomTimerBase.h; sourceTree = "<group>"; };
 		1A998C59F221E7110CB6DC77 /* AtomGraphicsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomGraphicsView.h; sourceTree = "<group>"; };
+		1A998C760470B7E6C4BFA34B /* DisplayRefreshMonitorClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DisplayRefreshMonitorClient.cpp; sourceTree = "<group>"; };
 		1A998C7C25287D00B8B2BE9E /* AtomTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomTypes.cpp; sourceTree = "<group>"; };
 		1A998C886D27AD06CED65793 /* AtomGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomGeometry.cpp; sourceTree = "<group>"; };
-		1A998CD9744F8494222D5926 /* AtomMessageReceiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomMessageReceiver.cpp; sourceTree = "<group>"; };
+		1A998CB2987EEAA30B3D4FA8 /* GraphicsPageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsPageManager.h; sourceTree = "<group>"; };
+		1A998CDB65B313F2DC9085F5 /* GraphicsContextCG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsContextCG.h; sourceTree = "<group>"; };
 		1A998CF27B229634588AB455 /* Mat4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mat4.cpp; sourceTree = "<group>"; };
-		1A998D2AE8F6E9B4196D465F /* AtomGCanvasLayerBackingStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomGCanvasLayerBackingStore.h; sourceTree = "<group>"; };
+		1A998CF59BC6C83C04C38D14 /* ScriptAnimationFrameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptAnimationFrameController.h; sourceTree = "<group>"; };
+		1A998CF76BDB6571BD21D8F1 /* GraphicsRunLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsRunLoop.h; sourceTree = "<group>"; };
 		1A998D4163B23C3526B4B1E9 /* AtomPainter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomPainter.h; sourceTree = "<group>"; };
 		1A998D4EAD821431E9005D51 /* MathUtilSSE.inl */ = {isa = PBXFileReference; lastKnownFileType = file.inl; path = MathUtilSSE.inl; sourceTree = "<group>"; };
-		1A998D6EF337615C6CB2FBEC /* AtomConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomConnection.h; sourceTree = "<group>"; };
-		1A998D748BD770C59A81D3B6 /* AtomImageBufferCG.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomImageBufferCG.cpp; sourceTree = "<group>"; };
-		1A998D85598D47D49C341900 /* AtomNodeTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomNodeTree.h; sourceTree = "<group>"; };
+		1A998D748BD770C59A81D3B6 /* ImageBufferCG.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageBufferCG.mm; sourceTree = "<group>"; };
+		1A998D773D7222CDA5C5C4D3 /* GraphicsLayerGCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsLayerGCanvas.h; sourceTree = "<group>"; };
 		1A998D943FF3E2F1458BF114 /* AtomCanvasNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomCanvasNode.cpp; sourceTree = "<group>"; };
-		1A998DC2A15DAFDDEB548D02 /* AtomLayerTransaction.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomLayerTransaction.mm; sourceTree = "<group>"; };
-		1A998DE7313C6645746C297B /* AtomPainter_AndroidCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomPainter_AndroidCanvas.h; sourceTree = "<group>"; };
+		1A998DC90CE8C711F420F128 /* AtomNodeTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomNodeTree.h; sourceTree = "<group>"; };
 		1A998DF3E124384E0C27267E /* Vec4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vec4.cpp; sourceTree = "<group>"; };
 		1A998E065434A8FBA1D90BF9 /* AtomPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomPath.cpp; sourceTree = "<group>"; };
+		1A998E0C274DF2D5C04BF3A4 /* AtomNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomNode.h; sourceTree = "<group>"; };
+		1A998E12CEA0E4DD8E9A728E /* GraphicsLayerBackingStoreGCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphicsLayerBackingStoreGCanvas.cpp; sourceTree = "<group>"; };
 		1A998E18B7FFA6728827A484 /* Vec4.inl */ = {isa = PBXFileReference; lastKnownFileType = file.inl; path = Vec4.inl; sourceTree = "<group>"; };
-		1A998E244EA54034FD12136E /* AtomMessageReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomMessageReceiver.h; sourceTree = "<group>"; };
 		1A998E328C18A21AE98EBC0C /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		1A998E32C985B27631BC28FC /* AtomCanvasPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCanvasPattern.h; sourceTree = "<group>"; };
 		1A998E34C023B05175D34A47 /* AtomTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomTypes.h; sourceTree = "<group>"; };
 		1A998E4E53564B5B56C24ED1 /* Mat4.inl */ = {isa = PBXFileReference; lastKnownFileType = file.inl; path = Mat4.inl; sourceTree = "<group>"; };
-		1A998E7800937957B3067EF8 /* AtomCanvasContextGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCanvasContextGL.h; sourceTree = "<group>"; };
+		1A998E7800937957B3067EF8 /* AtomCanvasContext3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCanvasContext3D.h; sourceTree = "<group>"; };
 		1A998E7F800CA5DB837E6267 /* FPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPSLabel.h; sourceTree = "<group>"; };
-		1A998EA6CE539A69F172B6D5 /* AtomLayerTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomLayerTransaction.h; sourceTree = "<group>"; };
-		1A998EA84ED1376266CE6034 /* AtomContentFlushController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomContentFlushController.h; sourceTree = "<group>"; };
 		1A998EAB42079481E9734A9A /* Vec2.inl */ = {isa = PBXFileReference; lastKnownFileType = file.inl; path = Vec2.inl; sourceTree = "<group>"; };
 		1A998EAFBA5B3ABFDD61C5AD /* AtomGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomGraphics.cpp; sourceTree = "<group>"; };
+		1A998EC14B86A4C821431B0C /* AtomJSTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomJSTimer.h; sourceTree = "<group>"; };
+		1A998EC89C0641776CAB7C91 /* AtomJSTimer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomJSTimer.mm; sourceTree = "<group>"; };
+		1A998EDE8FD2340F8944C070 /* GraphicsContentFlushController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GraphicsContentFlushController.mm; sourceTree = "<group>"; };
 		1A998EE44007E712AE9A1CEA /* AtomMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomMacros.h; sourceTree = "<group>"; };
-		1A998EFFF9A846105586681A /* AtomConnection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomConnection.mm; sourceTree = "<group>"; };
+		1A998EEE7D022F3CA99902F6 /* ThreadTimer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ThreadTimer.mm; sourceTree = "<group>"; };
+		1A998F25ADBB3041384B2B22 /* GraphicsContextCG.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GraphicsContextCG.mm; sourceTree = "<group>"; };
 		1A998F503EA1AF56218BB479 /* AtomCanvasContext2dCG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCanvasContext2dCG.h; sourceTree = "<group>"; };
-		1A998F77CFAD49177EBED27E /* AtomImageBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomImageBuffer.h; sourceTree = "<group>"; };
-		1A998FB031A633EF6FB56C1F /* AtomJSTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtomJSTimer.m; sourceTree = "<group>"; };
+		1A998F77CFAD49177EBED27E /* ImageBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageBuffer.h; sourceTree = "<group>"; };
 		1A998FC25A2587955C33435B /* FPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPSLabel.m; sourceTree = "<group>"; };
 		1A998FCA0666D2CE7EBEEFC3 /* Vec2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vec2.h; sourceTree = "<group>"; };
+		1A998FDA47704E5A580A882D /* GraphicsPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsPage.h; sourceTree = "<group>"; };
+		1A998FFBDA91D84AFF28ED16 /* GraphicsContentFlushController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsContentFlushController.h; sourceTree = "<group>"; };
+		1CC970C7038B884F567F2DB6 /* AtomConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomConvert.h; sourceTree = "<group>"; };
+		1CC973E466E5991C83F451F0 /* AtomEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomEncode.h; sourceTree = "<group>"; };
+		1CC974E65FA13B71277A34AE /* AtomConvert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomConvert.cpp; sourceTree = "<group>"; };
+		1CC977EBBB9FCAB10B36BD77 /* AtomCanvasImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomCanvasImage.cpp; sourceTree = "<group>"; };
+		1CC97A1B316B71D44FDB3FA4 /* AtomCanvasFillStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCanvasFillStyle.h; sourceTree = "<group>"; };
+		1CC97B4A84DA9D831A274508 /* AtomCanvasImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCanvasImageData.h; sourceTree = "<group>"; };
+		1CC97D024576703F96E1281C /* AtomEncode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomEncode.cpp; sourceTree = "<group>"; };
+		1CC97DE98AABED4038A6B46E /* AtomCanvasImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCanvasImage.h; sourceTree = "<group>"; };
+		1CC97EBB0B8859691B232457 /* AtomCanvasImageData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AtomCanvasImageData.cpp; sourceTree = "<group>"; };
 		6260B2A056CF48662A2CD126 /* Pods-AtomGraphics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AtomGraphics.release.xcconfig"; path = "Pods/Target Support Files/Pods-AtomGraphics/Pods-AtomGraphics.release.xcconfig"; sourceTree = "<group>"; };
 		B50FC4C9207DD72400AA1FDF /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		B59FAB121FBC2B8500417328 /* AtomGraphics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtomGraphics.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,6 +318,38 @@
 			path = math;
 			sourceTree = "<group>";
 		};
+		1A9981E78452E2FF091D6518 /* js */ = {
+			isa = PBXGroup;
+			children = (
+				1A998A29257BAA8169306F52 /* core.js */,
+				1A99854BF966DBE4F036DD75 /* JSTimers.js */,
+				1A998BAABCC9FC1C0FBF3855 /* zrender.js */,
+			);
+			path = js;
+			sourceTree = "<group>";
+		};
+		1A9981F715342142B4D9A310 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				1A9982A4482115419A812A78 /* GraphicsLayerBackingStoreCG.h */,
+				1A998C1B5E94686F6EE5C8D0 /* DisplayLinkCA.mm */,
+				1A998F25ADBB3041384B2B22 /* GraphicsContextCG.mm */,
+				1A9983CA99751AEEEDA9E40D /* GraphicsLayerCG.mm */,
+				1A99810D239A0ADDFDF80ECD /* GraphicsLayerCG.h */,
+				1A998CDB65B313F2DC9085F5 /* GraphicsContextCG.h */,
+				1A99820A70ECAAB79EE97761 /* GraphicsLayerBackingStoreGCanvas.mm */,
+				1A99879322BD7F6D0BED8EDD /* PlatformLayerCAEAGL.h */,
+				1A998314166438D5856EECDF /* DisplayLinkCA.h */,
+				1A998673656061480EA8B199 /* PlatformLayerCA.h */,
+				1A998EDE8FD2340F8944C070 /* GraphicsContentFlushController.mm */,
+				1A9986A6847592198799BAA6 /* GraphicsLayerBackingStoreCG.mm */,
+				1A99838A38ADA855A31EFF9C /* AtomGCanvasEAGLLayer.mm */,
+				1A9988F0871AFD56CB529643 /* AtomGCanvasContext2D.mm */,
+				1A9983B5D8692247251D445F /* AtomGCanvasEAGLLayer.h */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
 		1A99823B00D52E5BCC471FF1 /* graphics */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,16 +359,34 @@
 				1A9981F3C592369BDC942475 /* AtomImageProvider.h */,
 				1A9987D90FD08DE72DC96D9D /* AtomPainterGL.cpp */,
 				1A9985301F95DA0505BB1D16 /* AtomPainterGL.h */,
-				1A998ACC2E14B78D55B3DC70 /* AtomPainter_iOSCoreGraphic.cpp */,
-				1A99863E5DDDB638996B6D0A /* AtomPainter_iOSCoreGraphic.h */,
-				1A9988095ED789A6643B3FE6 /* AtomPainter_AndroidCanvas.cpp */,
-				1A998DE7313C6645746C297B /* AtomPainter_AndroidCanvas.h */,
-				1A998247703E926E6A527BCF /* AtomPainter_iOSMetal.cpp */,
-				1A998470583D4BE5C88ECE86 /* AtomPainter_iOSMetal.h */,
 				1A998E065434A8FBA1D90BF9 /* AtomPath.cpp */,
 				1A998929B0FEC683C28A3B21 /* AtomPath.h */,
-				1A998823EAC685CC98614861 /* AtomImageBuffer.cpp */,
-				1A998F77CFAD49177EBED27E /* AtomImageBuffer.h */,
+				1A998F77CFAD49177EBED27E /* ImageBuffer.h */,
+				1A998A8857362B974B5581D2 /* GraphicsContext.h */,
+				1A998B4209460B298076EE0C /* GraphicsLayer.cpp */,
+				1A9989595CA6880EBFE91E70 /* GraphicsLayer.h */,
+				1A9984C2D203240C0A2B1DC3 /* GraphicsLayerBackingStore.h */,
+				1A998A8C6C294E38FEA18938 /* GraphicsLayerBackingStore.cpp */,
+				1A99830AB2530E1C42F38539 /* GraphicsContentFlushController.cpp */,
+				1A998C760470B7E6C4BFA34B /* DisplayRefreshMonitorClient.cpp */,
+				1A998243571CCD3D53AC4875 /* DisplayRefreshMonitor.cpp */,
+				1A998B677368DCDDD46F67A1 /* DisplayRefreshMonitorClient.h */,
+				1A998C360C40132BED528AA3 /* DisplayRefreshMonitor.h */,
+				1A9986A2E6E92C59371FC362 /* DisplayLink.h */,
+				1A998FDA47704E5A580A882D /* GraphicsPage.h */,
+				1A9985898213D9D4D7B2488F /* GraphicsPage.cpp */,
+				1A998AB5F911BE743F15B14B /* GraphicsPageManager.cpp */,
+				1A998CB2987EEAA30B3D4FA8 /* GraphicsPageManager.h */,
+				1A9980083AFC24DCC296DC0B /* PlatformLayer.h */,
+				1A99886B4A93C93EAC50421B /* GraphicsLayerGCanvas.cpp */,
+				1A998D773D7222CDA5C5C4D3 /* GraphicsLayerGCanvas.h */,
+				1A998E12CEA0E4DD8E9A728E /* GraphicsLayerBackingStoreGCanvas.cpp */,
+				1A99829AF52F9E0B80A55F2C /* GraphicsLayerBackingStoreGCanvas.h */,
+				1A998FFBDA91D84AFF28ED16 /* GraphicsContentFlushController.h */,
+				1A9981F715342142B4D9A310 /* ios */,
+				1A998002BFDF856620C0A6DB /* DisplayLink.cpp */,
+				1A998BB01079B2D00FE8532C /* GraphicsPageContext.cpp */,
+				1A998ABA63935A39076F785B /* GraphicsPageContext.h */,
 			);
 			path = graphics;
 			sourceTree = "<group>";
@@ -298,28 +400,10 @@
 				1A9981F2FA75E281E8C76D35 /* ViewController.m */,
 				1A998FC25A2587955C33435B /* FPSLabel.m */,
 				1A998E7F800CA5DB837E6267 /* FPSLabel.h */,
+				1A9987C6FCD948DBF343EF91 /* ChartGroupView.mm */,
+				1A9981AFF8BC02EBC51A9620 /* ChartGroupView.h */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		1A9982FB0CB5B693EE33CC99 /* js */ = {
-			isa = PBXGroup;
-			children = (
-				1A99874F0003A5A061954F49 /* AtomJavaScriptCore.mm */,
-				1A9983D3747627D7C4B71D3F /* AtomJavaScriptCore.h */,
-				1A998FB031A633EF6FB56C1F /* AtomJSTimer.m */,
-				1A998ADC4720E98D5EAA6C21 /* AtomJSTimer.h */,
-			);
-			path = js;
-			sourceTree = "<group>";
-		};
-		1A998368F6F70579EE510251 /* thread */ = {
-			isa = PBXGroup;
-			children = (
-				1A998B6604098EB87FE21852 /* AtomTimer.cpp */,
-				1A998B43E5891A14C0D66822 /* AtomTimer.h */,
-			);
-			path = thread;
 			sourceTree = "<group>";
 		};
 		1A9983CFF6C0C5E732B615AD /* base */ = {
@@ -331,26 +415,13 @@
 				1A998C7C25287D00B8B2BE9E /* AtomTypes.cpp */,
 				1A998E34C023B05175D34A47 /* AtomTypes.h */,
 				1A9988E2E453EB7EB4E05351 /* RefCount.h */,
-				1A99864A56D8FE38AF8DA0E8 /* AtomGraphicsContext.cpp */,
-				1A998C1ECA883D9D9AC7D33B /* AtomGraphicsContext.h */,
 				1A998C5367EADD330302E2AC /* AtomTimerBase.h */,
+				1CC97D024576703F96E1281C /* AtomEncode.cpp */,
+				1CC973E466E5991C83F451F0 /* AtomEncode.h */,
+				1CC974E65FA13B71277A34AE /* AtomConvert.cpp */,
+				1CC970C7038B884F567F2DB6 /* AtomConvert.h */,
 			);
 			path = base;
-			sourceTree = "<group>";
-		};
-		1A9983E5E1259FC6EDB150F6 /* GCanvas */ = {
-			isa = PBXGroup;
-			children = (
-				1A99896D088BF89DF0427C7A /* AtomGraphicsGCanvasModule.mm */,
-				1A9983DD5962527BAF4B7816 /* AtomGraphicsGCanvasView.h */,
-				1A9980A3FDA4BB8D15C5481C /* AtomGraphicsGCanvasModule.h */,
-				1A9983D55D1D06CCDC599B1F /* AtomGraphicsGCanvasView.mm */,
-				1A998300B895E777D2DEBE2B /* AtomGCanvasLayerBackingStore.mm */,
-				1A998D2AE8F6E9B4196D465F /* AtomGCanvasLayerBackingStore.h */,
-				1A998044D9F950AB6ACDD526 /* AtomGCanvasContext2d.cpp */,
-				1A99890BA552C6F911FFA5A5 /* AtomGCanvasContext2d.h */,
-			);
-			path = GCanvas;
 			sourceTree = "<group>";
 		};
 		1A9984DC4B6C2D5E120B451E /* platform */ = {
@@ -367,10 +438,10 @@
 			children = (
 				1A998D943FF3E2F1458BF114 /* AtomCanvasNode.cpp */,
 				1A998894A04352BDEC9C21D9 /* AtomCanvasNode.h */,
-				1A9981FAC37CB043F245177D /* AtomCanvasContext2d.cpp */,
-				1A998861AB1BE20898397278 /* AtomCanvasContext2d.h */,
-				1A998A00A17BF121099ADF0C /* AtomCanvasContextGL.cpp */,
-				1A998E7800937957B3067EF8 /* AtomCanvasContextGL.h */,
+				1A9981FAC37CB043F245177D /* AtomCanvasContext2D.cpp */,
+				1A998861AB1BE20898397278 /* AtomCanvasContext2D.h */,
+				1A998A00A17BF121099ADF0C /* AtomCanvasContext3D.cpp */,
+				1A998E7800937957B3067EF8 /* AtomCanvasContext3D.h */,
 				1A9987CE809CA131914BD026 /* AtomCanvasGradient.cpp */,
 				1A998BE68A138F600984D186 /* AtomCanvasGradient.h */,
 				1A998C1A4E3542C27DA30030 /* AtomCanvasPattern.cpp */,
@@ -379,49 +450,85 @@
 				1A9988D2F6066A14E369F78C /* AtomCanvasContextBase.h */,
 				1A998231A84CD7F62B600213 /* AtomGCanvasNode.h */,
 				1A9989E16FCAB2C06F825CE7 /* AtomGCanvasNode.cpp */,
+				1CC97A1B316B71D44FDB3FA4 /* AtomCanvasFillStyle.h */,
+				1CC977EBBB9FCAB10B36BD77 /* AtomCanvasImage.cpp */,
+				1CC97DE98AABED4038A6B46E /* AtomCanvasImage.h */,
+				1CC97EBB0B8859691B232457 /* AtomCanvasImageData.cpp */,
+				1CC97B4A84DA9D831A274508 /* AtomCanvasImageData.h */,
+				1A99809F4A0387C4913BE053 /* AtomGCanvasContext2D.h */,
+				1A9982A22148A15115021D74 /* AtomGCanvasContext2D.cpp */,
 			);
 			path = canvas;
+			sourceTree = "<group>";
+		};
+		1A9985873577C6C63724A514 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				1A9980AFDACEB55AF12ED12B /* AtomJavaScriptCore.h */,
+				1A9988A30605319F1F139A29 /* AtomJavaScriptCore.mm */,
+				1A9983889298EA00DF1B2F06 /* AtomJSZRender.m */,
+				1A998EC14B86A4C821431B0C /* AtomJSTimer.h */,
+				1A998EC89C0641776CAB7C91 /* AtomJSTimer.mm */,
+				1A99823AF29219ABF4ECA6D7 /* CanvasJavaScriptInterface.h */,
+				1A998A684BAA79B67A82D918 /* CanvasJavaScriptInterface.mm */,
+				1A9985324924956166DBB55F /* AtomJSZRender.h */,
+				1A998BA37B5BF711ACA440B5 /* CanvasContextJavaScriptInterface.h */,
+				1A9988BE4FE6733D271109BC /* CanvasContextJavaScriptInterface.mm */,
+			);
+			path = ios;
 			sourceTree = "<group>";
 		};
 		1A99866A2B107DAC207E78F5 /* javascript */ = {
 			isa = PBXGroup;
 			children = (
-				1A9984EBB7B7A5914B95D2F9 /* core.js */,
-				1A998248AD215B68C3553C52 /* JSTimers.js */,
+				1A9981E78452E2FF091D6518 /* js */,
+				1A99869CA0AA056B3CF3322C /* RequestAnimationCallback.h */,
+				1A998A233CFC9DECE7A79D67 /* RequestAnimationCallback.cpp */,
+				1A998135063DA0233E0AF3E2 /* ScriptAnimationFrameController.cpp */,
+				1A998CF59BC6C83C04C38D14 /* ScriptAnimationFrameController.h */,
+				1A998492364E981FF3FF9A4E /* ScriptTimer.cpp */,
+				1A99864293F0D75B672D5A98 /* ScriptTimer.h */,
+				1A9985873577C6C63724A514 /* ios */,
 			);
 			path = javascript;
+			sourceTree = "<group>";
+		};
+		1A9988445D27B05EAF6CEA17 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				1A998B135AD30EFE1BA77533 /* GraphicsThread.mm */,
+				1A998EEE7D022F3CA99902F6 /* ThreadTimer.mm */,
+				1A998411C73FF519002D7045 /* GraphicsRunLoop.mm */,
+				1A998890024E1A15C2A6628F /* Timer.mm */,
+				1A99897E27AE3CD6B3BFC364 /* TimerManager.cpp */,
+				1A998255B0D0E5A0A92469C7 /* TimerManager.h */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		1A99889F820E7AA650B79543 /* thread */ = {
+			isa = PBXGroup;
+			children = (
+				1A99800E75C7F7A6280AA129 /* Timer.h */,
+				1A99855DD9FB6154F797DEB0 /* ThreadTimer.h */,
+				1A99883A01372BD3A64EBC25 /* GraphicsThread.h */,
+				1A9988445D27B05EAF6CEA17 /* ios */,
+				1A998CF76BDB6571BD21D8F1 /* GraphicsRunLoop.h */,
+			);
+			path = thread;
 			sourceTree = "<group>";
 		};
 		1A998AEC494353D909EA0E46 /* CG */ = {
 			isa = PBXGroup;
 			children = (
-				1A99833436306C559D74D407 /* AtomLayerRenderController.h */,
-				1A998A6E524CE124B4263A67 /* AtomLayerRenderController.mm */,
-				1A99808AC5CF84CE2009EFA6 /* AtomLayerProperties.mm */,
-				1A998A077850004A323773CF /* AtomLayerProperties.h */,
-				1A998DC2A15DAFDDEB548D02 /* AtomLayerTransaction.mm */,
-				1A998EA6CE539A69F172B6D5 /* AtomLayerTransaction.h */,
-				1A998518CBB7F5ED15EF8C67 /* AtomLayerBackingStoreCG.mm */,
-				1A99862F2AB3B3D76D7919B9 /* AtomLayerBackingStoreCG.h */,
-				1A998364310496F6E27D9E62 /* AtomGraphicsCGLayer.mm */,
-				1A99836AB3DB2F638B7F2C5A /* AtomGraphicsCGLayer.h */,
 				1A998F503EA1AF56218BB479 /* AtomCanvasContext2dCG.h */,
 				1A9984AC6B692D235D63C632 /* AtomCanvasNodeCG.h */,
-				1A998D748BD770C59A81D3B6 /* AtomImageBufferCG.cpp */,
-				1A99884E16D42C08BFBF817D /* AtomImageBufferCG.h */,
+				1A998D748BD770C59A81D3B6 /* ImageBufferCG.mm */,
+				1A99884E16D42C08BFBF817D /* ImageBufferCG.h */,
 				1A9980B8A0AB70C7918429E1 /* AtomCanvasNodeCG.mm */,
 				1A99889DC6C71E7B503098C1 /* AtomCanvasContext2dCG.mm */,
 			);
 			path = CG;
-			sourceTree = "<group>";
-		};
-		1A998B008A3F98B4C4662508 /* base-renderer */ = {
-			isa = PBXGroup;
-			children = (
-				1A9987638ACA3FCBA74DF0A0 /* AtomRenderer.h */,
-				1A9984E79D0DA05D39266158 /* AtomRenderer.cpp */,
-			);
-			path = "base-renderer";
 			sourceTree = "<group>";
 		};
 		1A998C1AF3A8A32899F551CD /* Resources */ = {
@@ -437,14 +544,13 @@
 			children = (
 				1A9983CFF6C0C5E732B615AD /* base */,
 				1A99816D380B4706F5449368 /* math */,
-				1A998F713E84461513F5BB6D /* base-node */,
-				1A998B008A3F98B4C4662508 /* base-renderer */,
 				1A99805EBA0BFCC106E9A82C /* AtomGraphics.h */,
 				1A998EAFBA5B3ABFDD61C5AD /* AtomGraphics.cpp */,
 				1A9984DC4B6C2D5E120B451E /* platform */,
 				1A99823B00D52E5BCC471FF1 /* graphics */,
 				1A998DA4FF22A7D264D6BBCB /* node */,
 				1A99866A2B107DAC207E78F5 /* javascript */,
+				1A99889F820E7AA650B79543 /* thread */,
 			);
 			name = AtomGraphics;
 			path = ../../AtomGraphics;
@@ -456,14 +562,7 @@
 				1A998C59F221E7110CB6DC77 /* AtomGraphicsView.h */,
 				1A9983AB6445D2B35FE4CCD2 /* AtomGraphicsView.mm */,
 				1A9984247143F744A5460958 /* AtomPlatformDefine-ios.h */,
-				1A9983E5E1259FC6EDB150F6 /* GCanvas */,
 				1A998AEC494353D909EA0E46 /* CG */,
-				1A9982FB0CB5B693EE33CC99 /* js */,
-				1A9989B33152F6D19AE5910A /* AtomContentFlushController.mm */,
-				1A998EA84ED1376266CE6034 /* AtomContentFlushController.h */,
-				1A998E9A124A534D14229332 /* IPC */,
-				1A998427A018018A6438862D /* AtomLayerBackingStore.h */,
-				1A998368F6F70579EE510251 /* thread */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -472,32 +571,12 @@
 			isa = PBXGroup;
 			children = (
 				1A998532C06E28D29A9E1A95 /* canvas */,
+				1A99864104427B314D52045D /* AtomNode.cpp */,
+				1A998E0C274DF2D5C04BF3A4 /* AtomNode.h */,
+				1A9982A66E515FBDBA7A3CEA /* AtomNodeTree.cpp */,
+				1A998DC90CE8C711F420F128 /* AtomNodeTree.h */,
 			);
 			path = node;
-			sourceTree = "<group>";
-		};
-		1A998E9A124A534D14229332 /* IPC */ = {
-			isa = PBXGroup;
-			children = (
-				1A998EFFF9A846105586681A /* AtomConnection.mm */,
-				1A998D6EF337615C6CB2FBEC /* AtomConnection.h */,
-				1A998A3BF97E1813AD65E9C6 /* AtomConnectionMessage.mm */,
-				1A9980A25F2E164F7E376C2C /* AtomConnectionMessage.h */,
-				1A998CD9744F8494222D5926 /* AtomMessageReceiver.cpp */,
-				1A998E244EA54034FD12136E /* AtomMessageReceiver.h */,
-			);
-			path = IPC;
-			sourceTree = "<group>";
-		};
-		1A998F713E84461513F5BB6D /* base-node */ = {
-			isa = PBXGroup;
-			children = (
-				1A998A847D338B933B926B65 /* AtomNode.h */,
-				1A9980B768A53722DF64E582 /* AtomNode.cpp */,
-				1A998D85598D47D49C341900 /* AtomNodeTree.h */,
-				1A9983E035178C2E057DEFE1 /* AtomNodeTree.cpp */,
-			);
-			path = "base-node";
 			sourceTree = "<group>";
 		};
 		5D7A84AE4DDA8CCC84482FFA /* Pods */ = {
@@ -515,12 +594,12 @@
 				B5A4D341206130A8001DAABD /* Assets.xcassets */,
 				B5A4D32A206115BA001DAABD /* main.m */,
 				B59FAB131FBC2B8500417328 /* Products */,
-				1A9982FAFA542D4C53142295 /* Classes */,
 				1A998D03C782C35D6EB4AE72 /* AtomGraphics */,
-				1A9984C74D4C96BDB39ABEFD /* README.md */,
+				1A9982FAFA542D4C53142295 /* Classes */,
+				1A998C1AF3A8A32899F551CD /* Resources */,
 				5D7A84AE4DDA8CCC84482FFA /* Pods */,
 				07ED689769B1354224209A79 /* Frameworks */,
-				1A998C1AF3A8A32899F551CD /* Resources */,
+				1A9984C74D4C96BDB39ABEFD /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -559,7 +638,6 @@
 		B59FAB0A1FBC2B8500417328 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = Atom;
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = neo;
 				TargetAttributes = {
@@ -592,8 +670,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5F3DCC1208F15FB001D1B37 /* JSTimers.js in Resources */,
-				B54E8E66208DC19600F80951 /* core.js in Resources */,
+				B5C75B9921097E52004B8670 /* core.js in Resources */,
+				B5C75B9A21097E52004B8670 /* JSTimers.js in Resources */,
+				B5C75B9C21097E52004B8670 /* zrender.js in Resources */,
 				B58E5C87207E00D700186D59 /* main.js in Resources */,
 				B5A4D342206130A8001DAABD /* Assets.xcassets in Resources */,
 				1A9981C1D6BEBCC4B1F42800 /* Vec2.inl in Resources */,
@@ -641,9 +720,6 @@
 				1A998C31BEC24B68A672CEA3 /* ViewController.m in Sources */,
 				1A998451F9BECBC387235BD6 /* AtomRef.cpp in Sources */,
 				1A99890BAA1F011AD9D75000 /* Vec2.cpp in Sources */,
-				1A998C24CA6A431A5AB30798 /* AtomNode.cpp in Sources */,
-				1A99809A0A00D58DEF937D7F /* AtomNodeTree.cpp in Sources */,
-				1A998BBC580CA447DFA06040 /* AtomRenderer.cpp in Sources */,
 				1A9984812A5E6FA80B99C024 /* AtomGraphics.cpp in Sources */,
 				1A998AD8BD9ED170DA128849 /* AtomGeometry.cpp in Sources */,
 				1A9989D3C2E24799F6761062 /* AtomGraphicsView.mm in Sources */,
@@ -653,42 +729,61 @@
 				1A9989C00A643D3C287D6270 /* MathUtil.cpp in Sources */,
 				1A9987B5C2F9B85F056AB489 /* Quaternion.cpp in Sources */,
 				1A998A396120D68E32D69111 /* AtomTypes.cpp in Sources */,
-				1A99887D73C4C4303B4C1663 /* AtomGraphicsContext.cpp in Sources */,
 				1A998C34832AF33ED23D0D39 /* AtomPainter.cpp in Sources */,
 				1A998E9B85D9F58056A14CE0 /* AtomImageProvider.cpp in Sources */,
 				1A9987A1995008A6754E7FCC /* AtomPainterGL.cpp in Sources */,
-				1A99818F42A4FE2E3860B407 /* AtomPainter_iOSCoreGraphic.cpp in Sources */,
-				1A9985504F135437A6D4AC64 /* AtomPainter_AndroidCanvas.cpp in Sources */,
-				1A9986BFF11CFBA0DEEC6B3C /* AtomPainter_iOSMetal.cpp in Sources */,
 				1A99856BDD4B6731687A78E5 /* AtomPath.cpp in Sources */,
-				1A998A544992B38C14F991FC /* AtomImageBuffer.cpp in Sources */,
 				1A99832857AA0186BBD84A92 /* AtomCanvasNode.cpp in Sources */,
-				1A9984224C179BAA2B3F18E4 /* AtomCanvasContext2d.cpp in Sources */,
-				1A998955C27FD67266DDC065 /* AtomCanvasContextGL.cpp in Sources */,
+				1A9984224C179BAA2B3F18E4 /* AtomCanvasContext2D.cpp in Sources */,
+				1A998955C27FD67266DDC065 /* AtomCanvasContext3D.cpp in Sources */,
 				1A998C21F04E935CB7501CED /* FPSLabel.m in Sources */,
 				1A998F381EA60231664E901A /* AtomCanvasGradient.cpp in Sources */,
 				1A9989258128EEEA2F508534 /* AtomCanvasPattern.cpp in Sources */,
 				1A99852446CFB50C46AEE41A /* AtomCanvasContextBase.cpp in Sources */,
-				1A998D915B990B95607BAE5F /* AtomGraphicsGCanvasModule.mm in Sources */,
-				1A9982CB46998018F1BB9A8D /* AtomGraphicsGCanvasView.mm in Sources */,
-				1A99873E7A77C9DB12C4A657 /* AtomJavaScriptCore.mm in Sources */,
-				1A99807C9BB5699E374E2CE2 /* AtomLayerRenderController.mm in Sources */,
-				1A99865B787B436E6B172E6E /* AtomLayerProperties.mm in Sources */,
-				1A99842D23D62B3F98E3AE7D /* AtomLayerTransaction.mm in Sources */,
-				1A998A3D573773221B9211C2 /* AtomContentFlushController.mm in Sources */,
-				1A998461EED1E79B7A536740 /* AtomConnection.mm in Sources */,
-				1A998E87B4FB8C046AE6CC5E /* AtomConnectionMessage.mm in Sources */,
-				1A998B1DD5FB835DE96FB42F /* AtomMessageReceiver.cpp in Sources */,
-				1A998E41083118A8D7CB16F6 /* AtomLayerBackingStoreCG.mm in Sources */,
-				1A9980C8930DF29787E6C728 /* AtomTimer.cpp in Sources */,
-				1A9981312E4ABBF0526F985F /* AtomGCanvasLayerBackingStore.mm in Sources */,
-				1A998281455E12B6D43987CF /* AtomGraphicsCGLayer.mm in Sources */,
-				1A9981752C28D3231160C304 /* AtomImageBufferCG.cpp in Sources */,
+				1A9981752C28D3231160C304 /* ImageBufferCG.mm in Sources */,
 				1A99863CBF38893D41BBB8B9 /* AtomCanvasNodeCG.mm in Sources */,
 				1A9982DD651F857CF0ECA86A /* AtomCanvasContext2dCG.mm in Sources */,
-				1A99854431FFBC6467713994 /* AtomGCanvasContext2d.cpp in Sources */,
 				1A9988E1F180FD1A1F52BB72 /* AtomGCanvasNode.cpp in Sources */,
-				1A9985B654A21A1EDB14D842 /* AtomJSTimer.m in Sources */,
+				1CC978DEB1D82EB15A52928F /* AtomCanvasImage.cpp in Sources */,
+				1CC9791B7054BDB999C2B5A8 /* AtomCanvasImageData.cpp in Sources */,
+				1CC97D3881DE7C24E6D1001B /* AtomEncode.cpp in Sources */,
+				1CC97CC7C4285D6D22D3D432 /* AtomConvert.cpp in Sources */,
+				1A99879F4F069ED8F377793D /* AtomGCanvasContext2D.cpp in Sources */,
+				1A9985B4979EED2B2DB06B1B /* ChartGroupView.mm in Sources */,
+				1A998C63D473D5C7723994C4 /* GraphicsLayer.cpp in Sources */,
+				1A9985824990C2A0184AC880 /* GraphicsLayerBackingStore.cpp in Sources */,
+				1A998E6128A910095C92E931 /* GraphicsContentFlushController.cpp in Sources */,
+				1A99825BEB092D4E3138F375 /* DisplayRefreshMonitorClient.cpp in Sources */,
+				1A99806E8DC54A6E54DB3D3B /* DisplayRefreshMonitor.cpp in Sources */,
+				1A998587D5DFF86B12C58049 /* GraphicsPage.cpp in Sources */,
+				1A998186CA17A60CD72B4A3E /* GraphicsPageManager.cpp in Sources */,
+				1A998E62B0F5BA1A6612AB8D /* GraphicsLayerGCanvas.cpp in Sources */,
+				1A998902B64E40080E2E8A46 /* GraphicsLayerBackingStoreGCanvas.cpp in Sources */,
+				1A998F9AB09FB7709FD19D58 /* RequestAnimationCallback.cpp in Sources */,
+				1A998BA623F981D88B04D01A /* ScriptAnimationFrameController.cpp in Sources */,
+				1A998E860DCD1F82DD694BE7 /* ScriptTimer.cpp in Sources */,
+				1A99889AF3A9CE5754067BC0 /* DisplayLinkCA.mm in Sources */,
+				1A99829E753BE49C415F55FC /* GraphicsContextCG.mm in Sources */,
+				1A99801B1A0DD20159DCEA39 /* GraphicsLayerCG.mm in Sources */,
+				1A998392E698719B3DEF3E98 /* GraphicsLayerBackingStoreGCanvas.mm in Sources */,
+				1A99829FDA748FACECDF774C /* GraphicsContentFlushController.mm in Sources */,
+				1A99859EA5A0D341B42DC078 /* GraphicsLayerBackingStoreCG.mm in Sources */,
+				1A998370BA20D05FC46A6AD4 /* GraphicsThread.mm in Sources */,
+				1A998088F7101737B154BE0E /* ThreadTimer.mm in Sources */,
+				1A998D387CDC39F6A8419B96 /* AtomJavaScriptCore.mm in Sources */,
+				1A9980B07FC44AF530492C95 /* AtomJSZRender.m in Sources */,
+				1A9983027338D8BD268C0962 /* AtomJSTimer.mm in Sources */,
+				1A9985D3A9E013AF894135B8 /* CanvasJavaScriptInterface.mm in Sources */,
+				1A998B33746D4B38987B3F32 /* CanvasContextJavaScriptInterface.mm in Sources */,
+				1A998B438EF6981B9695667A /* AtomGCanvasEAGLLayer.mm in Sources */,
+				1A99836103F0147C56DB0705 /* AtomGCanvasContext2D.mm in Sources */,
+				1A998B18878796621BB529BD /* AtomNode.cpp in Sources */,
+				1A9989DF68927D07E48A768E /* AtomNodeTree.cpp in Sources */,
+				1A9983C1B6D02FA0D8F50189 /* DisplayLink.cpp in Sources */,
+				1A998866FAF86361BF5A78EA /* GraphicsPageContext.cpp in Sources */,
+				1A99860D1C3190145C06B5C9 /* GraphicsRunLoop.mm in Sources */,
+				1A998534CDA819CD1EBA2FCC /* Timer.mm in Sources */,
+				1A9985A2DF6A258F960C452E /* TimerManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,248 +3,257 @@
 // Copyright (c) 2018 neo. All rights reserved.
 //
 
-#include "AtomCanvasContext2d.h"
+#include "AtomCanvasContext2D.h"
 
 namespace AtomGraphics {
 
-    void CanvasContext2d::setFillStyle(const Color4F &color) {
+    void CanvasContext2D::setFillStyle(const Color4F &color) {
 
     }
 
-    void CanvasContext2d::setFillStyle(const CanvasPattern &pattern) {
+    void CanvasContext2D::setFillStyle(const AtomCanvasPattern *pattern) {
 
     }
 
-    void CanvasContext2d::setFillStyle(const CanvasGradient &gradient) {
+    void CanvasContext2D::setFillStyle(const AtomGraphics::AtomCanvasLinearGradient *gradient) {
 
     }
 
-    void CanvasContext2d::setStrokeStyle(const Color4F &color) {
+    void CanvasContext2D::setFillStyle(const AtomGraphics::AtomCanvasRadialGradient *gradient) {
 
     }
 
-    void CanvasContext2d::setStrokeStyle(const CanvasPattern &pattern) {
+    void CanvasContext2D::setStrokeStyle(const Color4F &color) {
 
     }
 
-    void CanvasContext2d::setStrokeStyle(const CanvasGradient &gradient) {
+    void CanvasContext2D::setStrokeStyle(const CanvasPattern &pattern) {
 
     }
 
-    void CanvasContext2d::setShadowColor() {
+    void CanvasContext2D::setStrokeStyle(const CanvasGradient &gradient) {
 
     }
 
-    void CanvasContext2d::setShadowBlur() {
+    void CanvasContext2D::setShadowColor(const Color4F &color) {
 
     }
 
-    void CanvasContext2d::setShadowOffsetX() {
+    void CanvasContext2D::setShadowBlur(const int shadowBlur) {
 
     }
 
-    void CanvasContext2d::setShadowOffsetY() {
+    void CanvasContext2D::setShadowOffsetX(const float offsetX) {
 
     }
 
-    CanvasPattern *CanvasContext2d::createPattern() {
+    void CanvasContext2D::setShadowOffsetY(const float offsetY) {
+
+    }
+
+    AtomCanvasPattern *CanvasContext2D::createPattern(const std::string &style, const AtomCanvasImage *image) {
         return nullptr;
     }
 
-    CanvasGradient *CanvasContext2d::createLinearGradient(float x0, float y0, float x1, float y1) {
+    AtomCanvasLinearGradient *CanvasContext2D::createLinearGradient(float x0, float y0, float x1, float y1) {
         return nullptr;
     }
 
-    void *CanvasContext2d::createRadialGradient() {
+    AtomCanvasRadialGradient *CanvasContext2D::createRadialGradient(float x0, float y0, float r0, float x1, float y1, float r1) {
         return nullptr;
     }
 
-    void CanvasContext2d::setLineCap(const std::string lineCap) {
+    void CanvasContext2D::setLineCap(const std::string lineCap) {
 
     }
 
-    void CanvasContext2d::setLineJoin(const std::string lineJoin) {
+    void CanvasContext2D::setLineJoin(const std::string lineJoin) {
 
     }
 
-    void CanvasContext2d::setLineWidth(float width) {
+    void CanvasContext2D::setLineWidth(double width) {
 
     }
 
-    void CanvasContext2d::setMiterLimit(float limit) {
+    void CanvasContext2D::setMiterLimit(float limit) {
 
     }
 
-    void CanvasContext2d::setRect(float x, float y, float width, float height) {
+    void CanvasContext2D::setRect(float x, float y, float width, float height) {
 
     }
 
-    void CanvasContext2d::fillRect(float x, float y, float width, float height) {
+    void CanvasContext2D::fillRect(float x, float y, float width, float height) {
 
     }
 
-    void CanvasContext2d::strokeRect(float x, float y, float width, float height) {
+    void CanvasContext2D::strokeRect(float x, float y, float width, float height) {
 
     }
 
-    void CanvasContext2d::clearRect(float x, float y, float width, float height) {
+    void CanvasContext2D::clearRect(float x, float y, float width, float height) {
 
     }
 
-    void CanvasContext2d::fill() {
+    void CanvasContext2D::fill() {
     }
 
-    void CanvasContext2d::stroke() {
+    void CanvasContext2D::stroke() {
     }
 
-    void CanvasContext2d::beginPath() {
+    void CanvasContext2D::beginPath() {
     }
 
-    void CanvasContext2d::moveTo(float x, float y) {
-
-    }
-
-    void CanvasContext2d::closePath() {
-        CGContextClosePath(_drawingContext);
-    }
-
-    void CanvasContext2d::lineTo(float x, float y) {
+    void CanvasContext2D::moveTo(double x, double y) {
 
     }
 
-    void CanvasContext2d::clip() {
+    void CanvasContext2D::closePath() {
 
     }
 
-    void CanvasContext2d::quadraticCurveTo(float cpx, float cpy, float x, float y) {
+    void CanvasContext2D::lineTo(double x, double y) {
 
     }
 
-    void CanvasContext2d::bezierCurveTo(float cp1x, float cp1y, float cp2x, float cp2y, float x, float y) {
+    void CanvasContext2D::clip() {
 
     }
 
-    void CanvasContext2d::arc(float x, float y, float r, float sAngle, float eAngle, bool counterclockwise) {
+    void CanvasContext2D::quadraticCurveTo(float cpx, float cpy, float x, float y) {
 
     }
 
-    void CanvasContext2d::arcTo(float x1, float y1, float x2, float y2, float r) {
+    void CanvasContext2D::bezierCurveTo(float cp1x, float cp1y, float cp2x, float cp2y, float x, float y) {
 
     }
 
-    void CanvasContext2d::isPointInPath(float x, float y) {
+    void CanvasContext2D::arc(double x, double y, double r, double sAngle, double eAngle, bool counterclockwise) {
 
     }
 
-    void CanvasContext2d::scale(float scaleWidth, float scaleHeight) {
+    void CanvasContext2D::arcTo(float x1, float y1, float x2, float y2, float r) {
 
     }
 
-    void CanvasContext2d::rotate(double angle) {
+    void CanvasContext2D::isPointInPath(float x, float y) {
 
     }
 
-    void CanvasContext2d::translate(float x, float y) {
+    void CanvasContext2D::scale(float scaleWidth, float scaleHeight) {
 
     }
 
-    void CanvasContext2d::transform(float a, float b, float c, float d, float e, float f) {
+    void CanvasContext2D::rotate(double angle) {
 
     }
 
-    void CanvasContext2d::setTransform(float a, float b, float c, float d, float e, float f) {
+    void CanvasContext2D::translate(float x, float y) {
 
     }
 
-    void CanvasContext2d::setFont(const std::string font) {
+    void CanvasContext2D::transform(float a, float b, float c, float d, float e, float f) {
 
     }
 
-    void CanvasContext2d::setTextAlign(const std::string textAlign) {
+    void CanvasContext2D::setTransform(double a, double b, double c, double d, double e, double f) {
 
     }
 
-    void CanvasContext2d::setTextBaseline(const std::string textBaseline) {
+    void CanvasContext2D::setFont(const std::string font) {
 
     }
 
-    void CanvasContext2d::fillText(std::string text, float x, float y, float maxWidth) {
+    void CanvasContext2D::setTextAlign(const std::string textAlign) {
 
     }
 
-    void CanvasContext2d::strokeText(const std::string text, float x, float y, float maxWidth) {
+    void CanvasContext2D::setTextBaseline(const std::string textBaseline) {
 
     }
 
-    void *CanvasContext2d::measureText(const std::string &text) {
+    void CanvasContext2D::fillText(std::string text, double x, double y, float maxWidth) {
+
+    }
+
+    void CanvasContext2D::strokeText(const std::string text, double x, double y, float maxWidth) {
+
+    }
+
+    float CanvasContext2D::measureText(const std::string &text) {
+        return 0;
+    }
+
+    void CanvasContext2D::drawImage(AtomCanvasImage *image, float x, float y) {
+    }
+
+    void CanvasContext2D::drawImage(AtomCanvasImage *image, float x, float y, float width, float height) {
+    }
+
+    void CanvasContext2D::drawImage(AtomCanvasImage *image, float sx, float sy, float swidth, float sheight, float x, float y, float width, float height) {
+    }
+
+    void CanvasContext2D::drawImage(CanvasNode *canvasNode) {
+
+    }
+
+    AtomCanvasImageData *CanvasContext2D::createImageData(int width, int height) {
         return nullptr;
     }
 
-    void *CanvasContext2d::drawImage(ImageBuffer *imageBuffer, float x, float y) {
+    AtomCanvasImageData *CanvasContext2D::createImageData(AtomCanvasImageData *imageData) {
         return nullptr;
     }
 
-    void *CanvasContext2d::drawImage(ImageBuffer *imageBuffer, float x, float y, float with, float height) {
+    void *CanvasContext2D::getImageData(int x, int y, int width, int height) {
         return nullptr;
     }
 
-    void *CanvasContext2d::drawImage(ImageBuffer *imageBuffer, float sx, float sy, float swith, float sheight, float x, float y, float width, float height) {
+    void CanvasContext2D::putImageData(AtomCanvasImageData *imageData, int x, int y, int srcWidth, int srcHeight, int destWidth, int destHeight) {
+
+    }
+
+    void CanvasContext2D::setGlobalAlpha(double number) {
+
+    }
+
+    void CanvasContext2D::setGlobalCompositeOperation(const std::string operation) {
+
+    }
+
+    void CanvasContext2D::save() {
+
+    }
+
+    void CanvasContext2D::restore() {
+
+    }
+
+    void CanvasContext2D::createEvent() {
+
+    }
+
+    void *CanvasContext2D::getContext() {
         return nullptr;
     }
 
-    void *CanvasContext2d::createImageData(float width, float height) {
+    void *CanvasContext2D::toDataURL() {
         return nullptr;
     }
 
-    void *CanvasContext2d::createImageData(void *imageData) {
-        return nullptr;
+    void CanvasContext2D::setContentSize(const Size &contentSize) {
+//        _contentSize = contentSize;
     }
 
-    void CanvasContext2d::setGlobalAlpha(float number) {
-
-    }
-
-    void CanvasContext2d::setGlobalCompositeOperation(const std::string operation) {
+    void CanvasContext2D::drawConsuming(const GraphicsContext *context, Rect destRect) {
 
     }
 
-    void CanvasContext2d::save() {
+    void CanvasContext2D::ensureDrawingContext() {
 
     }
 
-    void CanvasContext2d::restore() {
-
-    }
-
-    void CanvasContext2d::createEvent() {
-
-    }
-
-    void *CanvasContext2d::getContext() {
-        return nullptr;
-    }
-
-    void *CanvasContext2d::toDataURL() {
-        return nullptr;
-    }
-
-    void CanvasContext2d::setContentSize(const Size &contentSize) {
-        _contentSize = contentSize;
-    }
-
-    void CanvasContext2d::drawConsuming(const GraphicsContext *context, Rect destRect) {
-
-    }
-
-    void CanvasContext2d::ensureDrawingContext() {
-
-    }
-
-    PlatformPath CanvasContext2d::ensurePlatformPath() {
-        return nullptr;
-    }
-
-    bool CanvasContext2d::is2d() {
+    bool CanvasContext2D::is2D() {
         return true;
     }
 

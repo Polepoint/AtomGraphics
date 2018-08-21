@@ -1,0 +1,3 @@
+[submodule "GCanvas"]
+	path = GCanvas
+	url = https://github.com/NeoPocketCat/GCanvas.git

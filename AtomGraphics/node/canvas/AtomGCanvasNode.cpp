@@ -3,19 +3,36 @@
 // Copyright (c) 2018 neo. All rights reserved.
 //
 
-#import "AtomGCanvasNode.h"
-#import "AtomGCanvasContext2d.h"
-
-enum {
-    ContentType2D,
-    ContentTypeWebGL,
-};
+#include "AtomGCanvasNode.h"
+#include "AtomGCanvasContext2D.h"
 
 namespace AtomGraphics {
 
-    CanvasContext2d *GCanvasNode::getContext2d() {
-        setContextType(ContentType2D);
-        return _gcanvasContext2d;
+    GCanvasNode::GCanvasNode() : m_gcanvasContext2d(new GCanvasContext2D(this)) {
+
+    }
+
+#if ATOM_TARGET_PLATFORM == ATOM_PLATFORM_ANDROID
+
+    static jclass classObject = nullptr;
+
+    jclass GCanvasNode::getClassJObject() {
+        return classObject;
+    }
+
+    void GCanvasNode::setClassJObject(jclass classObj) {
+        classObject = classObj;
+    }
+
+#endif
+
+    CanvasContext2D *GCanvasNode::getContext2d() {
+        m_currentContextType = CanvasContextType2D;
+        return m_gcanvasContext2d;
+    }
+
+    void GCanvasNode::draw(GraphicsContext *context) {
+
     }
 
 }

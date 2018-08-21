@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+
+def gcanvas_libProjectPath = '../../../GCanvas/GCanvas/android/gcanvas_library'
+
+buildscript {
+    repositories {
+        //本地库，local repository(${user.home}/.m2/repository)
+        mavenCentral()
+        jcenter()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.4'
+    }
+}
+
+android {
+    compileSdkVersion 26
+
+    sourceSets {
+        main {
+            manifest.srcFile "$gcanvas_libProjectPath/AndroidManifest.xml"
+            java.srcDirs = ["$gcanvas_libProjectPath/src"]
+            jniLibs.srcDirs = ["$gcanvas_libProjectPath/libs"]
+        }
+
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            debuggable false
+        }
+    }
+
+    defaultConfig {
+        consumerProguardFiles 'proguard-rules.pro'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}

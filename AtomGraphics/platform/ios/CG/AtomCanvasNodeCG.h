@@ -7,23 +7,21 @@
 #define ATOMGRAPHICS_ATOMCANVASNODECG_H
 
 #include "AtomCanvasNode.h"
-#include "AtomLayerBackingStore.h"
-#include "AtomContentFlushController.h"
+#import "AtomCanvasContext2dCG.h"
 
 namespace AtomGraphics {
 
     class CanvasNodeCG : public CanvasNode {
 
     public:
-        CanvasNodeCG(AtomContentFlushController *m_backingStore);
+        CanvasNodeCG();
 
-        CanvasContext2d *getContext2d() override;
+        CanvasContext2D *getContext2d() override;
 
-    protected:
-        CanvasContext2d *createContext2d() override;
+        void draw(GraphicsContext *context) override;
 
     private:
-        AtomContentFlushController *m_flushController;
+        CanvasContext2dCG *_canvasContext2d;
     };
 }
 

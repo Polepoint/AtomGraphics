@@ -8,17 +8,17 @@
 
 namespace AtomGraphics {
 
-    CanvasNodeCG::CanvasNodeCG(AtomContentFlushController *m_backingStore) : m_flushController(m_backingStore) {
-        _canvasContext2d = createContext2d();
+    CanvasNodeCG::CanvasNodeCG() : _canvasContext2d(new CanvasContext2dCG(this)) {
+
     }
 
-    CanvasContext2d *CanvasNodeCG::getContext2d() {
+    CanvasContext2D *CanvasNodeCG::getContext2d() {
         _canvasContext2d->ensureDrawingContext();
         return _canvasContext2d;
     }
 
-    CanvasContext2d *CanvasNodeCG::createContext2d() {
-        return new CanvasContext2dCG(m_flushController);
+    void CanvasNodeCG::draw(GraphicsContext *context) {
+
     }
 
 }

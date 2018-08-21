@@ -8,7 +8,7 @@
 namespace AtomGraphics {
 
 
-    bool CanvasContextBase::is2d() {
+    bool CanvasContextBase::is2D() {
         return false;
     }
 

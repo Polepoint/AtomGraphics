@@ -6,9 +6,9 @@
 #ifndef ATOMPAINTER_H
 #define ATOMPAINTER_H
 
-#include "AtomGraphicsContext.h"
+#include "GraphicsContext.h"
 #include "AtomImageProvider.h"
-#include "AtomTypes.h"
+#include "base/AtomTypes.h"
 
 namespace AtomGraphics {
 

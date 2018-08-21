@@ -6,33 +6,24 @@
 #ifndef ATOMCANVASNODE_H
 #define ATOMCANVASNODE_H
 
-#include "AtomNode.h"
-#include "AtomImageBuffer.h"
-#include "AtomCanvasContext2d.h"
-#include "AtomCanvasContextGL.h"
+#include "node/AtomNode.h"
+#include "graphics/ImageBuffer.h"
+#include "AtomCanvasContext3D.h"
+
+typedef enum {
+    CanvasContextType2D,
+    CanvasContextTypeWebGL,
+} CanvasContextType;
 
 namespace AtomGraphics {
+
+    class CanvasContext2D;
 
     class CanvasNode : public Node {
 
     public:
 
-        virtual CanvasContext2d *getContext2d();
-
-        void draw(GraphicsContext *context, Painter *painter) override;
-
-        void setContentSize(const Size &contentSize) override;
-
-        CanvasNode();
-
-    protected:
-
-        virtual CanvasContext2d *createContext2d();
-
-        CanvasContextGL *createContextGL();
-
-        CanvasContext2d *_canvasContext2d;
-        CanvasContextGL *_canvasContextGL;
+        virtual CanvasContext2D *getContext2d();
     };
 }
 
