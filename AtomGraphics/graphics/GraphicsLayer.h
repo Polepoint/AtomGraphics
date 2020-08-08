@@ -13,70 +13,86 @@
 #ifndef ATOMGRAPHICS_GRAPHICSLAYER_H
 #define ATOMGRAPHICS_GRAPHICSLAYER_H
 
-#include "GraphicsLayerBackingStore.h"
 #include "GraphicsPage.h"
 #include "PlatformLayer.h"
-#include "node/AtomNode.h"
+#include "node/Node.h"
 
 namespace AtomGraphics {
 
-    class Node;
+class Node;
 
-    class GraphicsLayerBackingStore;
+class PlatformLayerBackingStore;
 
-    class GraphicsPage;
+class GraphicsPage;
 
-    class GraphicsLayer {
+class Transaction;
 
-    public:
+class GraphicsLayer {
 
-        GraphicsLayer(PlatformLayer *platformLayer, Node *rootNode);
+public:
 
-        void scheduleLayerFlush();
+    GraphicsLayer(std::unique_ptr<PlatformLayer> platformLayer);
 
-        void buildBackingStoreFlushContexts();
+    ~GraphicsLayer();
 
-        /**
-         * 将layer上的元素渲染到context上
-         */
-        void drawLayerContents(GraphicsContext *context);
+    void setBounds(const FloatRect &bounds);
 
-        /**
-         * 应用backingStore中存储的图像信息到当前layer上
-         */
-        void applyBackingStore();
+    void buildTransaction(Transaction &transaction);
 
-        void setGraphicsPage(GraphicsPage *page);
+    void commitLayerChanges();
 
-        void setLayerContentsDirty(bool dirty);
+    long getLayerID() const {
+        return m_layerID;
+    }
 
-        void addSublayer(GraphicsLayer *layer);
+    void setGraphicsPage(GraphicsPage *page);
 
-        void removeSublayer(GraphicsLayer *layer);
+    void addSublayer(GraphicsLayer *layer);
 
-        PlatformLayer *getPlatformLayer() {
-            return m_platformLayer;
-        }
+    void removeSublayer(GraphicsLayer *layer);
 
-        Node *getRootNode() {
-            return m_rootNode;
-        }
+    PlatformLayer *getPlatformLayer() {
+        return m_platformLayer.get();
+    }
 
-    protected:
-        GraphicsLayerBackingStore *m_backingStore{nullptr};
+    std::shared_ptr<Node> getRootNode() {
+        return m_rootNode;
+    }
 
-        Node *m_rootNode;
-        PlatformLayer *m_platformLayer{nullptr};
-    private:
-        long m_layerID;
-        bool m_layerContentsDirty{false};
-        GraphicsPage *m_page{nullptr};
-        std::vector<GraphicsLayer *> m_sublayers;
+    void setRootNode(std::shared_ptr<Node> node);
 
-        void resetPage();
+    float getTransformScale() const {
+        return m_transformScale;
+    }
 
-        friend class GraphicsPage;
-    };
+    FloatRect platformLayerFrameInGraphics(PlatformLayer *);
+
+    void updateBounds(const FloatRect &bounds);
+
+    void updateVisibleRect(const FloatRect &viewRect);
+
+    void updateContentsScale(float contentsScale);
+
+    void updateTransformScale(float transformScale);
+
+protected:
+    FloatRect m_bounds{FloatRect::ZERO};
+
+    std::shared_ptr<Node> m_rootNode{nullptr};
+    std::unique_ptr<PlatformLayer> m_platformLayer{nullptr};
+
+private:
+    long m_layerID;
+    float m_contentsScale{1};
+    float m_transformScale{1};
+    FloatRect m_viewRect;
+    GraphicsPage *m_page{nullptr};
+    std::vector<GraphicsLayer *> m_sublayers;
+
+    void resetPage();
+
+    friend class GraphicsPage;
+};
 }
 
 

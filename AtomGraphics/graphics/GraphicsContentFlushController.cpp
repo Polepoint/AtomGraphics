@@ -3,134 +3,143 @@
 // Copyright (c) 2018 neo. All rights reserved.
 //
 
+#include "thread/GraphicsThread.h"
+#include "thread/UIThread.h"
 #include "GraphicsContentFlushController.h"
+#include "DisplayRefreshMonitor.h"
+#include "PlatformLayer.h"
+#include "PlatformLayerBackingStoreFlusher.h"
+#include "GraphicsLayer.h"
+#include "GraphicsPage.h"
+#include "Transaction.h"
+#include "TransactionBunch.h"
 
-#if ATOM_TARGET_PLATFORM == ATOM_PLATFORM_ANDROID
+#if PLATFORM(IOS)
 
-#include "graphics/android/DisplayLinkAndroid.h"
+#import <dispatch/dispatch.h>
+
+#elif PLATFORM(ANDROID)
+
 #include <pthread.h>
 
 #endif
 
 namespace AtomGraphics {
 
-#if ATOM_TARGET_PLATFORM == ATOM_PLATFORM_ANDROID
+GraphicsContentFlushController::GraphicsContentFlushController()
+        : m_flushTimer(GraphicsThread::GraphicsThreadTaskRunner(),
+                       *this,
+                       &GraphicsContentFlushController::flushLayers) {
+#if PLATFORM(IOS)
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        s_flushCommitQueue = dispatch_queue_create("neo.AtomGraphics.CommitQueue", DISPATCH_QUEUE_SERIAL);
+    });
+#endif
+}
 
-    GraphicsContentFlushController::GraphicsContentFlushController(GraphicsPageContext *pageContext)
-            : m_pageContext(pageContext), m_flushTimer(new Timer(*this, &GraphicsContentFlushController::flushLayers)) {
+GraphicsContentFlushController *GraphicsContentFlushController::SharedInstance() {
+    static GraphicsContentFlushController *sharedInstance;
+    if (!sharedInstance) {
+        sharedInstance = new GraphicsContentFlushController();
     }
+    return sharedInstance;
+}
+
+void GraphicsContentFlushController::flushLayers() {
+
+    scoped_refptr<TransactionBunch> bunch = MakeRefCounted<TransactionBunch>();
+    for (auto page : m_pages) {
+
+        page->rootLayer()->commitLayerChanges();
+
+        Transaction *transaction = new Transaction();
+        page->buildTransaction(*transaction);
+        std::unique_ptr<Transaction> ta(transaction);
+        bunch->addTransaction(std::move(ta), page->m_pageID);
+    }
+
+    GraphicsContentFlushController *thisRef = this;
+
+#if PLATFORM(IOS)
+
+    commitFlush();
 
 #endif
 
-    void GraphicsContentFlushController::didRefreshDisplay() {
-        if (m_didUpdateMessageState != NeedsDidUpdate) {
-            m_didUpdateMessageState = MissedCommit;
-            displayLinkHandler()->pause();
-            return;
-        }
-        m_didUpdateMessageState = DoesNotNeedDidUpdate;
+    UIThread::UIThreadTaskRunner()->postTask([thisRef, bunch] {
+        thisRef->commitTransaction(bunch);
+    });
+}
 
-        //TODO: 切换到 Graphics queue
-        {
-            this->didUpdate();
-        }
+void GraphicsContentFlushController::didRefreshDisplay() {
+    if (m_didUpdateMessageState != NeedsDidUpdate) {
+        m_didUpdateMessageState = MissedCommit;
+        DisplayLink *displayLink = displayLinkHandler();
+        displayLink->pause();
+        return;
+    }
+    m_didUpdateMessageState = DoesNotNeedDidUpdate;
+
+    this->didUpdate();
+}
+
+void GraphicsContentFlushController::didUpdate() {
+    //schedule update if need flush
+    if (m_hadFlushDeferredWhileWaitingForBackingStoreSwap) {
+        scheduleLayerFlush();
+        m_hadFlushDeferredWhileWaitingForBackingStoreSwap = false;
     }
 
-    void GraphicsContentFlushController::didUpdate() {
-        //requestAnimationFrame
-        for (auto page : m_pages) {
-            if (page->m_updating) {
-                page->didUpdate();
-                page->m_updating = false;
-            }
-        }
-
+    //requestAnimationFrame
+    if (m_refreshMonitor) {
         m_refreshMonitor->didUpdateLayers();
     }
+}
 
-    /**
-     * schedule after setNeedsDisplay
-     */
-    void GraphicsContentFlushController::scheduleLayerFlush() {
-        if (m_flushTimer->isActive()) {
-            return;
-        }
-
-        //initialized?
-        ThreadTimerInterval interval = m_initialized ? 0 : 0.1;
-        m_initialized = true;
-        m_flushTimer->startOneShot(interval);
+/**
+ * schedule after setNeedsDisplay
+ */
+void GraphicsContentFlushController::scheduleLayerFlush() {
+    if (m_flushTimer.isActive()) {
+        return;
     }
 
-    void GraphicsContentFlushController::commitLayerContent() {
-        for (auto page: m_pages) {
-            if (page->m_pendingToFlush) {
-                page->updateLayerContents();
-                page->m_pendingToFlush = false;
-            }
-        }
-        if (std::exchange(m_didUpdateMessageState, NeedsDidUpdate) == MissedCommit)
-            didRefreshDisplay();
-        displayLinkHandler()->schedule();
+    //initialized?
+    TimeInterval interval = m_initialized ? 0 : 0.1;
+    m_initialized = true;
+    m_flushTimer.startOneShot(interval);
+}
+
+void GraphicsContentFlushController::didCommitTransaction() {
+    if (std::exchange(m_didUpdateMessageState, NeedsDidUpdate) == MissedCommit)
+        didRefreshDisplay();
+    displayLinkHandler()->schedule();
+}
+
+void GraphicsContentFlushController::addPage(GraphicsPage *page) {
+    m_pages.insert(page);
+}
+
+void GraphicsContentFlushController::removePage(GraphicsPage *page) {
+    m_pages.erase(page);
+}
+
+DisplayRefreshMonitor *GraphicsContentFlushController::refreshMonitor() {
+    if (!m_refreshMonitor) {
+        m_refreshMonitor.reset(new DisplayRefreshMonitor());
     }
 
+    return m_refreshMonitor.get();
+}
 
-#if ATOM_TARGET_PLATFORM == ATOM_PLATFORM_ANDROID
-
-    void GraphicsContentFlushController::flushLayers() {
-        for (auto page : m_pages) {
-            page->buildPendingFlushContexts();
-        }
-
-        std::vector<GraphicsContext *> *pendingFlushContexts = new std::vector<GraphicsContext *>();
-        for (auto page : m_pages) {
-            if (GraphicsContext *contextPaddingFlush = page->takePendingFlushContext()) {
-                pendingFlushContexts->push_back(contextPaddingFlush);
-            }
-        }
-
-        if (pendingFlushContexts->empty()) {
-            delete pendingFlushContexts;
-        } else {
-            pthread_t flushCommitThread = 0;
-            auto callback = [](void *data) -> void * {
-                std::vector<GraphicsContext *> *contents = static_cast<std::vector<GraphicsContext *> *>(data);
-                for (auto pendingFlushContext :*contents) {
-                    pendingFlushContext->flush();
-                }
-                delete contents;
-                return nullptr;
-            };
-            pthread_create(&flushCommitThread, 0, std::move(callback), pendingFlushContexts);
-        }
-
-        GraphicsThread::uiTaskRunner()->postTask(std::bind(&GraphicsContentFlushController::commitLayerContent, this));
+DisplayLink *GraphicsContentFlushController::displayLinkHandler() {
+    if (!m_displayLink) {
+        m_displayLink.reset(createDisplayLink());
     }
 
-    DisplayLink *GraphicsContentFlushController::displayLinkHandler() {
-        if (!m_displayLink) {
-            m_displayLink = new DisplayLinkAndroid(this, m_pageContext);
-        }
-        return m_displayLink;
-    }
+    return m_displayLink.get();
+}
 
-#endif
 
-    void GraphicsContentFlushController::addPage(GraphicsPage *page) {
-        m_pages.insert(page);
-    }
-
-    void GraphicsContentFlushController::removePage(GraphicsPage *page) {
-        m_pages.erase(page);
-    }
-
-    void GraphicsContentFlushController::registerDisplayRefreshMonitor(
-            DisplayRefreshMonitor *displayRefreshMonitor) {
-        m_refreshMonitor = displayRefreshMonitor;
-    }
-
-    void GraphicsContentFlushController::unregisterDisplayRefreshMonitor(
-            DisplayRefreshMonitor *displayRefreshMonitor) {
-        m_refreshMonitor = nullptr;
-    }
 }

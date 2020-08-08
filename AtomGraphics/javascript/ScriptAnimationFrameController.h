@@ -7,37 +7,38 @@
 #define ATOMGRAPHICS_SCRIPTANIMATIONFRAMECONTROLLER_H
 
 
+#include <map>
 #include <vector>
 #include "graphics/DisplayRefreshMonitor.h"
-#include "graphics/GraphicsPageContext.h"
 #include "RequestAnimationCallback.h"
 #include "thread/Timer.h"
+#include "memory/ScopedRefPtr.h"
 
 namespace AtomGraphics {
 
-    class RequestAnimationCallback;
+class RequestAnimationCallback;
 
-    class ScriptAnimationFrameController : public DisplayRefreshMonitorClient {
+class ScriptAnimationFrameController : public DisplayRefreshMonitorClient {
 
-    public:
+public:
 
-        static ScriptAnimationFrameController *ControllerForContext(GraphicsPageContext *pageContext);
+    static ScriptAnimationFrameController *SharedInstance();
 
-        ScriptAnimationFrameController();
+    ScriptAnimationFrameController();
 
-        long addCallback(RequestAnimationCallback *callback);
+    long addCallback(scoped_refptr <RequestAnimationCallback> callback);
 
-        void cancelCallback(long callbackBlockID);
+    void cancelCallback(long callbackID);
 
-        void displayRefreshFired() override;
+    void displayRefreshFired() override;
 
 
-    private:
+private:
 
-        std::vector<RequestAnimationCallback *> m_callbacks;
+    std::map<long, scoped_refptr<RequestAnimationCallback>> m_callbackLists;
 
-        void asyncFireCallbacks();
-    };
+    void asyncFireCallbacks();
+};
 }
 
 #endif  //ATOMGRAPHICS_SCRIPTANIMATIONFRAMECONTROLLER_H

@@ -9,21 +9,34 @@
 
 namespace AtomGraphics {
 
-    void DisplayRefreshMonitor::addClient(DisplayRefreshMonitorClient *client) {
-        m_clients.insert(client);
-    }
+void DisplayRefreshMonitor::addClient(DisplayRefreshMonitorClient *client) {
+    m_pendingInsertClients.insert(client);
+}
 
-    void DisplayRefreshMonitor::removeClient(DisplayRefreshMonitorClient *client) {
-        m_clients.erase(client);
-    }
+void DisplayRefreshMonitor::removeClient(DisplayRefreshMonitorClient *client) {
+    m_pendingDeleteClients.erase(client);
+}
 
-    void DisplayRefreshMonitor::didUpdateLayers() {
-        if (m_clients.empty()) {
-            return;
-        }
-
-        for (DisplayRefreshMonitorClient *client: m_clients) {
-            client->fireDisplayRefreshIfNeeded();
+void DisplayRefreshMonitor::didUpdateLayers() {
+    if (!m_pendingInsertClients.empty()) {
+        for (DisplayRefreshMonitorClient *client: m_pendingInsertClients) {
+            m_clients.insert(client);
         }
     }
+
+    if (!m_pendingDeleteClients.empty()) {
+        for (DisplayRefreshMonitorClient *client: m_pendingDeleteClients) {
+            m_clients.erase(client);
+        }
+    }
+
+    if (m_clients.empty()) {
+        return;
+    }
+
+    for (DisplayRefreshMonitorClient *client: m_clients) {
+        client->fireDisplayRefreshIfNeeded();
+    }
+}
+
 }

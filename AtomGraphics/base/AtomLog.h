@@ -7,9 +7,15 @@
 
 #include "platform/AtomPlatformConfig.h"
 
-#if ATOM_TARGET_PLATFORM == ATOM_PLATFORM_ANDROID
+#if PLATFORM(ANDROID)
 
 #include <android/log.h>
+
+#endif
+
+namespace AtomGraphics {
+
+#if PLATFORM(ANDROID)
 
 #define ATOM_DEFAULT_TAG "AtomGraphics"
 
@@ -24,6 +30,38 @@ __android_log_print(ANDROID_LOG_ERROR, ATOM_DEFAULT_TAG, fmt, ##args); \
 }
 
 #endif
+
+#if PLATFORM(IOS)
+
+#if DEBUG
+
+#define AtomLogInfo(fmt, args...) \
+{ \
+printf(fmt, ##args); \
+printf("\n"); \
+}
+
+#define AtomLogError(fmt, args...) \
+{ \
+printf(fmt, ##args); \
+printf("\n"); \
+}
+
+#else
+
+#define AtomLogInfo(fmt, args...)
+#define AtomLogError(fmt, args...)
+
+#endif
+
+
+void logTimeBegin();
+
+void logTimeEnd();
+
+#endif
+
+}
 
 
 #endif //ATOMGRAPHICS_ATOMLOG_H

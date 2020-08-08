@@ -7,25 +7,31 @@
 #define ATOMGRAPHICS_REQEUESTANIMATIONCALLBACK_H
 
 #include <functional>
+#include "memory/RefCounted.h"
 #include "ScriptAnimationFrameController.h"
 
 namespace AtomGraphics {
 
-    class RequestAnimationCallback {
+class RequestAnimationCallback : public RefCounted<RequestAnimationCallback> {
 
-    public:
-        RequestAnimationCallback(std::function<void()> block);
+public:
 
-    public:
-        void call();
+    static scoped_refptr<RequestAnimationCallback> Create(std::function<void()> block) {
+        return WrapRefCounted(new RequestAnimationCallback(std::move(block)));
+    }
 
-    private:
-        long m_id;
-        bool m_firedOrCancelled;
-        std::function<void()> m_block;
+    void call();
 
-        friend class ScriptAnimationFrameController;
-    };
+private:
+
+    RequestAnimationCallback(std::function<void()> block);
+
+    long m_id;
+    bool m_cancelled{false};
+    std::function<void()> m_block;
+
+    friend class ScriptAnimationFrameController;
+};
 }
 
 

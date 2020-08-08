@@ -1,0 +1,66 @@
+var M = Math,
+    PI = M.PI,
+    TWOPI = PI * 2,
+    HALFPI = PI / 2,
+    canvas = rootNode,
+    ctx = canvas.getContext('2d'),
+    width = canvas.clientWidth * window.devicePixelRatio,
+    height = canvas.clientHeight * window.devicePixelRatio,
+    cx = width / 2,
+    cy = height / 2,
+    count = 40,
+    sizeBase = 0.1,
+    sizeDiv = 5,
+    tick = 0;
+
+ctx.translate(cx, cy);
+
+(function loop() {
+    if (stopLoop) {
+        return;
+    }
+    requestAnimationFrame(loop);
+    ctx.clearRect(-width / 2, -height / 2, width, height);
+    ctx.fillStyle = '#fff';
+    var angle = tick / 8,
+        radius = -50 + M.sin(tick / 15) * 100,
+        size;
+
+    for (var i = 0; i < count; i++) {
+        angle += PI / 64;
+        radius += i / 30;
+        size = sizeBase + i / sizeDiv;
+
+        ctx.beginPath();
+        ctx.arc(M.cos(angle) * radius, M.sin(angle) * radius, size, 0, TWOPI, false);
+        ctx.fillStyle = 'hsl(200, 70%, 50%)';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(M.cos(angle) * -radius, M.sin(angle) * -radius, size, 0, TWOPI, false);
+        ctx.fillStyle = 'hsl(320, 70%, 50%)';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(M.cos(angle + HALFPI) * radius, M.sin(angle + HALFPI) * radius, size, 0, TWOPI, false);
+        ctx.fillStyle = 'hsl(60, 70%, 50%)';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(M.cos(angle + HALFPI) * -radius, M.sin(angle + HALFPI) * -radius, size, 0, TWOPI);
+        ctx.fillStyle = 'hsl(0, 0%, 100%)';
+        ctx.fill();
+    }
+
+    tick++;
+})();
+
+var stopLoop = false;
+
+function dispose() {
+    stopLoop = true;
+}
+
+registerJSHandler("dispose", dispose);
+
+

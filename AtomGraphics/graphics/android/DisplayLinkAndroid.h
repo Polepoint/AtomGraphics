@@ -10,23 +10,25 @@
 
 namespace AtomGraphics {
 
-    class DisplayLinkAndroid : public DisplayLink {
+class DisplayLinkAndroid final : public DisplayLink {
 
-    public:
-        DisplayLinkAndroid(GraphicsContentFlushController *flushController, GraphicsPageContext *pageContext);
+public:
+    DisplayLinkAndroid(GraphicsContentFlushController *flushController);
 
-        void schedule() override;
+    ~DisplayLinkAndroid();
 
-        void pause() override;
+    void schedule() override;
 
-        bool isPaused() {
-            return m_pause;
-        }
+    void pause() override;
 
-    private:
-        bool m_pause{true};
-        jobject m_displayLinkObj;
-    };
+    bool isPaused() {
+        return m_pause;
+    }
+
+private:
+    bool m_pause{true};
+    jobject m_displayLinkObj;
+};
 }
 
 

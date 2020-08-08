@@ -3,46 +3,34 @@
 // Copyright (c) 2018 neo. All rights reserved.
 //
 
-#ifndef ATOMGRAPHICS_ATOMGRAPHICSRUNLOOP_H
-#define ATOMGRAPHICS_ATOMGRAPHICSRUNLOOP_H
+#ifndef ATOMGRAPHICS_GRAPHICSTHREAD_H
+#define ATOMGRAPHICS_GRAPHICSTHREAD_H
 
 #include <functional>
 #include "platform/AtomPlatformConfig.h"
-
-#if ATOM_TARGET_PLATFORM == ATOM_PLATFORM_ANDROID
-
-#include <thread/android/AndroidTaskRunner.h>
-
-#endif
+#include "TaskRunner.h"
 
 namespace AtomGraphics {
 
-#if ATOM_TARGET_PLATFORM == ATOM_PLATFORM_ANDROID
+class GraphicsThread {
 
-    class AndroidTaskRunner;
+public:
 
-#endif
+    static TaskRunner *GraphicsThreadTaskRunner();
 
-    class GraphicsThread {
-    public:
+    static bool IsGraphicsThread();
 
-        static void InitGraphicsThread();
+    static void DispatchOnGraphicsQueue(std::function<void()> block);
 
-        static void DispatchOnGraphicsQueue(std::function<void()> block);
+#if PLATFORM(ANDROID)
 
-#if ATOM_TARGET_PLATFORM == ATOM_PLATFORM_ANDROID
-
-        static void InitMainThread();
-
-        static AndroidTaskRunner* uiTaskRunner();
+    static void DispatchOnGraphicsQueueWithJSContextScope(const std::function<void()>& block);
 
 #endif
 
-    private:
-        static void GraphicsThreadEnable();
+};
 
-    };
 }
 
 
-#endif //ATOMGRAPHICS_ATOMGRAPHICSRUNLOOP_H
+#endif //ATOMGRAPHICS_GRAPHICSTHREAD_H

@@ -7,14 +7,15 @@
 
 namespace AtomGraphics {
 
-    void DisplayRefreshMonitorClient::fireDisplayRefreshIfNeeded() {
-        if (!m_scheduled) {
-            return;
-        }
-        displayRefreshFired();
+void DisplayRefreshMonitorClient::fireDisplayRefreshIfNeeded() {
+    if (!m_scheduled) {
+        return;
     }
+    displayRefreshFired();
+}
 
-    void DisplayRefreshMonitorClient::displayRefreshFired() {
+void DisplayRefreshMonitorClient::displayRefreshFired() {
 
-    }
+}
+
 }

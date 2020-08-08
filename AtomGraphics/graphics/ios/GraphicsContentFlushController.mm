@@ -3,59 +3,44 @@
 // Copyright (c) 2018 neo. All rights reserved.
 //
 
-#import <dispatch/dispatch.h>
 #import "GraphicsContentFlushController.h"
+#import "ContentViewUpdateDispatcher.h"
 #import "DisplayLinkCA.h"
+#import "PlatformLayerBackingStoreFlusher.h"
+#import "GraphicsLayer.h"
 
 namespace AtomGraphics {
 
-    static dispatch_queue_t flushCommitQueue;
+dispatch_queue_t GraphicsContentFlushController::s_flushCommitQueue = 0;
 
-    GraphicsContentFlushController::GraphicsContentFlushController(GraphicsPageContext *pageContext)
-            : m_pageContext(pageContext), m_flushTimer(new Timer(*this, &GraphicsContentFlushController::flushLayers)) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            flushCommitQueue = dispatch_queue_create("neo.AtomGraphics.CommitQueue", DISPATCH_QUEUE_SERIAL);
-        });
+void GraphicsContentFlushController::commitTransaction(scoped_refptr<TransactionBunch> transactionBunch) {
+
+    [[ContentViewUpdateDispatcher singleton] dispatchTransaction:transactionBunch.get()];
+
+    this->didCommitTransaction();
+}
+
+void GraphicsContentFlushController::commitFlush() {
+    std::vector<std::unique_ptr<GraphicsContext>> pendingFlushContexts;
+    for (auto page : m_pages) {
+        page->m_rootLayer->getPlatformLayer()->collectPendingFlushContext(pendingFlushContexts);
     }
 
-    void GraphicsContentFlushController::flushLayers() {
-
-        for (auto page : m_pages) {
-            page->buildPendingFlushContexts();
-        }
-
-        std::vector<GraphicsContext *> pendingFlushContexts;
-        for (auto page : m_pages) {
-            if (GraphicsContext *contextPaddingFlush = page->takePendingFlushContext()) {
-                pendingFlushContexts.push_back(contextPaddingFlush);
+    if (!pendingFlushContexts.empty()) {
+        scoped_refptr<PlatformLayerBackingStoreFlusher> flusher = MakeRefCounted<PlatformLayerBackingStoreFlusher>(
+                std::move(pendingFlushContexts));
+        dispatch_async(s_flushCommitQueue, [flusher] {
+            for (auto &pendingFlushContext :flusher->m_contexts) {
+                pendingFlushContext->flush();
             }
-        }
-
-        //GraphicsContext其实是否flush并没有关系，如果主线程阻塞时，那子线程应该容易被优先执行
-        //子线程提前flush context，可以减少主线程flush花费的时间
-        GraphicsContentFlushController *thisRef = this;
-        if (!pendingFlushContexts.empty()) {
-            dispatch_async(flushCommitQueue, [thisRef, pendingFlushContexts] {
-                for (auto pendingFlushContext :pendingFlushContexts) {
-                    pendingFlushContext->flush();
-                }
-            });
-        }
-
-        //TODO: invoke with timer in RunLoop
-        dispatch_async(dispatch_get_main_queue(), [thisRef] {
-            thisRef->commitLayerContent();
         });
     }
+}
 
-    DisplayLink *GraphicsContentFlushController::displayLinkHandler() {
-        if (!m_displayLink) {
-            m_displayLink = new DisplayLinkCA(this);
-        }
+DisplayLink *GraphicsContentFlushController::createDisplayLink() {
+    return new DisplayLinkCA(this);
+}
 
-        return m_displayLink;
-    }
 }
 
 

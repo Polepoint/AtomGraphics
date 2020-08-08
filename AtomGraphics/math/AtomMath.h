@@ -7,4 +7,8 @@
 #include "math/Mat4.h"
 #include "math/Quaternion.h"
 
+
+const float piFloat = static_cast<float>(M_PI);
+const double piDouble = M_PI;
+
 #endif

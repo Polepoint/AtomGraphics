@@ -10,16 +10,17 @@
 #include "GraphicsPage.h"
 
 namespace AtomGraphics {
-    class GraphicsPageManager {
 
-    public:
-        static void registerPage(GraphicsPage *page);
+class GraphicsPageManager {
 
-        static void unregisterPage(GraphicsPage *page);
-
-        static GraphicsPage *getPageByID(long pageID);
-
-    };
+public:
+    static void registerPage(GraphicsPage *page);
+    
+    static void unregisterPage(GraphicsPage *page);
+    
+    static GraphicsPage *getPageByID(long pageID);
+    
+};
 
 }
 

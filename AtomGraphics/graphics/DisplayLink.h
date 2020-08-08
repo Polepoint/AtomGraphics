@@ -7,33 +7,29 @@
 #define ATOMGRAPHICS_VIEWCONTENTDISPLAYLINKHANDLER_H
 
 
-#include "GraphicsContentFlushController.h"
-
 namespace AtomGraphics {
 
-    class GraphicsContentFlushController;
+class GraphicsContentFlushController;
 
-    class DisplayLink {
+class DisplayLink {
 
-    public:
+public:
 
-        DisplayLink(GraphicsContentFlushController *flushController)
-                : m_flushController(flushController) {
-        }
+    DisplayLink(GraphicsContentFlushController *flushController)
+            : m_flushController(flushController) {
+    }
 
-        virtual void schedule() {
+    virtual ~DisplayLink() {};
 
-        };
+    virtual void schedule() {};
 
-        virtual void pause() {
+    virtual void pause() {};
 
-        };
+    virtual void displayLinkFired() final;
 
-        virtual void displayLinkFired() final;
-
-    protected:
-        GraphicsContentFlushController *m_flushController;
-    };
+protected:
+    GraphicsContentFlushController *m_flushController;
+};
 
 
 }

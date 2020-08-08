@@ -7,24 +7,27 @@
 #define ATOMGRAPHICS_DISPLAYLINKHANDLERCA_H
 
 #import "DisplayLink.h"
-#import <QuartzCore/CADisplayLink.h>
 
 @class CADisplayLinkHandler;
 
 namespace AtomGraphics {
 
-    class DisplayLinkCA : public DisplayLink {
+class DisplayLinkCA : public DisplayLink {
 
-    public:
-        DisplayLinkCA(GraphicsContentFlushController *flushController);
+public:
+    
+    DisplayLinkCA(GraphicsContentFlushController *flushController);
+    
+    void schedule() override;
+    
+    void pause() override;
 
-        void schedule() override;
+private:
+    
+    CADisplayLinkHandler *m_displayLinkHandler;
+    
+};
 
-        void pause() override;
-
-    private:
-        CADisplayLinkHandler *m_displayLinkHandler;
-    };
 }
 
 

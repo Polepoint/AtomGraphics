@@ -9,54 +9,52 @@
 #include <mutex>
 #include <map>
 #include <deque>
-#include <thread/ThreadTimer.h>
+#include "thread/TaskRunner.h"
 
 namespace AtomGraphics {
 
-    class ThreadTimer;
+class AndroidTaskRunner : public TaskRunner {
 
-    class AndroidTaskRunner {
+public:
+    AndroidTaskRunner();
 
-    public:
-        AndroidTaskRunner();
+    virtual ~AndroidTaskRunner();
 
-        virtual ~AndroidTaskRunner();
+    void run();
 
-        void run();
+    void quit();
 
-        void quit();
+    void postScheduleTask(std::function<void()> task, double runtime);
 
-        void postScheduleTask(std::function<void()> task, double runtime);
+    void postTask(std::function<void()> task);
 
-        void postTask(std::function<void()> task);
+private:
+    ALooper *m_looper;
+    std::mutex m_lock;
 
-    private:
-        ALooper *m_looper;
-        std::mutex m_lock;
+    int m_timerFD;
+    int m_eventFD;
 
-        int m_timerFD;
-        int m_eventFD;
+    std::map<int, std::function<void()>> m_watch_tasks;
+    std::deque<std::function<void()>> m_immediate_tasks;
+    std::multimap<double, std::function<void()>> m_delayed_tasks;
 
-        std::map<int, std::function<void()>> m_watch_tasks;
-        std::deque<std::function<void()>> m_immediate_tasks;
-        std::multimap<double, std::function<void()>> m_delayed_tasks;
+    bool m_quit;
 
-        bool m_quit;
+    void runImmediateTask();
 
-        void runImmediateTask();
+    void runDelayedTask();
 
-        void runDelayedTask();
+    void addFileDescriptorWatch(int fd, std::function<void()> task);
 
-        void addFileDescriptorWatch(int fd, std::function<void()> task);
+    bool onFileDescriptorEvent(int, int);
 
-        bool onFileDescriptorEvent(int, int);
+    static void runTask(const std::function<void()> &task);
 
-        static void runTask(const std::function<void()> &task);
+    void scheduleDelayedWakeUp(double time);
 
-        void scheduleDelayedWakeUp(double time);
-
-        void scheduleImmediateWakeUp();
-    };
+    void scheduleImmediateWakeUp();
+};
 
 }
 

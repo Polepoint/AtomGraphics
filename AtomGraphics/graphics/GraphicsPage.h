@@ -10,68 +10,74 @@
 #ifndef ATOMGRAPHICS_GRAPHICSPAGE_H
 #define ATOMGRAPHICS_GRAPHICSPAGE_H
 
-#include <set>
-#include <string>
-#include "GraphicsLayer.h"
 #include "GraphicsContentFlushController.h"
-#include "GraphicsPageContext.h"
+#include "base/AtomTypes.h"
 
 namespace AtomGraphics {
 
-    class GraphicsContext;
+class GraphicsContext;
 
-    class GraphicsPageContext;
+class GraphicsLayer;
 
-    class GraphicsLayer;
+class Transaction;
 
-    class GraphicsPage {
+struct GraphicsPageViewInfo {
+    FloatRect bounds;
+    FloatRect visibleRect;
+    float contentsScaleFactor;
+    float transformScale;
 
-    public:
+    GraphicsPageViewInfo(FloatRect bounds, FloatRect viewRect, float scale, float transformScale)
+            : bounds(bounds), visibleRect(viewRect), contentsScaleFactor(scale), transformScale(transformScale) {
+    }
+};
 
-        GraphicsPage(GraphicsPageContext *context, GraphicsLayer *rootLayer);
+class GraphicsPage {
 
-        virtual ~GraphicsPage();
+public:
 
-        long pageID() const;
+    GraphicsPage();
 
-        /**
-         * 通知更新
-         */
-        void schedulePageFlush();
+    GraphicsPage(GraphicsLayer *rootLayer);
 
-        /**
-         * Graphics内容刷新结束
-         */
-        void didUpdate();
+    ~GraphicsPage();
 
-        /**
-         * 准备即将更新用的内容
-         */
-        void buildPendingFlushContexts();
+    void setRootLayer(GraphicsLayer *rootLayer);
 
+    long pageID() const;
 
-        GraphicsContext *takePendingFlushContext();
+    void setPageSize(const FloatSize &pageSize);
 
-        /**
-         * 通知layer通过backingStore更新layer状态
-         * 对CALayer来说，这个一步就是layer.contents = CGImage
-         */
-        void updateLayerContents();
+    void updateVisibleContentRects(const GraphicsPageViewInfo &viewInfo);
 
-        GraphicsLayer *rootLayer() const;
+    /**
+     * 准备即将更新用的内容
+     */
+    void buildTransaction(Transaction &transaction);
 
-        void release();
+    GraphicsLayer *rootLayer() const;
 
-    private:
-        GraphicsPageContext *m_pageContext;
-        long m_pageID;
-        bool m_needsFlush{false};
-        bool m_pendingToFlush{false};
-        bool m_updating{false};
-        GraphicsLayer *m_rootLayer{nullptr};
+    void release();
 
-        friend class GraphicsContentFlushController;
-    };
+    bool visible() const {
+        return m_visible;
+    }
+
+    void setVisible(bool visible) {
+        m_visible = visible;
+    }
+
+private:
+
+    long m_pageID;
+    float m_lastTransformScale{1};
+    bool m_visible{false};
+
+    FloatSize m_pageSize{FloatSize::ZERO};
+    GraphicsLayer *m_rootLayer{nullptr};
+
+    friend class GraphicsContentFlushController;
+};
 }
 
 

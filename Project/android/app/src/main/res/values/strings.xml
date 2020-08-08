@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ATGDemo</string>
+    <string name="atom_graphics_demo">AtomGraphics Demos</string>
+    <string name="reset_context">Reset JS Context</string>
+</resources>

@@ -8,68 +8,98 @@
 
 
 #include <functional>
-#include "base/AtomTimerBase.h"
-#include "ThreadTimer.h"
+#include "base/Clock.h"
+#include "TimerBase.h"
+#include "TaskRunner.h"
 
 namespace AtomGraphics {
 
-    class Timer final : public TimerBase {
+class Timer : public TimerBase {
 
+private:
+
+    class TimerTask {
     public:
 
-#if ATOM_TARGET_PLATFORM == ATOM_PLATFORM_ANDROID
+        TimerTask(Timer *mTimer) : m_timer(mTimer) {}
 
-        static void SetThreadTaskRunner(AndroidTaskRunner *taskRunner);
-
-        static bool TimerReady();
-
-#endif
-
-        template<typename TimerFiredClass, typename TimerFiredBaseClass>
-        Timer(TimerFiredClass &object, void (TimerFiredBaseClass::*function)())
-                : m_function(std::bind(function, &object)) {
-
+        void invalidate() {
+            if (m_active) {
+                m_alive = false;
+            } else {
+                delete this;
+            }
         }
 
-        Timer(std::function<void()> function) : m_function(function) {
+        void onTask() {
+            if (!m_alive) {
+                delete this;
+                return;
+            }
+
+            m_timer->fired();
+            inactive();
         }
 
-        void start(ThreadTimerInterval nextFireInterval, ThreadTimerInterval repeatInterval) override;
+        void requireActive() {
+            m_active = true;
+        }
 
-        void startRepeating(ThreadTimerInterval repeatInterval) override {
-            start(repeatInterval, repeatInterval);
-        };
-
-        void startOneShot(ThreadTimerInterval delay) override {
-            start(delay, 0);
-        };
-
-        void stop() override {
-            m_validate = false;
-            m_repeatInterval = 0;
-        };
-
-        bool isActive() override;
-
-        bool isValidate() override {
-            return m_validate;
-        };
-
-        void fired() override;
-
-        void setNextFireTime(ThreadTimerInterval newTime) override;
-
-        void release();
+        void inactive() {
+            m_active = false;
+        }
 
     private:
-        std::function<void()> m_function;
 
-
-#if ATOM_TARGET_PLATFORM == ATOM_PLATFORM_IOS
-        friend class TimerHeapLessThanFunction;
-        friend class TimerManager;
-#endif
+        bool m_alive{true};
+        bool m_active{false};
+        Timer *m_timer;
     };
+
+public:
+
+    template<typename TimerFiredClass, typename TimerFiredBaseClass>
+    Timer(TaskRunner *taskRunner, TimerFiredClass &object, void (TimerFiredBaseClass::*function)())
+            :m_taskRunner(taskRunner),
+             m_function(std::bind(function, &object)),
+             m_task(new TimerTask(this)) {}
+
+    Timer(TaskRunner *taskRunner, std::function<void()> function)
+            : m_taskRunner(taskRunner),
+              m_function(function),
+              m_task(new TimerTask(this)) {}
+
+    virtual ~Timer() {
+        m_task->invalidate();
+    }
+
+    void start(TimeInterval nextFireInterval, TimeInterval repeatInterval) override;
+
+    void startRepeating(TimeInterval repeatInterval) override {
+        start(repeatInterval, repeatInterval);
+    };
+
+    void startOneShot(TimeInterval delay) override {
+        start(delay, 0);
+    };
+
+    void stop() override {
+        m_validate = false;
+        m_repeatInterval = 0;
+        m_task->inactive();
+    };
+
+    bool isActive() override;
+
+    void fired() override;
+
+    void setNextFireTime(TimeInterval newTime) override;
+
+private:
+    TaskRunner *m_taskRunner;
+    std::function<void()> m_function;
+    TimerTask *m_task;
+};
 }
 
 #endif //ATOMGRAPHICS_TIMER_H

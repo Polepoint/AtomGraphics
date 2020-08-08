@@ -1,0 +1,10 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '8.2'
+
+target 'ATGDemo' do
+
+  # Pods for ATGDemo
+  pod 'AtomGraphics', :path => '../../AtomGraphics.podspec'
+  pod 'PerformanceMonitor', :path => '../../PerformanceMonitor/PerformanceMonitor.podspec'
+
+end

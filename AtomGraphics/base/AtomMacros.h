@@ -2,7 +2,15 @@
 #ifndef __BASE_ATOMMACROS_H__
 #define __BASE_ATOMMACROS_H__
 
-#include "platform/ios/AtomPlatformDefine-ios.h"
+#include "platform/AtomPlatformConfig.h"
+
+#if PLATFORM(IOS)
+
+#include <assert.h>
+
+#define AG_ASSERT(cond) assert(cond)
+
+#endif
 
 
 #ifndef FLT_EPSILON
@@ -10,19 +18,8 @@
 #endif // FLT_EPSILON
 
 #ifndef ATASSERT
-#if COCOS2D_DEBUG > 0
-#if CC_ENABLE_SCRIPT_BINDING
-    extern bool CC_DLL cc_assert_script_compatible(const char *msg);
-    #define ATASSERT(cond, msg) do {                              \
-          if (!(cond)) {                                          \
-            if (!cc_assert_script_compatible(msg) && strlen(msg)) \
-              cocos2d::log("Assert failed: %s", msg);             \
-            AG_ASSERT(cond);                                      \
-          } \
-        } while (0)
-    #else
-    #define ATASSERT(cond, msg) AG_ASSERT(cond)
-    #endif
+#if defined(DEBUG)
+#define ATASSERT(cond, msg) AG_ASSERT(cond)
 #else
 #define ATASSERT(cond, msg)
 #endif
@@ -30,4 +27,12 @@
 
 #define GP_ASSERT(cond) ATASSERT(cond, "")
 
-#endif
+#define AT_MAKE_NONCOPYABLE(ClassName) \
+    private: \
+        ClassName(const ClassName&) = delete; \
+        ClassName& operator=(const ClassName&) = delete; \
+
+#define NELEM(x) ((int) (sizeof(x) / sizeof((x)[0])))
+
+
+#endif //__BASE_ATOMMACROS_H__

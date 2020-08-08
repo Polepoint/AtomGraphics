@@ -4,22 +4,18 @@
 //
 
 #include "RequestAnimationCallback.h"
+#include <utility>
 
 namespace AtomGraphics {
 
-    RequestAnimationCallback::RequestAnimationCallback(std::function<void()> block) : m_block(block) {
+RequestAnimationCallback::RequestAnimationCallback(std::function<void()> block) : m_block(std::move(block)) {
 
+}
+
+void RequestAnimationCallback::call() {
+    if (m_block) {
+        m_block();
     }
+}
 
-    void RequestAnimationCallback::call() {
-        if (m_firedOrCancelled) {
-            return;
-        }
-
-        if (m_block) {
-            m_block();
-        }
-
-        m_firedOrCancelled = true;
-    }
 }

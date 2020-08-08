@@ -6,8 +6,6 @@
 #ifndef ATOMGRAPHICS_H
 #define ATOMGRAPHICS_H
 
-#include "base/AtomRef.h"
-
 namespace AtomGraphics {
 
     class Node;

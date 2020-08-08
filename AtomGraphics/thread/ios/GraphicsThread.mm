@@ -4,67 +4,75 @@
 //
 
 #import "GraphicsThread.h"
-#import <dispatch/dispatch.h>
-#import "ThreadTimer.h"
-#import "GraphicsRunLoop.h"
-#import "Timer.h"
+#import <vector>
+#import "AtomicTimer.h"
+#import "TaskRunnerCF.h"
 
 #define DISPATCH_GRAPHICS_QUEUE_LABEL "com.neo.AtomGraphics"
 
 namespace AtomGraphics {
 
 
-    static dispatch_queue_t graphics_queue;
+static dispatch_queue_t sGraphicsQueue;
 
-    static Timer *eventLoopDispatchTimer = nullptr;
+static std::vector<std::function<void()>> sEventLoopDispatchBlocks;
 
-    static std::vector<std::function<void()>> eventLoopDispatchBlocks;
+static std::unique_ptr<AtomicTimer> sEventLoopDispatchTimer;
 
-    static void OnEventLoop() {
-        auto blocksCopy = eventLoopDispatchBlocks;
-        eventLoopDispatchBlocks.clear();
-        for (auto block : blocksCopy) {
-            block();
+static std::unique_ptr<TaskRunnerCF> sGraphicsTaskRunner;
+
+static std::mutex sTaskLock;
+
+static void DispatchTask() {
+    std::vector<std::function<void()>> blocksCopy;
+    {
+        std::lock_guard<std::mutex> lock(sTaskLock);
+        blocksCopy.assign(sEventLoopDispatchBlocks.begin(), sEventLoopDispatchBlocks.end());
+        sEventLoopDispatchBlocks.clear();
+    };
+
+    for (auto &block : blocksCopy) {
+        block();
+    }
+}
+
+TaskRunner *GraphicsThread::GraphicsThreadTaskRunner() {
+    return sGraphicsTaskRunner.get();
+}
+
+static void addBlock(std::function<void()> block) {
+    std::lock_guard<std::mutex> lock(sTaskLock);
+    sEventLoopDispatchBlocks.push_back(block);
+}
+
+void GraphicsThread::DispatchOnGraphicsQueue(std::function<void()> block) {
+    if (!sGraphicsQueue) {
+        addBlock(std::move(block));
+
+        dispatch_queue_attr_t queue_attr = DISPATCH_QUEUE_SERIAL;
+        queue_attr = dispatch_queue_attr_make_with_qos_class(queue_attr, QOS_CLASS_USER_INTERACTIVE, -1);
+        sGraphicsQueue = dispatch_queue_create(DISPATCH_GRAPHICS_QUEUE_LABEL, queue_attr);
+
+        dispatch_async(sGraphicsQueue, ^() {
+            sGraphicsTaskRunner.reset(new TaskRunnerCF());
+            sEventLoopDispatchTimer.reset(new AtomicTimer(sGraphicsTaskRunner.get(), &DispatchTask));
+            sEventLoopDispatchTimer->startOneShot(0);
+            sGraphicsTaskRunner->run();
+            sGraphicsTaskRunner.reset();
+            sEventLoopDispatchTimer.reset();
+            sGraphicsQueue = NULL;
+        });
+    } else {
+        addBlock(std::move(block));
+        if (IsGraphicsThread() || (sEventLoopDispatchTimer && !sEventLoopDispatchTimer->isActive())) {
+            sEventLoopDispatchTimer->startOneShot(0);
         }
     }
+}
 
-    void GraphicsThread::InitGraphicsThread() {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^() {
-            graphics_queue = dispatch_queue_create(DISPATCH_GRAPHICS_QUEUE_LABEL, DISPATCH_QUEUE_SERIAL);
-            DispatchOnGraphicsQueue(^() {
-                GraphicsThreadEnable();
-            });
-        });
-    }
-
-    void GraphicsThread::DispatchOnGraphicsQueue(std::function<void()> block) {
-        dispatch_queue_t currentQueue = dispatch_get_current_queue();
-        if (strcmp(dispatch_queue_get_label(currentQueue), DISPATCH_GRAPHICS_QUEUE_LABEL) == 0) {
-            block();
-        } else if (ThreadTimer::active()) {
-            if (!eventLoopDispatchTimer) {
-                eventLoopDispatchTimer = new Timer(OnEventLoop);
-            }
-            eventLoopDispatchBlocks.push_back(block);
-            if (!eventLoopDispatchTimer->isActive()) {
-                eventLoopDispatchTimer->startOneShot(0);
-            }
-        } else {
-            dispatch_async(graphics_queue, ^() {
-                GraphicsRunLoop::setTimerRunLoop(CFRunLoopGetCurrent());
-                block();
-                CFRunLoopRun();
-            });
-        }
-    }
-
-    void GraphicsThread::GraphicsThreadEnable() {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^() {
-            ThreadTimer::InitThread();
-        });
-    }
+bool GraphicsThread::IsGraphicsThread() {
+    return dispatch_get_current_queue() == sGraphicsQueue;
+}
 
 }
 

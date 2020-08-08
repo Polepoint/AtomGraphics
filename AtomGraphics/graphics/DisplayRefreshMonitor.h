@@ -11,19 +11,21 @@
 
 namespace AtomGraphics {
 
-    class DisplayRefreshMonitor {
+class DisplayRefreshMonitor {
 
-    public:
+public:
+    
+    void addClient(DisplayRefreshMonitorClient *);
+    
+    void removeClient(DisplayRefreshMonitorClient *);
+    
+    void didUpdateLayers();
 
-        void addClient(DisplayRefreshMonitorClient *);
-
-        void removeClient(DisplayRefreshMonitorClient *);
-
-        void didUpdateLayers();
-
-    private:
-        std::set<DisplayRefreshMonitorClient *> m_clients;
-    };
+private:
+    std::set<DisplayRefreshMonitorClient *> m_clients;
+    std::set<DisplayRefreshMonitorClient *> m_pendingInsertClients;
+    std::set<DisplayRefreshMonitorClient *> m_pendingDeleteClients;
+};
 }
 
 #endif //ATOMGRAPHICS_DISPLAYREFRESHMONITOR_H

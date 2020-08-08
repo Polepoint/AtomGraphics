@@ -4,7 +4,6 @@
 //
 
 #include "DisplayLinkCA.h"
-#import <Foundation/Foundation.h>
 
 @interface CADisplayLinkHandler : NSObject
 
@@ -46,16 +45,18 @@
 
 namespace AtomGraphics {
 
-    DisplayLinkCA::DisplayLinkCA(AtomGraphics::GraphicsContentFlushController *flushController)
-            : DisplayLink(flushController) {
-        m_displayLinkHandler = [[CADisplayLinkHandler alloc] initWithContentProxy:this];
-    }
+DisplayLinkCA::DisplayLinkCA(AtomGraphics::GraphicsContentFlushController *flushController)
+        : DisplayLink(flushController) {
+    m_displayLinkHandler = [[CADisplayLinkHandler alloc] initWithContentProxy:this];
+}
 
-    void DisplayLinkCA::schedule() {
-        [m_displayLinkHandler schedule];
-    }
+void DisplayLinkCA::schedule() {
+    [m_displayLinkHandler schedule];
+}
 
-    void DisplayLinkCA::pause() {
-        [m_displayLinkHandler pause];
-    }
+void DisplayLinkCA::pause() {
+    [m_displayLinkHandler pause];
+}
+
+
 }

@@ -7,17 +7,18 @@
 
 namespace AtomGraphics {
 
-    class DisplayRefreshMonitorClient {
+class DisplayRefreshMonitorClient {
 
-    public:
+public:
 
-        void fireDisplayRefreshIfNeeded();
+    void fireDisplayRefreshIfNeeded();
 
-        virtual void displayRefreshFired();
+    virtual void displayRefreshFired();
 
-    protected:
-        bool m_scheduled;
-    };
+protected:
+    bool m_scheduled;
+};
+
 }
 
 #endif //ATOMGRAPHICS_DISPLAYREFRESHMONITORCLIENT_H

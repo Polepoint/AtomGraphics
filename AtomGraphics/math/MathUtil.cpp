@@ -43,188 +43,188 @@
 
 namespace AtomGraphics {
 
-    void MathUtil::smooth(float *x, float target, float elapsedTime, float responseTime) {
-        GP_ASSERT(x);
-
-        if (elapsedTime > 0) {
-            *x += (target - *x) * elapsedTime / (elapsedTime + responseTime);
-        }
+void MathUtil::smooth(float *x, float target, float elapsedTime, float responseTime) {
+    GP_ASSERT(x);
+    
+    if (elapsedTime > 0) {
+        *x += (target - *x) * elapsedTime / (elapsedTime + responseTime);
     }
+}
 
-    void MathUtil::smooth(float *x, float target, float elapsedTime, float riseTime, float fallTime) {
-        GP_ASSERT(x);
-
-        if (elapsedTime > 0) {
-            float delta = target - *x;
-            *x += delta * elapsedTime / (elapsedTime + (delta > 0 ? riseTime : fallTime));
-        }
+void MathUtil::smooth(float *x, float target, float elapsedTime, float riseTime, float fallTime) {
+    GP_ASSERT(x);
+    
+    if (elapsedTime > 0) {
+        float delta = target - *x;
+        *x += delta * elapsedTime / (elapsedTime + (delta > 0 ? riseTime : fallTime));
     }
+}
 
-    float MathUtil::lerp(float from, float to, float alpha) {
-        return from * (1.0f - alpha) + to * alpha;
-    }
+float MathUtil::lerp(float from, float to, float alpha) {
+    return from * (1.0f - alpha) + to * alpha;
+}
 
-    bool MathUtil::isNeon32Enabled() {
+bool MathUtil::isNeon32Enabled() {
 #ifdef USE_NEON32
-        return true;
+    return true;
 #elif (defined (INCLUDE_NEON32) && (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID))
-        class AnrdoidNeonChecker
+    class AnrdoidNeonChecker
+    {
+    public:
+        AnrdoidNeonChecker()
         {
-        public:
-            AnrdoidNeonChecker()
-            {
-                if (android_getCpuFamily() == ANDROID_CPU_FAMILY_ARM && (android_getCpuFeatures() & ANDROID_CPU_ARM_FEATURE_NEON) != 0)
-                    _isNeonEnabled = true;
-                else
-                    _isNeonEnabled = false;
-            }
-            bool isNeonEnabled() const { return _isNeonEnabled; }
-        private:
-            bool _isNeonEnabled;
-        };
-        static AnrdoidNeonChecker checker;
-        return checker.isNeonEnabled();
+            if (android_getCpuFamily() == ANDROID_CPU_FAMILY_ARM && (android_getCpuFeatures() & ANDROID_CPU_ARM_FEATURE_NEON) != 0)
+                _isNeonEnabled = true;
+            else
+                _isNeonEnabled = false;
+        }
+        bool isNeonEnabled() const { return _isNeonEnabled; }
+    private:
+        bool _isNeonEnabled;
+    };
+    static AnrdoidNeonChecker checker;
+    return checker.isNeonEnabled();
 #else
-        return false;
+    return false;
 #endif
-    }
+}
 
-    bool MathUtil::isNeon64Enabled() {
+bool MathUtil::isNeon64Enabled() {
 #ifdef USE_NEON64
-        return true;
+    return true;
 #else
-        return false;
+    return false;
 #endif
-    }
+}
 
-    void MathUtil::addMatrix(const float *m, float scalar, float *dst) {
+void MathUtil::addMatrix(const float *m, float scalar, float *dst) {
 #ifdef USE_NEON32
-        MathUtilNeon::addMatrix(m, scalar, dst);
+    MathUtilNeon::addMatrix(m, scalar, dst);
 #elif defined (USE_NEON64)
-        MathUtilNeon64::addMatrix(m, scalar, dst);
+    MathUtilNeon64::addMatrix(m, scalar, dst);
 #elif defined (INCLUDE_NEON32)
-        if(isNeon32Enabled()) MathUtilNeon::addMatrix(m, scalar, dst);
-        else MathUtilC::addMatrix(m, scalar, dst);
+    if(isNeon32Enabled()) MathUtilNeon::addMatrix(m, scalar, dst);
+    else MathUtilC::addMatrix(m, scalar, dst);
 #else
-        MathUtilC::addMatrix(m, scalar, dst);
+    MathUtilC::addMatrix(m, scalar, dst);
 #endif
-    }
+}
 
-    void MathUtil::addMatrix(const float *m1, const float *m2, float *dst) {
+void MathUtil::addMatrix(const float *m1, const float *m2, float *dst) {
 #ifdef USE_NEON32
-        MathUtilNeon::addMatrix(m1, m2, dst);
+    MathUtilNeon::addMatrix(m1, m2, dst);
 #elif defined (USE_NEON64)
-        MathUtilNeon64::addMatrix(m1, m2, dst);
+    MathUtilNeon64::addMatrix(m1, m2, dst);
 #elif defined (INCLUDE_NEON32)
-        if(isNeon32Enabled()) MathUtilNeon::addMatrix(m1, m2, dst);
-        else MathUtilC::addMatrix(m1, m2, dst);
+    if(isNeon32Enabled()) MathUtilNeon::addMatrix(m1, m2, dst);
+    else MathUtilC::addMatrix(m1, m2, dst);
 #else
-        MathUtilC::addMatrix(m1, m2, dst);
+    MathUtilC::addMatrix(m1, m2, dst);
 #endif
-    }
+}
 
-    void MathUtil::subtractMatrix(const float *m1, const float *m2, float *dst) {
+void MathUtil::subtractMatrix(const float *m1, const float *m2, float *dst) {
 #ifdef USE_NEON32
-        MathUtilNeon::subtractMatrix(m1, m2, dst);
+    MathUtilNeon::subtractMatrix(m1, m2, dst);
 #elif defined (USE_NEON64)
-        MathUtilNeon64::subtractMatrix(m1, m2, dst);
+    MathUtilNeon64::subtractMatrix(m1, m2, dst);
 #elif defined (INCLUDE_NEON32)
-        if(isNeon32Enabled()) MathUtilNeon::subtractMatrix(m1, m2, dst);
-        else MathUtilC::subtractMatrix(m1, m2, dst);
+    if(isNeon32Enabled()) MathUtilNeon::subtractMatrix(m1, m2, dst);
+    else MathUtilC::subtractMatrix(m1, m2, dst);
 #else
-        MathUtilC::subtractMatrix(m1, m2, dst);
+    MathUtilC::subtractMatrix(m1, m2, dst);
 #endif
-    }
+}
 
-    void MathUtil::multiplyMatrix(const float *m, float scalar, float *dst) {
+void MathUtil::multiplyMatrix(const float *m, float scalar, float *dst) {
 #ifdef USE_NEON32
-        MathUtilNeon::multiplyMatrix(m, scalar, dst);
+    MathUtilNeon::multiplyMatrix(m, scalar, dst);
 #elif defined (USE_NEON64)
-        MathUtilNeon64::multiplyMatrix(m, scalar, dst);
+    MathUtilNeon64::multiplyMatrix(m, scalar, dst);
 #elif defined (INCLUDE_NEON32)
-        if(isNeon32Enabled()) MathUtilNeon::multiplyMatrix(m, scalar, dst);
-        else MathUtilC::multiplyMatrix(m, scalar, dst);
+    if(isNeon32Enabled()) MathUtilNeon::multiplyMatrix(m, scalar, dst);
+    else MathUtilC::multiplyMatrix(m, scalar, dst);
 #else
-        MathUtilC::multiplyMatrix(m, scalar, dst);
+    MathUtilC::multiplyMatrix(m, scalar, dst);
 #endif
-    }
+}
 
-    void MathUtil::multiplyMatrix(const float *m1, const float *m2, float *dst) {
+void MathUtil::multiplyMatrix(const float *m1, const float *m2, float *dst) {
 #ifdef USE_NEON32
-        MathUtilNeon::multiplyMatrix(m1, m2, dst);
+    MathUtilNeon::multiplyMatrix(m1, m2, dst);
 #elif defined (USE_NEON64)
-        MathUtilNeon64::multiplyMatrix(m1, m2, dst);
+    MathUtilNeon64::multiplyMatrix(m1, m2, dst);
 #elif defined (INCLUDE_NEON32)
-        if(isNeon32Enabled()) MathUtilNeon::multiplyMatrix(m1, m2, dst);
-        else MathUtilC::multiplyMatrix(m1, m2, dst);
+    if(isNeon32Enabled()) MathUtilNeon::multiplyMatrix(m1, m2, dst);
+    else MathUtilC::multiplyMatrix(m1, m2, dst);
 #else
-        MathUtilC::multiplyMatrix(m1, m2, dst);
+    MathUtilC::multiplyMatrix(m1, m2, dst);
 #endif
-    }
+}
 
-    void MathUtil::negateMatrix(const float *m, float *dst) {
+void MathUtil::negateMatrix(const float *m, float *dst) {
 #ifdef USE_NEON32
-        MathUtilNeon::negateMatrix(m, dst);
+    MathUtilNeon::negateMatrix(m, dst);
 #elif defined (USE_NEON64)
-        MathUtilNeon64::negateMatrix(m, dst);
+    MathUtilNeon64::negateMatrix(m, dst);
 #elif defined (INCLUDE_NEON32)
-        if(isNeon32Enabled()) MathUtilNeon::negateMatrix(m, dst);
-        else MathUtilC::negateMatrix(m, dst);
+    if(isNeon32Enabled()) MathUtilNeon::negateMatrix(m, dst);
+    else MathUtilC::negateMatrix(m, dst);
 #else
-        MathUtilC::negateMatrix(m, dst);
+    MathUtilC::negateMatrix(m, dst);
 #endif
-    }
+}
 
-    void MathUtil::transposeMatrix(const float *m, float *dst) {
+void MathUtil::transposeMatrix(const float *m, float *dst) {
 #ifdef USE_NEON32
-        MathUtilNeon::transposeMatrix(m, dst);
+    MathUtilNeon::transposeMatrix(m, dst);
 #elif defined (USE_NEON64)
-        MathUtilNeon64::transposeMatrix(m, dst);
+    MathUtilNeon64::transposeMatrix(m, dst);
 #elif defined (INCLUDE_NEON32)
-        if(isNeon32Enabled()) MathUtilNeon::transposeMatrix(m, dst);
-        else MathUtilC::transposeMatrix(m, dst);
+    if(isNeon32Enabled()) MathUtilNeon::transposeMatrix(m, dst);
+    else MathUtilC::transposeMatrix(m, dst);
 #else
-        MathUtilC::transposeMatrix(m, dst);
+    MathUtilC::transposeMatrix(m, dst);
 #endif
-    }
+}
 
-    void MathUtil::transformVec4(const float *m, float x, float y, float z, float w, float *dst) {
+void MathUtil::transformVec4(const float *m, float x, float y, float z, float w, float *dst) {
 #ifdef USE_NEON32
-        MathUtilNeon::transformVec4(m, x, y, z, w, dst);
+    MathUtilNeon::transformVec4(m, x, y, z, w, dst);
 #elif defined (USE_NEON64)
-        MathUtilNeon64::transformVec4(m, x, y, z, w, dst);
+    MathUtilNeon64::transformVec4(m, x, y, z, w, dst);
 #elif defined (INCLUDE_NEON32)
-        if(isNeon32Enabled()) MathUtilNeon::transformVec4(m, x, y, z, w, dst);
-        else MathUtilC::transformVec4(m, x, y, z, w, dst);
+    if(isNeon32Enabled()) MathUtilNeon::transformVec4(m, x, y, z, w, dst);
+    else MathUtilC::transformVec4(m, x, y, z, w, dst);
 #else
-        MathUtilC::transformVec4(m, x, y, z, w, dst);
+    MathUtilC::transformVec4(m, x, y, z, w, dst);
 #endif
-    }
+}
 
-    void MathUtil::transformVec4(const float *m, const float *v, float *dst) {
+void MathUtil::transformVec4(const float *m, const float *v, float *dst) {
 #ifdef USE_NEON32
-        MathUtilNeon::transformVec4(m, v, dst);
+    MathUtilNeon::transformVec4(m, v, dst);
 #elif defined (USE_NEON64)
-        MathUtilNeon64::transformVec4(m, v, dst);
+    MathUtilNeon64::transformVec4(m, v, dst);
 #elif defined (INCLUDE_NEON32)
-        if(isNeon32Enabled()) MathUtilNeon::transformVec4(m, v, dst);
-        else MathUtilC::transformVec4(m, v, dst);
+    if(isNeon32Enabled()) MathUtilNeon::transformVec4(m, v, dst);
+    else MathUtilC::transformVec4(m, v, dst);
 #else
-        MathUtilC::transformVec4(m, v, dst);
+    MathUtilC::transformVec4(m, v, dst);
 #endif
-    }
+}
 
-    void MathUtil::crossVec3(const float *v1, const float *v2, float *dst) {
+void MathUtil::crossVec3(const float *v1, const float *v2, float *dst) {
 #ifdef USE_NEON32
-        MathUtilNeon::crossVec3(v1, v2, dst);
+    MathUtilNeon::crossVec3(v1, v2, dst);
 #elif defined (USE_NEON64)
-        MathUtilNeon64::crossVec3(v1, v2, dst);
+    MathUtilNeon64::crossVec3(v1, v2, dst);
 #elif defined (INCLUDE_NEON32)
-        if(isNeon32Enabled()) MathUtilNeon::crossVec3(v1, v2, dst);
-        else MathUtilC::crossVec3(v1, v2, dst);
+    if(isNeon32Enabled()) MathUtilNeon::crossVec3(v1, v2, dst);
+    else MathUtilC::crossVec3(v1, v2, dst);
 #else
-        MathUtilC::crossVec3(v1, v2, dst);
+    MathUtilC::crossVec3(v1, v2, dst);
 #endif
-    }
+}
 
 }

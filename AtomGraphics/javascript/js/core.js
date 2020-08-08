@@ -1,6 +1,4 @@
-var global = this;
-global.window = global;
-var window = global;
+this.window = this;
 
 if (!Object.assign) {
     Object.assign = function (target) {
@@ -21,38 +19,29 @@ var AG = {
     },
     createCanvasNode: function () {
     },
-    getOptionsFromBundle: function () {
-    },
     getCanvasNodeById: function () {
-    },
-    registerChart: function (chart) {
-
-    },
-    initGestures: function () {
-
     },
     log: function () {
 
     },
+
+    createImage: function () {
+
+    },
+
     documentElement: {},
 };
 
-var document = {
-    createElement: function (elementType) {
-        if (elementType === 'canvas') {
-            return AG.createCanvasNode();
-        }
-    },
-    getElementById: function (id) {
-        if (typeof id === 'number' || typeof id === 'string') {
-            return AG.getPageRootNodeById(id);
-        }
-    },
-};
+// var console = {
+//
+//     log: function (msg) {
+//         AG.log(msg);
+//     }
+// };
 
 var navigator = undefined;
 var location = undefined;
 
-function _contextCreateImageData(width, height) {
-    return {data: new Array(4 * width * height), width: width, height: height};
+function Image() {
+    return AG.createImage();
 }

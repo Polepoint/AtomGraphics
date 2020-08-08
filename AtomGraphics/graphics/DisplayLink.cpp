@@ -4,10 +4,12 @@
 
 
 #include "DisplayLink.h"
+#include "GraphicsContentFlushController.h"
 
 namespace AtomGraphics {
 
-    void DisplayLink::displayLinkFired() {
-        m_flushController->didRefreshDisplay();
-    }
+void DisplayLink::displayLinkFired() {
+    m_flushController->didRefreshDisplay();
+}
+
 }

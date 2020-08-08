@@ -8,28 +8,35 @@
 
 
 #include "thread/Timer.h"
+#include <memory>
 
 namespace AtomGraphics {
 
-    class ScriptTimer {
-    public:
+class ScriptTimer {
 
-        static long CreateTimerID(long millionSeconds, bool repeat, const std::function<void()> &function);
+public:
 
-        static void RemoveTimerID(long timerID);
+    static std::unique_ptr<ScriptTimer> CreateTimer(long millionSeconds, bool repeat,
+                                                    const std::function<void()> &function, void *userInfo);
 
-        ScriptTimer(long millionSeconds, bool repeat, const std::function<void()> &function);
+    ScriptTimer(long millionSeconds, bool repeat, const std::function<void()> &function);
 
-        virtual ~ScriptTimer();
+    virtual ~ScriptTimer() = default;
 
-    private:
-        long m_timerID;
-        bool m_repeats;
-        Timer *m_timer;
-        std::function<void()> m_function;
+private:
 
-        void fired();
-    };
+    long m_timerID;
+    bool m_repeats;
+    bool m_cancel{false};
+    TimeInterval m_schedule_time;
+    TimeInterval m_interval_time;
+    std::function<void()> m_function;
+
+    void fired();
+
+    friend class ScriptTimerController;
+};
+
 };
 
 

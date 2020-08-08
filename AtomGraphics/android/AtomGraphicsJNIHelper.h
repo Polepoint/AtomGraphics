@@ -17,7 +17,7 @@ namespace AtomGraphicsBase {
 
     bool IsVMInitialized();
 
-    jclass FindClass(JNIEnv *jni, jobject context, const char *class_name);
+    jclass FindClass(JNIEnv *jni, const char *class_name);
 }
 
 

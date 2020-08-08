@@ -7,11 +7,19 @@
 #define ATOMGRAPHICS_GRAPHICSCONTENTFLUSHCONTROLLER_H
 
 #include <set>
-#include "DisplayRefreshMonitor.h"
 #include "DisplayLink.h"
-#include "GraphicsPage.h"
+#include "DisplayRefreshMonitor.h"
 #include "GraphicsContext.h"
+#include "TransactionBunch.h"
 #include "thread/Timer.h"
+
+#include "platform/AtomPlatformConfig.h"
+
+#if PLATFORM(IOS)
+
+#import <dispatch/queue.h>
+
+#endif
 
 enum DidUpdateMessageState {
     DoesNotNeedDidUpdate, NeedsDidUpdate, MissedCommit
@@ -19,54 +27,59 @@ enum DidUpdateMessageState {
 
 namespace AtomGraphics {
 
-    class DisplayLink;
+class GraphicsPage;
 
-    class GraphicsPage;
+class GraphicsContentFlushController {
 
-    class GraphicsPageContext;
+public:
 
-    class DisplayRefreshMonitor;
+    static GraphicsContentFlushController *SharedInstance();
 
-    class GraphicsContentFlushController {
+    GraphicsContentFlushController();
 
-    public:
+    void didRefreshDisplay();
 
-        GraphicsContentFlushController(GraphicsPageContext *pageContext);
+    void scheduleLayerFlush();
 
-        void didRefreshDisplay();
+    void flushLayers();
 
-        void scheduleLayerFlush();
+#if PLATFORM(IOS)
 
-        void flushLayers();
+    void commitFlush();
 
-        void commitLayerContent();
+#endif
 
-        void addPage(GraphicsPage *page);
+    void commitTransaction(scoped_refptr<TransactionBunch> transactionBunch);
 
-        void removePage(GraphicsPage *page);
+    void didCommitTransaction();
 
-        DisplayRefreshMonitor *refreshMonitor() {
-            return m_refreshMonitor;
-        }
+    void addPage(GraphicsPage *page);
 
-        void registerDisplayRefreshMonitor(DisplayRefreshMonitor *displayRefreshMonitor);
+    void removePage(GraphicsPage *page);
 
-        void unregisterDisplayRefreshMonitor(DisplayRefreshMonitor *displayRefreshMonitor);
+    DisplayRefreshMonitor *refreshMonitor();
 
-    private:
+private:
 
-        GraphicsPageContext *m_pageContext;
-        DidUpdateMessageState m_didUpdateMessageState;
-        DisplayLink *m_displayLink{nullptr};
-        std::set<GraphicsPage *> m_pages;
-        DisplayRefreshMonitor *m_refreshMonitor{nullptr};
-        Timer *m_flushTimer;
-        bool m_initialized{false};
+#if PLATFORM(IOS)
+    static dispatch_queue_t s_flushCommitQueue;
+#endif
 
-        DisplayLink *displayLinkHandler();
+    DidUpdateMessageState m_didUpdateMessageState{DoesNotNeedDidUpdate};
+    std::unique_ptr<DisplayLink> m_displayLink;
+    std::unique_ptr<DisplayRefreshMonitor> m_refreshMonitor;
+    std::set<GraphicsPage *> m_pages;
+    Timer m_flushTimer;
+    bool m_initialized{false};
+    bool m_hadFlushDeferredWhileWaitingForBackingStoreSwap{false};
 
-        void didUpdate();
-    };
+    DisplayLink *displayLinkHandler();
+
+    DisplayLink *createDisplayLink();
+
+    void didUpdate();
+};
+
 }
 
 #endif //ATOMGRAPHICS_GRAPHICSCONTENTFLUSHCONTROLLER_H
