@@ -44,34 +44,3 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
-
-
-uploadArchives {
-    repositories.mavenDeployer {
-        def isLocalEnv = (findProperty("localEnv") ?: "true").toBoolean()
-        def releaseRepo = isLocalEnv ? repositories.mavenLocal().url : RELEASES_REPOSITORY
-        def snapshotRepo = isLocalEnv ? repositories.mavenLocal().url : SNAPSHOTS_REPOSITORY
-        //本地环境直接发布到本地maven库
-        repository(url: uri(releaseRepo)) {
-            authentication(userName: findProperty("NEXUS_USERNAME"), password: findProperty("NEXUS_PASSWORD"))
-        }
-        snapshotRepository(url: snapshotRepo) {
-            authentication(userName: findProperty("NEXUS_USERNAME"), password: findProperty("NEXUS_PASSWORD"))
-        }
-
-        pom.groupId = FR_GROUP_ID
-        pom.artifactId = "AtomGraphics"
-        pom.version = ATG_MODULE_VERSION
-
-        //本地环境自动加入"-local"后缀，和线上环境区别开来
-        if (isLocalEnv) {
-            pom.version += "-local"
-        }
-
-        //如果需要发布快照版自动加入"-SNAPSHOT"后缀
-        def isUploadSnapshot = UPLOAD_SNAPSHOT.toBoolean()
-        if (isUploadSnapshot) {
-            pom.version += "-SNAPSHOT"
-        }
-    }
-}
